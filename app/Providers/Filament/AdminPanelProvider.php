@@ -54,6 +54,12 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->plugins([
+                \Moox\Jobs\JobsPlugin::make(),
+                \Moox\Jobs\JobsFailedPlugin::make(),
+                \Moox\Jobs\JobsBatchesPlugin::make(),
+
             ]);
     }
 }
