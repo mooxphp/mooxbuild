@@ -4,8 +4,8 @@ namespace App\Filament\Resources\CategoryResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Actions\EditAction;
@@ -13,6 +13,7 @@ use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Filters\SelectFilter;
@@ -27,9 +28,7 @@ class PagesRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'title';
 
-    protected static bool $shouldRegisterNavigation = false;
-
-    public function form(Form $form): Form
+    public static function form(Form $form): Form
     {
         return $form->schema([
             Grid::make(['default' => 0])->schema([
@@ -115,6 +114,42 @@ class PagesRelationManager extends RelationManager
                         'lg' => 12,
                     ]),
 
+                TextInput::make('created_by_user_id')
+                    ->rules(['max:255', 'string'])
+                    ->placeholder('Created By User Id')
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
+
+                TextInput::make('created_by_user_name')
+                    ->rules(['max:255', 'string'])
+                    ->placeholder('Created By User Name')
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
+
+                TextInput::make('edited_by_user_id')
+                    ->rules(['max:255', 'string'])
+                    ->placeholder('Edited By User Id')
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
+
+                TextInput::make('edited_by_user_name')
+                    ->rules(['max:255', 'string'])
+                    ->placeholder('Edited By User Name')
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
+
                 Select::make('language_id')
                     ->rules(['exists:languages,id'])
                     ->relationship('language', 'title')
@@ -136,11 +171,20 @@ class PagesRelationManager extends RelationManager
                         'md' => 12,
                         'lg' => 12,
                     ]),
+
+                DatePicker::make('published_at')
+                    ->rules(['date'])
+                    ->placeholder('Published At')
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
             ]),
         ]);
     }
 
-    public function table(Table $table): Table
+    public static function table(Table $table): Table
     {
         return $table
             ->columns([
@@ -155,8 +199,19 @@ class PagesRelationManager extends RelationManager
                 Tables\Columns\ImageColumn::make('image')->rounded(),
                 Tables\Columns\ImageColumn::make('thumbnail')->rounded(),
                 Tables\Columns\TextColumn::make('author.title')->limit(50),
+                Tables\Columns\TextColumn::make('created_by_user_id')->limit(
+                    50
+                ),
+                Tables\Columns\TextColumn::make('created_by_user_name')->limit(
+                    50
+                ),
+                Tables\Columns\TextColumn::make('edited_by_user_id')->limit(50),
+                Tables\Columns\TextColumn::make('edited_by_user_name')->limit(
+                    50
+                ),
                 Tables\Columns\TextColumn::make('language.title')->limit(50),
                 Tables\Columns\TextColumn::make('translation.title')->limit(50),
+                Tables\Columns\TextColumn::make('published_at')->date(),
             ])
             ->filters([
                 Tables\Filters\Filter::make('created_at')

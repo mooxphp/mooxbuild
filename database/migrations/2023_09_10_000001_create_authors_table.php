@@ -13,16 +13,17 @@ return new class extends Migration {
         Schema::create('authors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('salutation');
-            $table->string('title');
+            $table->string('salutation')->nullable();
+            $table->string('title')->nullable();
             $table->string('name');
-            $table->string('full_name');
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('full_name')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('mail_address');
-            $table->string('website');
-            $table->text('address');
-            $table->json('social');
+            $table->string('website')->nullable();
+            $table->text('address')->nullable();
+            $table->json('social')->nullable();
+            $table->timestamp('published_at')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

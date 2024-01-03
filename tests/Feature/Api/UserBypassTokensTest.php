@@ -61,9 +61,6 @@ class UserBypassTokensTest extends TestCase
             $data
         );
 
-        unset($data['token']);
-        unset($data['user_id']);
-
         $this->assertDatabaseHas('bypass_tokens', $data);
 
         $response->assertStatus(201)->assertJsonFragment($data);

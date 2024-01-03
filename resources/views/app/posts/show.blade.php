@@ -86,6 +86,30 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
+                            @lang('crud.posts.inputs.created_by_user_id')
+                        </h5>
+                        <span>{{ $post->created_by_user_id ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.posts.inputs.created_by_user_name')
+                        </h5>
+                        <span>{{ $post->created_by_user_name ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.posts.inputs.edited_by_user_id')
+                        </h5>
+                        <span>{{ $post->edited_by_user_id ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.posts.inputs.edited_by_user_name')
+                        </h5>
+                        <span>{{ $post->edited_by_user_name ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
                             @lang('crud.posts.inputs.language_id')
                         </h5>
                         <span
@@ -100,6 +124,12 @@
                             >{{ optional($post->translation)->title ?? '-'
                             }}</span
                         >
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.posts.inputs.published_at')
+                        </h5>
+                        <span>{{ $post->published_at ?? '-' }}</span>
                     </div>
                 </div>
 

@@ -29,8 +29,13 @@ class TagUpdateRequest extends FormRequest
             'thumbnail' => ['nullable', 'file'],
             'weight' => ['nullable', 'numeric'],
             'model' => ['nullable', 'max:255', 'string'],
+            'created_by_user_id' => ['required', 'max:255', 'string'],
+            'created_by_user_name' => ['required', 'max:255', 'string'],
+            'edited_by_user_id' => ['required', 'max:255', 'string'],
+            'edited_by_user_name' => ['required', 'max:255', 'string'],
             'language_id' => ['nullable', 'exists:languages,id'],
             'translation_id' => ['nullable', 'exists:tags,id'],
+            'published_at' => ['nullable', 'date'],
         ];
     }
 }

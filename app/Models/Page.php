@@ -24,14 +24,20 @@ class Page extends Model
         'image',
         'thumbnail',
         'author_id',
+        'created_by_user_id',
+        'created_by_user_name',
+        'edited_by_user_id',
+        'edited_by_user_name',
         'language_id',
         'translation_id',
+        'published_at',
     ];
 
     protected $searchableFields = ['*'];
 
     protected $casts = [
         'data' => 'array',
+        'published_at' => 'datetime',
     ];
 
     public function author()
@@ -39,19 +45,9 @@ class Page extends Model
         return $this->belongsTo(Author::class);
     }
 
-    public function language()
-    {
-        return $this->belongsTo(Language::class);
-    }
-
     public function mainCategory()
     {
         return $this->belongsTo(Category::class, 'main_category_id');
-    }
-
-    public function pages()
-    {
-        return $this->hasMany(Page::class, 'translation_id');
     }
 
     public function translation()
@@ -62,6 +58,16 @@ class Page extends Model
     public function pageTemplates()
     {
         return $this->hasMany(PageTemplate::class);
+    }
+
+    public function language()
+    {
+        return $this->belongsTo(Language::class);
+    }
+
+    public function hasTranslations()
+    {
+        return $this->hasMany(Page::class, 'translation_id');
     }
 
     public function categories()
@@ -77,5 +83,10 @@ class Page extends Model
     public function comments()
     {
         return $this->morphToMany(Comment::class, 'commentable');
+    }
+
+    public function seo()
+    {
+        return $this->morphOne(Seo::class, 'seoable');
     }
 }

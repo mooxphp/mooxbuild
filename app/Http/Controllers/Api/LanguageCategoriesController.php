@@ -42,7 +42,12 @@ class LanguageCategoriesController extends Controller
             'image' => ['nullable', 'image', 'max:1024'],
             'thumbnail' => ['nullable', 'file'],
             'model' => ['nullable', 'max:255', 'string'],
+            ' created_by_user_id' => ['required', 'max:255', 'string'],
+            'created_by_user_name' => ['required', 'max:255', 'string'],
+            'edited_by_user_id' => ['required', 'max:255', 'string'],
+            'edited_by_user_name' => ['required', 'max:255', 'string'],
             'translation_id' => ['nullable', 'exists:categories,id'],
+            'published_at' => ['nullable', 'date'],
         ]);
 
         if ($request->hasFile('image')) {

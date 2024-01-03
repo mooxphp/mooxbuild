@@ -30,7 +30,11 @@ class PostFactory extends Factory
             'content' => $this->faker->text(),
             'data' => [],
             'image' => $this->faker->text(255),
-            'language_id' => \App\Models\Language::factory(),
+            'created_by_user_id' => $this->faker->text(255),
+            'created_by_user_name' => $this->faker->text(255),
+            'edited_by_user_id' => $this->faker->text(255),
+            'edited_by_user_name' => $this->faker->text(255),
+            'published_at' => $this->faker->dateTime(),
             'author_id' => \App\Models\Author::factory(),
             'translation_id' => function () {
                 return \App\Models\Post::factory()->create([
@@ -38,6 +42,7 @@ class PostFactory extends Factory
                 ])->id;
             },
             'main_category_id' => \App\Models\Category::factory(),
+            'language_id' => \App\Models\Language::factory(),
         ];
     }
 }

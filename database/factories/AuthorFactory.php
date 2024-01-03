@@ -33,6 +33,7 @@ class AuthorFactory extends Factory
             'website' => $this->faker->text(255),
             'address' => $this->faker->text(),
             'social' => [],
+            'published_at' => $this->faker->dateTime(),
             'user_id' => \App\Models\User::factory(),
         ];
     }

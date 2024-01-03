@@ -5,8 +5,8 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Revision;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Card;
@@ -25,7 +25,7 @@ class RevisionResource extends Resource
 {
     protected static ?string $model = Revision::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     protected static ?string $recordTitleAttribute = 'title';
 
@@ -193,6 +193,14 @@ class RevisionResource extends Resource
                         ]),
 
                     KeyValue::make('tags')
+                        ->nullable()
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    KeyValue::make('fields')
                         ->nullable()
                         ->columnSpan([
                             'default' => 12,

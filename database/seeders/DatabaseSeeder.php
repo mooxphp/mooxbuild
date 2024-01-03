@@ -39,8 +39,9 @@ class DatabaseSeeder extends Seeder
         $this->call(PostalCodeSeeder::class);
         $this->call(ProductSeeder::class);
         $this->call(RevisionSeeder::class);
+        $this->call(SeoSeeder::class);
         $this->call(SettingSeeder::class);
-        $this->call(SubscriberSeeder::class);
+        $this->call(SubscriptionSeeder::class);
         $this->call(TagSeeder::class);
         $this->call(TimezoneSeeder::class);
         $this->call(UserSeeder::class);

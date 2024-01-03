@@ -4,8 +4,8 @@ namespace App\Filament\Resources\UserResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Actions\EditAction;
@@ -13,6 +13,7 @@ use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteAction;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
@@ -26,7 +27,7 @@ class AuthorsRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'title';
 
-    public function form(Form $form): Form
+    public static function form(Form $form): Form
     {
         return $form->schema([
             Grid::make(['default' => 0])->schema([
@@ -111,8 +112,15 @@ class AuthorsRelationManager extends RelationManager
                         'lg' => 12,
                     ]),
 
-                KeyValue::make('social')
-                    ->required()
+                KeyValue::make('social')->columnSpan([
+                    'default' => 12,
+                    'md' => 12,
+                    'lg' => 12,
+                ]),
+
+                DatePicker::make('published_at')
+                    ->rules(['date'])
+                    ->placeholder('Published At')
                     ->columnSpan([
                         'default' => 12,
                         'md' => 12,
@@ -122,7 +130,7 @@ class AuthorsRelationManager extends RelationManager
         ]);
     }
 
-    public function table(Table $table): Table
+    public static function table(Table $table): Table
     {
         return $table
             ->columns([
@@ -136,6 +144,7 @@ class AuthorsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('mail_address')->limit(50),
                 Tables\Columns\TextColumn::make('website')->limit(50),
                 Tables\Columns\TextColumn::make('address')->limit(50),
+                Tables\Columns\TextColumn::make('published_at')->date(),
             ])
             ->filters([
                 Tables\Filters\Filter::make('created_at')

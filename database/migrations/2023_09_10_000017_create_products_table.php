@@ -12,9 +12,26 @@ return new class extends Migration {
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('uid');
+            $table->string('sku');
             $table->unsignedBigInteger('main_category_id')->nullable();
-            $table->unsignedBigInteger('language_id');
+            $table->string('title');
+            $table->string('slug');
+            $table->text('short')->nullable();
+            $table->text('content')->nullable();
+            $table->json('data')->nullable();
+            $table->string('image')->nullable();
+            $table->string('thumbnail')->nullable();
             $table->unsignedBigInteger('author_id');
+            $table->string('created_by_user_id');
+            $table->string('created_by_user_name');
+            $table->string('edited_by_user_id');
+            $table->string('edited_by_user_name');
+            $table->unsignedBigInteger('language_id')->nullable();
+            $table->unsignedBigInteger('translation_id')->nullable();
+            $table->timestamp('published_at')->nullable();
+            $table->decimal('price');
+            $table->tinyInteger('stock');
 
             $table->timestamps();
             $table->softDeletes();

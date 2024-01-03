@@ -29,14 +29,19 @@ class ItemFactory extends Factory
             'short' => $this->faker->text(),
             'content' => $this->faker->text(),
             'data' => [],
-            'author_id' => \App\Models\Author::factory(),
-            'language_id' => \App\Models\Language::factory(),
+            'created_by_user_id' => $this->faker->text(255),
+            'created_by_user_name' => $this->faker->text(255),
+            'edited_by_user_id' => $this->faker->text(255),
+            'edited_by_user_name' => $this->faker->text(255),
+            'published_at' => $this->faker->dateTime(),
             'translation_id' => function () {
                 return \App\Models\Item::factory()->create([
                     'translation_id' => null,
                 ])->id;
             },
             'main_category_id' => \App\Models\Category::factory(),
+            'language_id' => \App\Models\Language::factory(),
+            'author_id' => \App\Models\Author::factory(),
         ];
     }
 }

@@ -13,13 +13,44 @@ class Product extends Model
     use Searchable;
     use SoftDeletes;
 
-    protected $fillable = ['main_category_id', 'language_id', 'author_id'];
+    protected $fillable = [
+        'uid',
+        'sku',
+        'main_category_id',
+        'title',
+        'slug',
+        'short',
+        'content',
+        'data',
+        'image',
+        'thumbnail',
+        'author_id',
+        'created_by_user_id',
+        'created_by_user_name',
+        'edited_by_user_id',
+        'edited_by_user_name',
+        'language_id',
+        'translation_id',
+        'published_at',
+        'price',
+        'stock',
+    ];
 
     protected $searchableFields = ['*'];
+
+    protected $casts = [
+        'data' => 'array',
+        'published_at' => 'datetime',
+    ];
 
     public function mainCategory()
     {
         return $this->belongsTo(Category::class, 'main_category_id');
+    }
+
+    public function author()
+    {
+        return $this->belongsTo(Author::class);
     }
 
     public function language()
@@ -27,9 +58,14 @@ class Product extends Model
         return $this->belongsTo(Language::class);
     }
 
-    public function author()
+    public function hasTranslations()
     {
-        return $this->belongsTo(Author::class);
+        return $this->hasMany(Product::class, 'translation_id');
+    }
+
+    public function translation()
+    {
+        return $this->belongsTo(Product::class, 'translation_id');
     }
 
     public function categories()
@@ -40,5 +76,10 @@ class Product extends Model
     public function tags()
     {
         return $this->morphToMany(Tag::class, 'taggable');
+    }
+
+    public function seo()
+    {
+        return $this->morphOne(Seo::class, 'seoable');
     }
 }

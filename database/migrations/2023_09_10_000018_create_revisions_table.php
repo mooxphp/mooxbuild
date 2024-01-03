@@ -29,6 +29,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('translation_id')->nullable();
             $table->json('categories')->nullable();
             $table->json('tags')->nullable();
+            $table->json('fields')->nullable();
 
             $table->index('uid');
 

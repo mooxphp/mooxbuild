@@ -25,12 +25,14 @@ class Author extends Model
         'website',
         'address',
         'social',
+        'published_at',
     ];
 
     protected $searchableFields = ['*'];
 
     protected $casts = [
         'social' => 'array',
+        'published_at' => 'datetime',
     ];
 
     public function posts()
@@ -53,13 +55,18 @@ class Author extends Model
         return $this->hasMany(Product::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function items()
     {
         return $this->hasMany(Item::class);
     }
 
-    public function comments()
+    public function seo()
     {
-        return $this->hasMany(Comment::class);
+        return $this->morphOne(Seo::class, 'seoable');
     }
 }

@@ -217,4 +217,11 @@
             }}</x-inputs.textarea
         >
     </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.textarea name="fields" label="Fields" maxlength="255"
+            >{{ old('fields', ($editing ? json_encode($revision->fields) : ''))
+            }}</x-inputs.textarea
+        >
+    </x-inputs.group>
 </div>

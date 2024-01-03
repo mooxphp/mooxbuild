@@ -5,8 +5,8 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use App\Models\Item;
 use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Card;
@@ -15,6 +15,7 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Filters\SelectFilter;
@@ -26,11 +27,9 @@ class ItemResource extends Resource
 {
     protected static ?string $model = Item::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     protected static ?string $recordTitleAttribute = 'title';
-
-    protected static bool $shouldRegisterNavigation = false;
 
     public static function form(Form $form): Form
     {
@@ -141,9 +140,49 @@ class ItemResource extends Resource
                             'lg' => 12,
                         ]),
 
+                    TextInput::make('created_by_user_id')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Created By User Id')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('created_by_user_name')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Created By User Name')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('edited_by_user_id')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Edited By User Id')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('edited_by_user_name')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Edited By User Name')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
                     Select::make('language_id')
                         ->rules(['exists:languages,id'])
-                        ->required()
+                        ->nullable()
                         ->relationship('language', 'title')
                         ->searchable()
                         ->placeholder('Language')
@@ -159,6 +198,16 @@ class ItemResource extends Resource
                         ->relationship('translation', 'title')
                         ->searchable()
                         ->placeholder('Translation')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    DatePicker::make('published_at')
+                        ->rules(['date'])
+                        ->nullable()
+                        ->placeholder('Published At')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,
@@ -206,12 +255,31 @@ class ItemResource extends Resource
                 Tables\Columns\TextColumn::make('author.title')
                     ->toggleable()
                     ->limit(50),
+                Tables\Columns\TextColumn::make('created_by_user_id')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('created_by_user_name')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('edited_by_user_id')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('edited_by_user_name')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
                 Tables\Columns\TextColumn::make('language.title')
                     ->toggleable()
                     ->limit(50),
                 Tables\Columns\TextColumn::make('translation.title')
                     ->toggleable()
                     ->limit(50),
+                Tables\Columns\TextColumn::make('published_at')
+                    ->toggleable()
+                    ->date(),
             ])
             ->filters([
                 DateRangeFilter::make('created_at'),

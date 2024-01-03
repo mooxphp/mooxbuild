@@ -20,11 +20,6 @@ class Country extends Model
         return $this->belongsTo(Continent::class);
     }
 
-    public function languages()
-    {
-        return $this->belongsToMany(Language::class);
-    }
-
     public function currencies()
     {
         return $this->belongsToMany(Currency::class);
@@ -33,5 +28,10 @@ class Country extends Model
     public function timezones()
     {
         return $this->belongsToMany(Timezone::class);
+    }
+
+    public function languages()
+    {
+        return $this->belongsToMany(Language::class);
     }
 }

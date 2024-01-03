@@ -23,9 +23,28 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
+            'uid' => $this->faker->randomNumber(),
+            'sku' => $this->faker->text(255),
+            'title' => $this->faker->sentence(10),
+            'slug' => $this->faker->slug(),
+            'short' => $this->faker->text(),
+            'content' => $this->faker->text(),
+            'data' => [],
+            'created_by_user_id' => $this->faker->text(255),
+            'created_by_user_name' => $this->faker->text(255),
+            'edited_by_user_id' => $this->faker->text(255),
+            'edited_by_user_name' => $this->faker->text(255),
+            'published_at' => $this->faker->dateTime(),
+            'price' => $this->faker->randomFloat(2, 0, 9999),
+            'stock' => $this->faker->numberBetween(0, 127),
             'main_category_id' => \App\Models\Category::factory(),
-            'language_id' => \App\Models\Language::factory(),
             'author_id' => \App\Models\Author::factory(),
+            'language_id' => \App\Models\Language::factory(),
+            'translation_id' => function () {
+                return \App\Models\Product::factory()->create([
+                    'translation_id' => null,
+                ])->id;
+            },
         ];
     }
 }

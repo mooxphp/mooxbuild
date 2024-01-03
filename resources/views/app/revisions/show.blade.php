@@ -125,6 +125,12 @@
                         </h5>
                         <pre>{{ json_encode($revision->tags) ?? '-' }}</pre>
                     </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.revisions.inputs.fields')
+                        </h5>
+                        <pre>{{ json_encode($revision->fields) ?? '-' }}</pre>
+                    </div>
                 </div>
 
                 <div class="mt-10">

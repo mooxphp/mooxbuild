@@ -77,10 +77,25 @@
                                     @lang('crud.tags.inputs.model')
                                 </th>
                                 <th class="px-4 py-3 text-left">
+                                    @lang('crud.tags.inputs.created_by_user_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.tags.inputs.created_by_user_name')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.tags.inputs.edited_by_user_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.tags.inputs.edited_by_user_name')
+                                </th>
+                                <th class="px-4 py-3 text-left">
                                     @lang('crud.tags.inputs.language_id')
                                 </th>
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.tags.inputs.translation_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.tags.inputs.published_at')
                                 </th>
                                 <th></th>
                             </tr>
@@ -122,11 +137,26 @@
                                     {{ $tag->model ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
+                                    {{ $tag->created_by_user_id ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $tag->created_by_user_name ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $tag->edited_by_user_id ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $tag->edited_by_user_name ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
                                     {{ optional($tag->language)->title ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ optional($tag->translation)->title ?? '-'
                                     }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $tag->published_at ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -193,7 +223,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="12">
+                                <td colspan="17">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -201,7 +231,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="12">
+                                <td colspan="17">
                                     <div class="mt-10 px-4">
                                         {!! $tags->render() !!}
                                     </div>

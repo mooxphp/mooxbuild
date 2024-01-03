@@ -38,6 +38,7 @@ class RevisionFactory extends Factory
             'translation_id' => $this->faker->randomNumber(),
             'categories' => [],
             'tags' => [],
+            'fields' => [],
         ];
     }
 }

@@ -5,14 +5,19 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Product;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Actions\EditAction;
+use Filament\Forms\Components\KeyValue;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Filters\SelectFilter;
 use App\Filament\Filters\DateRangeFilter;
 use Filament\Tables\Actions\DeleteBulkAction;
@@ -22,17 +27,35 @@ class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?string $recordTitleAttribute = 'id';
-
-    protected static bool $shouldRegisterNavigation = false;
+    protected static ?string $recordTitleAttribute = 'title';
 
     public static function form(Form $form): Form
     {
         return $form->schema([
             Card::make()->schema([
                 Grid::make(['default' => 0])->schema([
+                    TextInput::make('uid')
+                        ->rules(['max:255'])
+                        ->required()
+                        ->placeholder('Uid')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('sku')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Sku')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
                     Select::make('main_category_id')
                         ->rules(['exists:categories,id'])
                         ->nullable()
@@ -45,12 +68,70 @@ class ProductResource extends Resource
                             'lg' => 12,
                         ]),
 
-                    Select::make('language_id')
-                        ->rules(['exists:languages,id'])
+                    TextInput::make('title')
+                        ->rules(['max:255', 'string'])
                         ->required()
-                        ->relationship('language', 'title')
-                        ->searchable()
-                        ->placeholder('Language')
+                        ->placeholder('Title')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('slug')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Slug')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    RichEditor::make('short')
+                        ->rules(['max:255', 'string'])
+                        ->nullable()
+                        ->placeholder('Short')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    RichEditor::make('content')
+                        ->rules(['max:255', 'string'])
+                        ->nullable()
+                        ->placeholder('Content')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    KeyValue::make('data')
+                        ->nullable()
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    FileUpload::make('image')
+                        ->rules(['image', 'max:1024'])
+                        ->nullable()
+                        ->image()
+                        ->placeholder('Image')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    FileUpload::make('thumbnail')
+                        ->rules(['file'])
+                        ->nullable()
+                        ->image()
+                        ->placeholder('Thumbnail')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,
@@ -68,6 +149,101 @@ class ProductResource extends Resource
                             'md' => 12,
                             'lg' => 12,
                         ]),
+
+                    TextInput::make('created_by_user_id')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Created By User Id')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('created_by_user_name')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Created By User Name')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('edited_by_user_id')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Edited By User Id')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('edited_by_user_name')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Edited By User Name')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    Select::make('language_id')
+                        ->rules(['exists:languages,id'])
+                        ->nullable()
+                        ->relationship('language', 'title')
+                        ->searchable()
+                        ->placeholder('Language')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    Select::make('translation_id')
+                        ->rules(['exists:products,id'])
+                        ->nullable()
+                        ->relationship('translation', 'title')
+                        ->searchable()
+                        ->placeholder('Translation')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    DatePicker::make('published_at')
+                        ->rules(['date'])
+                        ->nullable()
+                        ->placeholder('Published At')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('price')
+                        ->rules(['numeric'])
+                        ->required()
+                        ->numeric()
+                        ->placeholder('Price')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('stock')
+                        ->rules(['max:255'])
+                        ->required()
+                        ->placeholder('Stock')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
                 ]),
             ]),
         ]);
@@ -78,14 +254,73 @@ class ProductResource extends Resource
         return $table
             ->poll('60s')
             ->columns([
+                Tables\Columns\TextColumn::make('uid')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('sku')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
                 Tables\Columns\TextColumn::make('mainCategory.title')
                     ->toggleable()
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('title')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('slug')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('short')
+                    ->toggleable()
+                    ->searchable()
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('content')
+                    ->toggleable()
+                    ->searchable()
+                    ->limit(50),
+                Tables\Columns\ImageColumn::make('image')
+                    ->toggleable()
+                    ->circular(),
+                Tables\Columns\ImageColumn::make('thumbnail')
+                    ->toggleable()
+                    ->circular(),
+                Tables\Columns\TextColumn::make('author.title')
+                    ->toggleable()
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('created_by_user_id')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('created_by_user_name')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('edited_by_user_id')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('edited_by_user_name')
+                    ->toggleable()
+                    ->searchable(true, null, true)
                     ->limit(50),
                 Tables\Columns\TextColumn::make('language.title')
                     ->toggleable()
                     ->limit(50),
-                Tables\Columns\TextColumn::make('author.title')
+                Tables\Columns\TextColumn::make('translation.title')
                     ->toggleable()
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('published_at')
+                    ->toggleable()
+                    ->date(),
+                Tables\Columns\TextColumn::make('price')
+                    ->toggleable()
+                    ->searchable(true, null, true),
+                Tables\Columns\TextColumn::make('stock')
+                    ->toggleable()
+                    ->searchable(true, null, true)
                     ->limit(50),
             ])
             ->filters([
@@ -97,17 +332,23 @@ class ProductResource extends Resource
                     ->multiple()
                     ->label('Category'),
 
+                SelectFilter::make('author_id')
+                    ->relationship('author', 'title')
+                    ->indicator('Author')
+                    ->multiple()
+                    ->label('Author'),
+
                 SelectFilter::make('language_id')
                     ->relationship('language', 'title')
                     ->indicator('Language')
                     ->multiple()
                     ->label('Language'),
 
-                SelectFilter::make('author_id')
-                    ->relationship('author', 'title')
-                    ->indicator('Author')
+                SelectFilter::make('translation_id')
+                    ->relationship('translation', 'title')
+                    ->indicator('Product')
                     ->multiple()
-                    ->label('Author'),
+                    ->label('Product'),
             ])
             ->actions([ViewAction::make(), EditAction::make()])
             ->bulkActions([DeleteBulkAction::make()]);
@@ -115,7 +356,9 @@ class ProductResource extends Resource
 
     public static function getRelations(): array
     {
-        return [];
+        return [
+            ProductResource\RelationManagers\ProductsRelationManager::class,
+        ];
     }
 
     public static function getPages(): array

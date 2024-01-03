@@ -100,6 +100,9 @@
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.revisions.inputs.tags')
                                 </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.revisions.inputs.fields')
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -167,6 +170,11 @@
 {{ json_encode($revision->tags) ?? '-' }}</pre
                                     >
                                 </td>
+                                <td class="px-4 py-3 text-right">
+                                    <pre>
+{{ json_encode($revision->fields) ?? '-' }}</pre
+                                    >
+                                </td>
                                 <td
                                     class="px-4 py-3 text-center"
                                     style="width: 134px;"
@@ -232,7 +240,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="18">
+                                <td colspan="19">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -240,7 +248,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="18">
+                                <td colspan="19">
                                     <div class="mt-10 px-4">
                                         {!! $revisions->render() !!}
                                     </div>

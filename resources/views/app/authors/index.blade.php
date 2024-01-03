@@ -82,6 +82,9 @@
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.authors.inputs.social')
                                 </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.authors.inputs.published_at')
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -122,6 +125,9 @@
                                     <pre>
 {{ json_encode($author->social) ?? '-' }}</pre
                                     >
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $author->published_at ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -188,7 +194,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="12">
+                                <td colspan="13">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -196,7 +202,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="12">
+                                <td colspan="13">
                                     <div class="mt-10 px-4">
                                         {!! $authors->render() !!}
                                     </div>

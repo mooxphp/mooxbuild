@@ -76,12 +76,14 @@ class RevisionControllerTest extends TestCase
         $data['data'] = json_encode($data['data']);
         $data['categories'] = json_encode($data['categories']);
         $data['tags'] = json_encode($data['tags']);
+        $data['fields'] = json_encode($data['fields']);
 
         $response = $this->post(route('revisions.store'), $data);
 
         $data['data'] = $this->castToJson($data['data']);
         $data['categories'] = $this->castToJson($data['categories']);
         $data['tags'] = $this->castToJson($data['tags']);
+        $data['fields'] = $this->castToJson($data['fields']);
 
         $this->assertDatabaseHas('revisions', $data);
 
@@ -143,11 +145,13 @@ class RevisionControllerTest extends TestCase
             'translation_id' => $this->faker->randomNumber(),
             'categories' => [],
             'tags' => [],
+            'fields' => [],
         ];
 
         $data['data'] = json_encode($data['data']);
         $data['categories'] = json_encode($data['categories']);
         $data['tags'] = json_encode($data['tags']);
+        $data['fields'] = json_encode($data['fields']);
 
         $response = $this->put(route('revisions.update', $revision), $data);
 
@@ -156,6 +160,7 @@ class RevisionControllerTest extends TestCase
         $data['data'] = $this->castToJson($data['data']);
         $data['categories'] = $this->castToJson($data['categories']);
         $data['tags'] = $this->castToJson($data['tags']);
+        $data['fields'] = $this->castToJson($data['fields']);
 
         $this->assertDatabaseHas('revisions', $data);
 

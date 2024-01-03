@@ -62,19 +62,6 @@ class LanguageItemsTest extends TestCase
             $data
         );
 
-        unset($data['uid']);
-        unset($data['main_category_id']);
-        unset($data['title']);
-        unset($data['slug']);
-        unset($data['short']);
-        unset($data['content']);
-        unset($data['data']);
-        unset($data['image']);
-        unset($data['thumbnail']);
-        unset($data['author_id']);
-        unset($data['language_id']);
-        unset($data['translation_id']);
-
         $this->assertDatabaseHas('items', $data);
 
         $response->assertStatus(201)->assertJsonFragment($data);

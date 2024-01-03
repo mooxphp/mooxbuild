@@ -2,23 +2,25 @@
 
 namespace App\Models;
 
+use Laravel\Sanctum\HasApiTokens;
 use App\Models\Scopes\Searchable;
 use App\Models\Traits\FilamentTrait;
+use Laravel\Jetstream\HasProfilePhoto;
+use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
-    use FilamentTrait;
-    use HasApiTokens;
-    use HasFactory;
-    use HasProfilePhoto;
     use Notifiable;
+    use HasFactory;
     use Searchable;
+    use HasApiTokens;
+    use FilamentTrait;
+    use HasProfilePhoto;
     use TwoFactorAuthenticatable;
 
     protected $fillable = ['name', 'email', 'password', 'whitelist_id'];
@@ -47,11 +49,6 @@ class User extends Authenticatable
         return $this->hasOne(Customer::class);
     }
 
-    public function subscriber()
-    {
-        return $this->hasOne(Subscriber::class);
-    }
-
     public function whitelist()
     {
         return $this->belongsTo(Whitelist::class);
@@ -60,6 +57,11 @@ class User extends Authenticatable
     public function bypassTokens()
     {
         return $this->hasMany(BypassToken::class);
+    }
+
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class);
     }
 
     public function platforms()

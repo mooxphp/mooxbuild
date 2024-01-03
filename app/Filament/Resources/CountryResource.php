@@ -5,8 +5,8 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Country;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Card;
@@ -22,11 +22,9 @@ class CountryResource extends Resource
 {
     protected static ?string $model = Country::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     protected static ?string $recordTitleAttribute = 'id';
-
-    protected static bool $shouldRegisterNavigation = false;
 
     public static function form(Form $form): Form
     {
@@ -74,9 +72,9 @@ class CountryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            CountryResource\RelationManagers\LanguagesRelationManager::class,
             CountryResource\RelationManagers\CurrenciesRelationManager::class,
             CountryResource\RelationManagers\TimezonesRelationManager::class,
+            CountryResource\RelationManagers\LanguagesRelationManager::class,
         ];
     }
 

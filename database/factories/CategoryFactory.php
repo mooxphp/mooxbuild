@@ -29,12 +29,17 @@ class CategoryFactory extends Factory
             'content' => $this->faker->text(),
             'data' => [],
             'model' => $this->faker->text(255),
-            'language_id' => \App\Models\Language::factory(),
+            ' created_by_user_id' => $this->faker->text(255),
+            'created_by_user_name' => $this->faker->text(255),
+            'edited_by_user_id' => $this->faker->text(255),
+            'edited_by_user_name' => $this->faker->text(255),
+            'published_at' => $this->faker->dateTime(),
             'translation_id' => function () {
                 return \App\Models\Category::factory()->create([
                     'translation_id' => null,
                 ])->id;
             },
+            'language_id' => \App\Models\Language::factory(),
         ];
     }
 }

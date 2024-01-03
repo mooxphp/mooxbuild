@@ -42,7 +42,7 @@ class LanguageProductsTest extends TestCase
             route('api.languages.products.index', $language)
         );
 
-        $response->assertOk()->assertSee($products[0]->id);
+        $response->assertOk()->assertSee($products[0]->title);
     }
 
     /**
@@ -61,10 +61,6 @@ class LanguageProductsTest extends TestCase
             route('api.languages.products.store', $language),
             $data
         );
-
-        unset($data['main_category_id']);
-        unset($data['language_id']);
-        unset($data['author_id']);
 
         $this->assertDatabaseHas('products', $data);
 

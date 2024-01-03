@@ -77,6 +77,30 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
+                            @lang('crud.tags.inputs.created_by_user_id')
+                        </h5>
+                        <span>{{ $tag->created_by_user_id ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.tags.inputs.created_by_user_name')
+                        </h5>
+                        <span>{{ $tag->created_by_user_name ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.tags.inputs.edited_by_user_id')
+                        </h5>
+                        <span>{{ $tag->edited_by_user_id ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.tags.inputs.edited_by_user_name')
+                        </h5>
+                        <span>{{ $tag->edited_by_user_name ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
                             @lang('crud.tags.inputs.language_id')
                         </h5>
                         <span
@@ -91,6 +115,12 @@
                             >{{ optional($tag->translation)->title ?? '-'
                             }}</span
                         >
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.tags.inputs.published_at')
+                        </h5>
+                        <span>{{ $tag->published_at ?? '-' }}</span>
                     </div>
                 </div>
 

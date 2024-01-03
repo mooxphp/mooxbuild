@@ -2,32 +2,62 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\SeoController;
 use App\Http\Controllers\Api\TagController;
+use App\Http\Controllers\Api\CartController;
+use App\Http\Controllers\Api\ItemController;
+use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\CommentController;
-use App\Http\Controllers\Api\RevisionController;
-use App\Http\Controllers\Api\LanguageController;
+use App\Http\Controllers\Api\CountryController;
+use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\CurrencyController;
+use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\LanguageController;
+use App\Http\Controllers\Api\PlatformController;
+use App\Http\Controllers\Api\RevisionController;
+use App\Http\Controllers\Api\TimezoneController;
+use App\Http\Controllers\Api\BlacklistController;
+use App\Http\Controllers\Api\ContinentController;
+use App\Http\Controllers\Api\ItemItemsController;
+use App\Http\Controllers\Api\PagePagesController;
+use App\Http\Controllers\Api\WhitelistController;
+use App\Http\Controllers\Api\PostalCodeController;
 use App\Http\Controllers\Api\AuthorPostsController;
 use App\Http\Controllers\Api\AuthorPagesController;
 use App\Http\Controllers\Api\AuthorItemsController;
+use App\Http\Controllers\Api\BypassTokenController;
 use App\Http\Controllers\Api\UserAuthorsController;
 use App\Http\Controllers\Api\LanguageTagsController;
-use App\Http\Controllers\Api\LanguagePostsController;
-use App\Http\Controllers\Api\LanguagePagesController;
-use App\Http\Controllers\Api\LanguageItemsController;
+use App\Http\Controllers\Api\PageTemplateController;
+use App\Http\Controllers\Api\SubscriptionController;
 use App\Http\Controllers\Api\CategoryPostsController;
 use App\Http\Controllers\Api\CategoryItemsController;
 use App\Http\Controllers\Api\CategoryPagesController;
+use App\Http\Controllers\Api\CustomerCartsController;
+use App\Http\Controllers\Api\LanguagePostsController;
+use App\Http\Controllers\Api\LanguagePagesController;
+use App\Http\Controllers\Api\LanguageItemsController;
 use App\Http\Controllers\Api\AuthorProductsController;
 use App\Http\Controllers\Api\AuthorCommentsController;
-use App\Http\Controllers\Api\UserBypassTokensController;
-use App\Http\Controllers\Api\LanguageProductsController;
+use App\Http\Controllers\Api\ProductProductsController;
 use App\Http\Controllers\Api\CategoryProductsController;
+use App\Http\Controllers\Api\CountryTimezonesController;
+use App\Http\Controllers\Api\CountryLanguagesController;
+use App\Http\Controllers\Api\LanguageProductsController;
+use App\Http\Controllers\Api\UserBypassTokensController;
+use App\Http\Controllers\Api\CountryCurrenciesController;
+use App\Http\Controllers\Api\CurrencyCountriesController;
 use App\Http\Controllers\Api\LanguageCountriesController;
+use App\Http\Controllers\Api\PagePageTemplatesController;
+use App\Http\Controllers\Api\TimezoneCountriesController;
+use App\Http\Controllers\Api\ContinentCountriesController;
 use App\Http\Controllers\Api\LanguageCategoriesController;
 
 /*
@@ -52,12 +82,6 @@ Route::middleware('auth:sanctum')
 Route::name('api.')
     ->middleware('auth:sanctum')
     ->group(function () {
-        Route::apiResource('tags', TagController::class);
-
-        Route::apiResource('revisions', RevisionController::class);
-
-        Route::apiResource('posts', PostController::class);
-
         Route::apiResource('authors', AuthorController::class);
 
         // Author Posts
@@ -90,16 +114,6 @@ Route::name('api.')
             'store',
         ])->name('authors.products.store');
 
-        // Author Items
-        Route::get('/authors/{author}/items', [
-            AuthorItemsController::class,
-            'index',
-        ])->name('authors.items.index');
-        Route::post('/authors/{author}/items', [
-            AuthorItemsController::class,
-            'store',
-        ])->name('authors.items.store');
-
         // Author Comments
         Route::get('/authors/{author}/comments', [
             AuthorCommentsController::class,
@@ -110,29 +124,161 @@ Route::name('api.')
             'store',
         ])->name('authors.comments.store');
 
-        Route::apiResource('users', UserController::class);
-
-        // User Authors
-        Route::get('/users/{user}/authors', [
-            UserAuthorsController::class,
+        // Author Items
+        Route::get('/authors/{author}/items', [
+            AuthorItemsController::class,
             'index',
-        ])->name('users.authors.index');
-        Route::post('/users/{user}/authors', [
-            UserAuthorsController::class,
+        ])->name('authors.items.index');
+        Route::post('/authors/{author}/items', [
+            AuthorItemsController::class,
             'store',
-        ])->name('users.authors.store');
+        ])->name('authors.items.store');
 
-        // User Bypass Tokens
-        Route::get('/users/{user}/bypass-tokens', [
-            UserBypassTokensController::class,
+        Route::apiResource('blacklists', BlacklistController::class);
+
+        Route::apiResource('bypass-tokens', BypassTokenController::class);
+
+        Route::apiResource('carts', CartController::class);
+
+        Route::apiResource('categories', CategoryController::class);
+
+        // Category Main Category Posts
+        Route::get('/categories/{category}/posts', [
+            CategoryPostsController::class,
             'index',
-        ])->name('users.bypass-tokens.index');
-        Route::post('/users/{user}/bypass-tokens', [
-            UserBypassTokensController::class,
+        ])->name('categories.posts.index');
+        Route::post('/categories/{category}/posts', [
+            CategoryPostsController::class,
             'store',
-        ])->name('users.bypass-tokens.store');
+        ])->name('categories.posts.store');
+
+        // Category Main Category Items
+        Route::get('/categories/{category}/items', [
+            CategoryItemsController::class,
+            'index',
+        ])->name('categories.items.index');
+        Route::post('/categories/{category}/items', [
+            CategoryItemsController::class,
+            'store',
+        ])->name('categories.items.store');
+
+        // Category Main Category Products
+        Route::get('/categories/{category}/products', [
+            CategoryProductsController::class,
+            'index',
+        ])->name('categories.products.index');
+        Route::post('/categories/{category}/products', [
+            CategoryProductsController::class,
+            'store',
+        ])->name('categories.products.store');
+
+        // Category Main Category Pages
+        Route::get('/categories/{category}/pages', [
+            CategoryPagesController::class,
+            'index',
+        ])->name('categories.pages.index');
+        Route::post('/categories/{category}/pages', [
+            CategoryPagesController::class,
+            'store',
+        ])->name('categories.pages.store');
 
         Route::apiResource('comments', CommentController::class);
+
+        Route::apiResource('continents', ContinentController::class);
+
+        // Continent Countries
+        Route::get('/continents/{continent}/countries', [
+            ContinentCountriesController::class,
+            'index',
+        ])->name('continents.countries.index');
+        Route::post('/continents/{continent}/countries', [
+            ContinentCountriesController::class,
+            'store',
+        ])->name('continents.countries.store');
+
+        Route::apiResource('countries', CountryController::class);
+
+        // Country Currencies
+        Route::get('/countries/{country}/currencies', [
+            CountryCurrenciesController::class,
+            'index',
+        ])->name('countries.currencies.index');
+        Route::post('/countries/{country}/currencies/{currency}', [
+            CountryCurrenciesController::class,
+            'store',
+        ])->name('countries.currencies.store');
+        Route::delete('/countries/{country}/currencies/{currency}', [
+            CountryCurrenciesController::class,
+            'destroy',
+        ])->name('countries.currencies.destroy');
+
+        // Country Timezones
+        Route::get('/countries/{country}/timezones', [
+            CountryTimezonesController::class,
+            'index',
+        ])->name('countries.timezones.index');
+        Route::post('/countries/{country}/timezones/{timezone}', [
+            CountryTimezonesController::class,
+            'store',
+        ])->name('countries.timezones.store');
+        Route::delete('/countries/{country}/timezones/{timezone}', [
+            CountryTimezonesController::class,
+            'destroy',
+        ])->name('countries.timezones.destroy');
+
+        // Country Languages
+        Route::get('/countries/{country}/languages', [
+            CountryLanguagesController::class,
+            'index',
+        ])->name('countries.languages.index');
+        Route::post('/countries/{country}/languages/{language}', [
+            CountryLanguagesController::class,
+            'store',
+        ])->name('countries.languages.store');
+        Route::delete('/countries/{country}/languages/{language}', [
+            CountryLanguagesController::class,
+            'destroy',
+        ])->name('countries.languages.destroy');
+
+        Route::apiResource('currencies', CurrencyController::class);
+
+        // Currency Countries
+        Route::get('/currencies/{currency}/countries', [
+            CurrencyCountriesController::class,
+            'index',
+        ])->name('currencies.countries.index');
+        Route::post('/currencies/{currency}/countries/{country}', [
+            CurrencyCountriesController::class,
+            'store',
+        ])->name('currencies.countries.store');
+        Route::delete('/currencies/{currency}/countries/{country}', [
+            CurrencyCountriesController::class,
+            'destroy',
+        ])->name('currencies.countries.destroy');
+
+        Route::apiResource('customers', CustomerController::class);
+
+        // Customer Carts
+        Route::get('/customers/{customer}/carts', [
+            CustomerCartsController::class,
+            'index',
+        ])->name('customers.carts.index');
+        Route::post('/customers/{customer}/carts', [
+            CustomerCartsController::class,
+            'store',
+        ])->name('customers.carts.store');
+
+        Route::apiResource('items', ItemController::class);
+
+        // Item Has Translations
+        Route::get('/items/{item}/items', [
+            ItemItemsController::class,
+            'index',
+        ])->name('items.items.index');
+        Route::post('/items/{item}/items', [
+            ItemItemsController::class,
+            'store',
+        ])->name('items.items.store');
 
         Route::apiResource('languages', LanguageController::class);
 
@@ -210,45 +356,97 @@ Route::name('api.')
             'destroy',
         ])->name('languages.countries.destroy');
 
-        Route::apiResource('categories', CategoryController::class);
+        Route::apiResource('orders', OrderController::class);
 
-        // Category Main Category Posts
-        Route::get('/categories/{category}/posts', [
-            CategoryPostsController::class,
-            'index',
-        ])->name('categories.posts.index');
-        Route::post('/categories/{category}/posts', [
-            CategoryPostsController::class,
-            'store',
-        ])->name('categories.posts.store');
+        Route::apiResource('pages', PageController::class);
 
-        // Category Main Category Items
-        Route::get('/categories/{category}/items', [
-            CategoryItemsController::class,
+        // Page Page Templates
+        Route::get('/pages/{page}/page-templates', [
+            PagePageTemplatesController::class,
             'index',
-        ])->name('categories.items.index');
-        Route::post('/categories/{category}/items', [
-            CategoryItemsController::class,
+        ])->name('pages.page-templates.index');
+        Route::post('/pages/{page}/page-templates', [
+            PagePageTemplatesController::class,
             'store',
-        ])->name('categories.items.store');
+        ])->name('pages.page-templates.store');
 
-        // Category Main Category Products
-        Route::get('/categories/{category}/products', [
-            CategoryProductsController::class,
+        // Page Has Translations
+        Route::get('/pages/{page}/pages', [
+            PagePagesController::class,
             'index',
-        ])->name('categories.products.index');
-        Route::post('/categories/{category}/products', [
-            CategoryProductsController::class,
+        ])->name('pages.pages.index');
+        Route::post('/pages/{page}/pages', [
+            PagePagesController::class,
             'store',
-        ])->name('categories.products.store');
+        ])->name('pages.pages.store');
 
-        // Category Main Category Pages
-        Route::get('/categories/{category}/pages', [
-            CategoryPagesController::class,
+        Route::apiResource('page-templates', PageTemplateController::class);
+
+        Route::apiResource('platforms', PlatformController::class);
+
+        Route::apiResource('posts', PostController::class);
+
+        Route::apiResource('postal-codes', PostalCodeController::class);
+
+        Route::apiResource('products', ProductController::class);
+
+        // Product Has Translations
+        Route::get('/products/{product}/products', [
+            ProductProductsController::class,
             'index',
-        ])->name('categories.pages.index');
-        Route::post('/categories/{category}/pages', [
-            CategoryPagesController::class,
+        ])->name('products.products.index');
+        Route::post('/products/{product}/products', [
+            ProductProductsController::class,
             'store',
-        ])->name('categories.pages.store');
+        ])->name('products.products.store');
+
+        Route::apiResource('revisions', RevisionController::class);
+
+        Route::apiResource('seos', SeoController::class);
+
+        Route::apiResource('settings', SettingController::class);
+
+        Route::apiResource('whitelists', WhitelistController::class);
+
+        Route::apiResource('timezones', TimezoneController::class);
+
+        // Timezone Countries
+        Route::get('/timezones/{timezone}/countries', [
+            TimezoneCountriesController::class,
+            'index',
+        ])->name('timezones.countries.index');
+        Route::post('/timezones/{timezone}/countries/{country}', [
+            TimezoneCountriesController::class,
+            'store',
+        ])->name('timezones.countries.store');
+        Route::delete('/timezones/{timezone}/countries/{country}', [
+            TimezoneCountriesController::class,
+            'destroy',
+        ])->name('timezones.countries.destroy');
+
+        Route::apiResource('tags', TagController::class);
+
+        Route::apiResource('users', UserController::class);
+
+        // User Authors
+        Route::get('/users/{user}/authors', [
+            UserAuthorsController::class,
+            'index',
+        ])->name('users.authors.index');
+        Route::post('/users/{user}/authors', [
+            UserAuthorsController::class,
+            'store',
+        ])->name('users.authors.store');
+
+        // User Bypass Tokens
+        Route::get('/users/{user}/bypass-tokens', [
+            UserBypassTokensController::class,
+            'index',
+        ])->name('users.bypass-tokens.index');
+        Route::post('/users/{user}/bypass-tokens', [
+            UserBypassTokensController::class,
+            'store',
+        ])->name('users.bypass-tokens.store');
+
+        Route::apiResource('subscriptions', SubscriptionController::class);
     });

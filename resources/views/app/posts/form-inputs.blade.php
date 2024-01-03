@@ -158,6 +158,50 @@
     </x-inputs.group>
 
     <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="created_by_user_id"
+            label="Created By User Id"
+            :value="old('created_by_user_id', ($editing ? $post->created_by_user_id : ''))"
+            maxlength="255"
+            placeholder="Created By User Id"
+            required
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="created_by_user_name"
+            label="Created By User Name"
+            :value="old('created_by_user_name', ($editing ? $post->created_by_user_name : ''))"
+            maxlength="255"
+            placeholder="Created By User Name"
+            required
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="edited_by_user_id"
+            label="Edited By User Id"
+            :value="old('edited_by_user_id', ($editing ? $post->edited_by_user_id : ''))"
+            maxlength="255"
+            placeholder="Edited By User Id"
+            required
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="edited_by_user_name"
+            label="Edited By User Name"
+            :value="old('edited_by_user_name', ($editing ? $post->edited_by_user_name : ''))"
+            maxlength="255"
+            placeholder="Edited By User Name"
+            required
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
         <x-inputs.select name="language_id" label="Language">
             @php $selected = old('language_id', ($editing ? $post->language_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Language</option>
@@ -175,5 +219,14 @@
             <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
             @endforeach
         </x-inputs.select>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.date
+            name="published_at"
+            label="Published At"
+            value="{{ old('published_at', ($editing ? optional($post->published_at)->format('Y-m-d') : '')) }}"
+            max="255"
+        ></x-inputs.date>
     </x-inputs.group>
 </div>

@@ -6,8 +6,8 @@ use App\Models\User;
 use App\Models\Post;
 
 use App\Models\Author;
-use App\Models\Language;
 use App\Models\Category;
+use App\Models\Language;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -127,10 +127,10 @@ class PostControllerTest extends TestCase
     {
         $post = Post::factory()->create();
 
-        $language = Language::factory()->create();
         $author = Author::factory()->create();
         $post = Post::factory()->create();
         $category = Category::factory()->create();
+        $language = Language::factory()->create();
 
         $data = [
             'uid' => $this->faker->randomNumber(),
@@ -140,10 +140,15 @@ class PostControllerTest extends TestCase
             'content' => $this->faker->text(),
             'data' => [],
             'image' => $this->faker->text(255),
-            'language_id' => $language->id,
+            'created_by_user_id' => $this->faker->text(255),
+            'created_by_user_name' => $this->faker->text(255),
+            'edited_by_user_id' => $this->faker->text(255),
+            'edited_by_user_name' => $this->faker->text(255),
+            'published_at' => $this->faker->dateTime(),
             'author_id' => $author->id,
             'translation_id' => $post->id,
             'main_category_id' => $category->id,
+            'language_id' => $language->id,
         ];
 
         $data['data'] = json_encode($data['data']);

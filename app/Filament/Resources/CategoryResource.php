@@ -2,30 +2,32 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Filters\DateRangeFilter;
-use App\Filament\Resources\CategoryResource\Pages;
-use App\Models\Category;
-use Filament\Forms\Components\Card;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Grid;
-use Filament\Forms\Components\KeyValue;
-use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use Filament\Forms;
 use Filament\Tables;
-use Filament\Tables\Actions\DeleteBulkAction;
-use Filament\Tables\Actions\EditAction;
+use App\Models\Category;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
 use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Forms\Components\KeyValue;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Table;
+use App\Filament\Filters\DateRangeFilter;
+use Filament\Tables\Actions\DeleteBulkAction;
+use App\Filament\Resources\CategoryResource\Pages;
 
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     protected static ?string $recordTitleAttribute = 'title';
 
@@ -104,15 +106,50 @@ class CategoryResource extends Resource
                             'lg' => 12,
                         ]),
 
-                    Select::make('model')
+                    TextInput::make('model')
                         ->rules(['max:255', 'string'])
                         ->nullable()
-                        ->searchable()
-                        ->options([
-                            'posts' => 'Blog',
-                            'pages' => 'Page',
-                        ])
                         ->placeholder('Model')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make(' created_by_user_id')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Created By User Id')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('created_by_user_name')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Created By User Name')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('edited_by_user_id')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Edited By User Id')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('edited_by_user_name')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Edited By User Name')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,
@@ -137,6 +174,16 @@ class CategoryResource extends Resource
                         ->relationship('translation', 'title')
                         ->searchable()
                         ->placeholder('Translation')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    DatePicker::make('published_at')
+                        ->rules(['date'])
+                        ->nullable()
+                        ->placeholder('Published At')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,
@@ -176,13 +223,33 @@ class CategoryResource extends Resource
                     ->circular(),
                 Tables\Columns\TextColumn::make('model')
                     ->toggleable()
-                    ->searchable(),
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make(' created_by_user_id')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('created_by_user_name')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('edited_by_user_id')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('edited_by_user_name')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
                 Tables\Columns\TextColumn::make('language.title')
                     ->toggleable()
                     ->limit(50),
                 Tables\Columns\TextColumn::make('translation.title')
                     ->toggleable()
                     ->limit(50),
+                Tables\Columns\TextColumn::make('published_at')
+                    ->toggleable()
+                    ->date(),
             ])
             ->filters([
                 DateRangeFilter::make('created_at'),

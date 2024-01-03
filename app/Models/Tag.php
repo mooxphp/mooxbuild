@@ -23,20 +23,21 @@ class Tag extends Model
         'thumbnail',
         'weight',
         'model',
+        'created_by_user_id',
+        'created_by_user_name',
+        'edited_by_user_id',
+        'edited_by_user_name',
         'language_id',
         'translation_id',
+        'published_at',
     ];
 
     protected $searchableFields = ['*'];
 
     protected $casts = [
         'data' => 'array',
+        'published_at' => 'datetime',
     ];
-
-    public function language()
-    {
-        return $this->belongsTo(Language::class);
-    }
 
     public function hasTranslation()
     {
@@ -46,6 +47,16 @@ class Tag extends Model
     public function translation()
     {
         return $this->belongsTo(Tag::class, 'translation_id');
+    }
+
+    public function language()
+    {
+        return $this->belongsTo(Language::class);
+    }
+
+    public function seo()
+    {
+        return $this->morphOne(Seo::class, 'seoable');
     }
 
     public function posts()

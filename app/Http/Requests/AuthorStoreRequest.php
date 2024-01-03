@@ -21,16 +21,17 @@ class AuthorStoreRequest extends FormRequest
     {
         return [
             'user_id' => ['required', 'exists:users,id'],
-            'salutation' => ['required', 'max:255', 'string'],
-            'title' => ['required', 'max:255', 'string'],
+            'salutation' => ['nullable', 'max:255', 'string'],
+            'title' => ['nullable', 'max:255', 'string'],
             'name' => ['required', 'max:255', 'string'],
-            'full_name' => ['required', 'max:255', 'string'],
-            'first_name' => ['required', 'max:255', 'string'],
-            'last_name' => ['required', 'max:255', 'string'],
+            'full_name' => ['nullable', 'max:255', 'string'],
+            'first_name' => ['nullable', 'max:255', 'string'],
+            'last_name' => ['nullable', 'max:255', 'string'],
             'mail_address' => ['required', 'max:255', 'string'],
-            'website' => ['required', 'max:255', 'string'],
-            'address' => ['required', 'max:255', 'string'],
-            'social' => ['required', 'max:255', 'json'],
+            'website' => ['nullable', 'max:255', 'string'],
+            'address' => ['nullable', 'max:255', 'string'],
+            'social' => ['nullable', 'max:255', 'json'],
+            'published_at' => ['nullable', 'date'],
         ];
     }
 }

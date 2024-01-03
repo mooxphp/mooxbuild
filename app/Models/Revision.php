@@ -31,6 +31,7 @@ class Revision extends Model
         'translation_id',
         'categories',
         'tags',
+        'fields',
     ];
 
     protected $searchableFields = ['*'];
@@ -40,6 +41,7 @@ class Revision extends Model
         'data' => 'array',
         'categories' => 'array',
         'tags' => 'array',
+        'fields' => 'array',
     ];
 
     public function items()

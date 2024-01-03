@@ -18,29 +18,29 @@
                 </div>
 
                 <x-nav-dropdown title="Apps" align="right" width="48">
-                        @can('view-any', App\Models\Tag::class)
-                        <x-dropdown-link href="{{ route('tags.index') }}">
-                        Tags
-                        </x-dropdown-link>
-                        @endcan
-                        @can('view-any', App\Models\Revision::class)
-                        <x-dropdown-link href="{{ route('revisions.index') }}">
-                        Revisions
-                        </x-dropdown-link>
-                        @endcan
-                        @can('view-any', App\Models\Post::class)
-                        <x-dropdown-link href="{{ route('posts.index') }}">
-                        Posts
-                        </x-dropdown-link>
-                        @endcan
                         @can('view-any', App\Models\Author::class)
                         <x-dropdown-link href="{{ route('authors.index') }}">
                         Authors
                         </x-dropdown-link>
                         @endcan
-                        @can('view-any', App\Models\User::class)
-                        <x-dropdown-link href="{{ route('users.index') }}">
-                        Users
+                        @can('view-any', App\Models\Blacklist::class)
+                        <x-dropdown-link href="{{ route('blacklists.index') }}">
+                        Blacklists
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\BypassToken::class)
+                        <x-dropdown-link href="{{ route('bypass-tokens.index') }}">
+                        Bypass Tokens
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Cart::class)
+                        <x-dropdown-link href="{{ route('carts.index') }}">
+                        Carts
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Category::class)
+                        <x-dropdown-link href="{{ route('categories.index') }}">
+                        Categories
                         </x-dropdown-link>
                         @endcan
                         @can('view-any', App\Models\Comment::class)
@@ -48,14 +48,109 @@
                         Comments
                         </x-dropdown-link>
                         @endcan
+                        @can('view-any', App\Models\Continent::class)
+                        <x-dropdown-link href="{{ route('continents.index') }}">
+                        Continents
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Country::class)
+                        <x-dropdown-link href="{{ route('countries.index') }}">
+                        Countries
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Currency::class)
+                        <x-dropdown-link href="{{ route('currencies.index') }}">
+                        Currencies
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Customer::class)
+                        <x-dropdown-link href="{{ route('customers.index') }}">
+                        Customers
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Item::class)
+                        <x-dropdown-link href="{{ route('items.index') }}">
+                        Items
+                        </x-dropdown-link>
+                        @endcan
                         @can('view-any', App\Models\Language::class)
                         <x-dropdown-link href="{{ route('languages.index') }}">
                         Languages
                         </x-dropdown-link>
                         @endcan
-                        @can('view-any', App\Models\Category::class)
-                        <x-dropdown-link href="{{ route('categories.index') }}">
-                        Categories
+                        @can('view-any', App\Models\Order::class)
+                        <x-dropdown-link href="{{ route('orders.index') }}">
+                        Orders
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Page::class)
+                        <x-dropdown-link href="{{ route('pages.index') }}">
+                        Pages
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\PageTemplate::class)
+                        <x-dropdown-link href="{{ route('page-templates.index') }}">
+                        Page Templates
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Platform::class)
+                        <x-dropdown-link href="{{ route('platforms.index') }}">
+                        Platforms
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Post::class)
+                        <x-dropdown-link href="{{ route('posts.index') }}">
+                        Posts
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\PostalCode::class)
+                        <x-dropdown-link href="{{ route('postal-codes.index') }}">
+                        Postal Codes
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Product::class)
+                        <x-dropdown-link href="{{ route('products.index') }}">
+                        Products
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Revision::class)
+                        <x-dropdown-link href="{{ route('revisions.index') }}">
+                        Revisions
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Seo::class)
+                        <x-dropdown-link href="{{ route('seos.index') }}">
+                        Seos
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Setting::class)
+                        <x-dropdown-link href="{{ route('settings.index') }}">
+                        Settings
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Whitelist::class)
+                        <x-dropdown-link href="{{ route('whitelists.index') }}">
+                        Whitelists
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Timezone::class)
+                        <x-dropdown-link href="{{ route('timezones.index') }}">
+                        Timezones
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Tag::class)
+                        <x-dropdown-link href="{{ route('tags.index') }}">
+                        Tags
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\User::class)
+                        <x-dropdown-link href="{{ route('users.index') }}">
+                        Users
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Subscription::class)
+                        <x-dropdown-link href="{{ route('subscriptions.index') }}">
+                        Subscriptions
                         </x-dropdown-link>
                         @endcan
                 </x-nav-dropdown>
@@ -186,29 +281,29 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             
-                @can('view-any', App\Models\Tag::class)
-                <x-responsive-nav-link href="{{ route('tags.index') }}">
-                Tags
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Revision::class)
-                <x-responsive-nav-link href="{{ route('revisions.index') }}">
-                Revisions
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Post::class)
-                <x-responsive-nav-link href="{{ route('posts.index') }}">
-                Posts
-                </x-responsive-nav-link>
-                @endcan
                 @can('view-any', App\Models\Author::class)
                 <x-responsive-nav-link href="{{ route('authors.index') }}">
                 Authors
                 </x-responsive-nav-link>
                 @endcan
-                @can('view-any', App\Models\User::class)
-                <x-responsive-nav-link href="{{ route('users.index') }}">
-                Users
+                @can('view-any', App\Models\Blacklist::class)
+                <x-responsive-nav-link href="{{ route('blacklists.index') }}">
+                Blacklists
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\BypassToken::class)
+                <x-responsive-nav-link href="{{ route('bypass-tokens.index') }}">
+                Bypass Tokens
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Cart::class)
+                <x-responsive-nav-link href="{{ route('carts.index') }}">
+                Carts
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Category::class)
+                <x-responsive-nav-link href="{{ route('categories.index') }}">
+                Categories
                 </x-responsive-nav-link>
                 @endcan
                 @can('view-any', App\Models\Comment::class)
@@ -216,14 +311,109 @@
                 Comments
                 </x-responsive-nav-link>
                 @endcan
+                @can('view-any', App\Models\Continent::class)
+                <x-responsive-nav-link href="{{ route('continents.index') }}">
+                Continents
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Country::class)
+                <x-responsive-nav-link href="{{ route('countries.index') }}">
+                Countries
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Currency::class)
+                <x-responsive-nav-link href="{{ route('currencies.index') }}">
+                Currencies
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Customer::class)
+                <x-responsive-nav-link href="{{ route('customers.index') }}">
+                Customers
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Item::class)
+                <x-responsive-nav-link href="{{ route('items.index') }}">
+                Items
+                </x-responsive-nav-link>
+                @endcan
                 @can('view-any', App\Models\Language::class)
                 <x-responsive-nav-link href="{{ route('languages.index') }}">
                 Languages
                 </x-responsive-nav-link>
                 @endcan
-                @can('view-any', App\Models\Category::class)
-                <x-responsive-nav-link href="{{ route('categories.index') }}">
-                Categories
+                @can('view-any', App\Models\Order::class)
+                <x-responsive-nav-link href="{{ route('orders.index') }}">
+                Orders
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Page::class)
+                <x-responsive-nav-link href="{{ route('pages.index') }}">
+                Pages
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\PageTemplate::class)
+                <x-responsive-nav-link href="{{ route('page-templates.index') }}">
+                Page Templates
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Platform::class)
+                <x-responsive-nav-link href="{{ route('platforms.index') }}">
+                Platforms
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Post::class)
+                <x-responsive-nav-link href="{{ route('posts.index') }}">
+                Posts
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\PostalCode::class)
+                <x-responsive-nav-link href="{{ route('postal-codes.index') }}">
+                Postal Codes
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Product::class)
+                <x-responsive-nav-link href="{{ route('products.index') }}">
+                Products
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Revision::class)
+                <x-responsive-nav-link href="{{ route('revisions.index') }}">
+                Revisions
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Seo::class)
+                <x-responsive-nav-link href="{{ route('seos.index') }}">
+                Seos
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Setting::class)
+                <x-responsive-nav-link href="{{ route('settings.index') }}">
+                Settings
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Whitelist::class)
+                <x-responsive-nav-link href="{{ route('whitelists.index') }}">
+                Whitelists
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Timezone::class)
+                <x-responsive-nav-link href="{{ route('timezones.index') }}">
+                Timezones
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Tag::class)
+                <x-responsive-nav-link href="{{ route('tags.index') }}">
+                Tags
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\User::class)
+                <x-responsive-nav-link href="{{ route('users.index') }}">
+                Users
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Subscription::class)
+                <x-responsive-nav-link href="{{ route('subscriptions.index') }}">
+                Subscriptions
                 </x-responsive-nav-link>
                 @endcan
 

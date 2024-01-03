@@ -37,6 +37,7 @@ class RevisionUpdateRequest extends FormRequest
             'translation_id' => ['nullable', 'max:255'],
             'categories' => ['nullable', 'max:255', 'json'],
             'tags' => ['nullable', 'max:255', 'json'],
+            'fields' => ['nullable', 'max:255', 'json'],
         ];
     }
 }

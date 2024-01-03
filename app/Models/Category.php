@@ -22,20 +22,21 @@ class Category extends Model
         'image',
         'thumbnail',
         'model',
+        ' created_by_user_id',
+        'created_by_user_name',
+        'edited_by_user_id',
+        'edited_by_user_name',
         'language_id',
         'translation_id',
+        'published_at',
     ];
 
     protected $searchableFields = ['*'];
 
     protected $casts = [
         'data' => 'array',
+        'published_at' => 'datetime',
     ];
-
-    public function language()
-    {
-        return $this->belongsTo(Language::class);
-    }
 
     public function translation()
     {
@@ -65,6 +66,16 @@ class Category extends Model
     public function mainCategoryPages()
     {
         return $this->hasMany(Page::class, 'main_category_id');
+    }
+
+    public function language()
+    {
+        return $this->belongsTo(Language::class);
+    }
+
+    public function seo()
+    {
+        return $this->morphOne(Seo::class, 'seoable');
     }
 
     public function posts()

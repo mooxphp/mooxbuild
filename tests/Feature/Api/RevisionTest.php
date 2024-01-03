@@ -78,6 +78,7 @@ class RevisionTest extends TestCase
             'translation_id' => $this->faker->randomNumber(),
             'categories' => [],
             'tags' => [],
+            'fields' => [],
         ];
 
         $response = $this->putJson(

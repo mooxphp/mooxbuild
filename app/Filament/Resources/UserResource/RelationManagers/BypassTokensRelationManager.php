@@ -4,8 +4,8 @@ namespace App\Filament\Resources\UserResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Actions\EditAction;
@@ -24,9 +24,7 @@ class BypassTokensRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'token';
 
-    protected static bool $shouldRegisterNavigation = false;
-
-    public function form(Form $form): Form
+    public static function form(Form $form): Form
     {
         return $form->schema([
             Grid::make(['default' => 0])->schema([
@@ -42,7 +40,7 @@ class BypassTokensRelationManager extends RelationManager
         ]);
     }
 
-    public function table(Table $table): Table
+    public static function table(Table $table): Table
     {
         return $table
             ->columns([

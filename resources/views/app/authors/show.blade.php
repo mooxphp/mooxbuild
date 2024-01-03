@@ -81,6 +81,12 @@
                         </h5>
                         <pre>{{ json_encode($author->social) ?? '-' }}</pre>
                     </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.authors.inputs.published_at')
+                        </h5>
+                        <span>{{ $author->published_at ?? '-' }}</span>
+                    </div>
                 </div>
 
                 <div class="mt-10">

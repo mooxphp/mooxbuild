@@ -80,10 +80,25 @@
                                     @lang('crud.posts.inputs.author_id')
                                 </th>
                                 <th class="px-4 py-3 text-left">
+                                    @lang('crud.posts.inputs.created_by_user_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.posts.inputs.created_by_user_name')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.posts.inputs.edited_by_user_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.posts.inputs.edited_by_user_name')
+                                </th>
+                                <th class="px-4 py-3 text-left">
                                     @lang('crud.posts.inputs.language_id')
                                 </th>
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.posts.inputs.translation_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.posts.inputs.published_at')
                                 </th>
                                 <th></th>
                             </tr>
@@ -129,12 +144,27 @@
                                     {{ optional($post->author)->title ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
+                                    {{ $post->created_by_user_id ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $post->created_by_user_name ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $post->edited_by_user_id ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $post->edited_by_user_name ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
                                     {{ optional($post->language)->title ?? '-'
                                     }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ optional($post->translation)->title ??
                                     '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $post->published_at ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -201,7 +231,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="13">
+                                <td colspan="18">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -209,7 +239,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="13">
+                                <td colspan="18">
                                     <div class="mt-10 px-4">
                                         {!! $posts->render() !!}
                                     </div>

@@ -40,7 +40,12 @@ class LanguageItemsController extends Controller
             'image' => ['nullable', 'image', 'max:1024'],
             'thumbnail' => ['nullable', 'file'],
             'author_id' => ['required', 'exists:authors,id'],
+            'created_by_user_id' => ['required', 'max:255', 'string'],
+            'created_by_user_name' => ['required', 'max:255', 'string'],
+            'edited_by_user_id' => ['required', 'max:255', 'string'],
+            'edited_by_user_name' => ['required', 'max:255', 'string'],
             'translation_id' => ['nullable', 'exists:items,id'],
+            'published_at' => ['nullable', 'date'],
         ]);
 
         if ($request->hasFile('image')) {

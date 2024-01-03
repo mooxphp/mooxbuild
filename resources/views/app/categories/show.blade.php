@@ -71,6 +71,32 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
+                            @lang('crud.categories.inputs. created_by_user_id')
+                        </h5>
+                        <span>{{ $category-> created_by_user_id ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.categories.inputs.created_by_user_name')
+                        </h5>
+                        <span
+                            >{{ $category->created_by_user_name ?? '-' }}</span
+                        >
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.categories.inputs.edited_by_user_id')
+                        </h5>
+                        <span>{{ $category->edited_by_user_id ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.categories.inputs.edited_by_user_name')
+                        </h5>
+                        <span>{{ $category->edited_by_user_name ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
                             @lang('crud.categories.inputs.language_id')
                         </h5>
                         <span
@@ -86,6 +112,12 @@
                             >{{ optional($category->translation)->title ?? '-'
                             }}</span
                         >
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.categories.inputs.published_at')
+                        </h5>
+                        <span>{{ $category->published_at ?? '-' }}</span>
                     </div>
                 </div>
 

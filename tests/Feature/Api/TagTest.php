@@ -64,8 +64,8 @@ class TagTest extends TestCase
     {
         $tag = Tag::factory()->create();
 
-        $language = Language::factory()->create();
         $tag = Tag::factory()->create();
+        $language = Language::factory()->create();
 
         $data = [
             'uid' => $this->faker->randomNumber(),
@@ -75,8 +75,13 @@ class TagTest extends TestCase
             'data' => [],
             'weight' => 0,
             'model' => $this->faker->text(255),
-            'language_id' => $language->id,
+            'created_by_user_id' => $this->faker->text(255),
+            'created_by_user_name' => $this->faker->text(255),
+            'edited_by_user_id' => $this->faker->text(255),
+            'edited_by_user_name' => $this->faker->text(255),
+            'published_at' => $this->faker->dateTime(),
             'translation_id' => $tag->id,
+            'language_id' => $language->id,
         ];
 
         $response = $this->putJson(route('api.tags.update', $tag), $data);

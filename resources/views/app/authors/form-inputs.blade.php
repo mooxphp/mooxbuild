@@ -18,7 +18,6 @@
             :value="old('salutation', ($editing ? $author->salutation : ''))"
             maxlength="255"
             placeholder="Salutation"
-            required
         ></x-inputs.text>
     </x-inputs.group>
 
@@ -29,7 +28,6 @@
             :value="old('title', ($editing ? $author->title : ''))"
             maxlength="255"
             placeholder="Title"
-            required
         ></x-inputs.text>
     </x-inputs.group>
 
@@ -51,7 +49,6 @@
             :value="old('full_name', ($editing ? $author->full_name : ''))"
             maxlength="255"
             placeholder="Full Name"
-            required
         ></x-inputs.text>
     </x-inputs.group>
 
@@ -62,7 +59,6 @@
             :value="old('first_name', ($editing ? $author->first_name : ''))"
             maxlength="255"
             placeholder="First Name"
-            required
         ></x-inputs.text>
     </x-inputs.group>
 
@@ -73,7 +69,6 @@
             :value="old('last_name', ($editing ? $author->last_name : ''))"
             maxlength="255"
             placeholder="Last Name"
-            required
         ></x-inputs.text>
     </x-inputs.group>
 
@@ -95,25 +90,29 @@
             :value="old('website', ($editing ? $author->website : ''))"
             maxlength="255"
             placeholder="Website"
-            required
         ></x-inputs.text>
     </x-inputs.group>
 
     <x-inputs.group class="w-full">
-        <x-inputs.textarea
-            name="address"
-            label="Address"
-            maxlength="255"
-            required
+        <x-inputs.textarea name="address" label="Address" maxlength="255"
             >{{ old('address', ($editing ? $author->address : ''))
             }}</x-inputs.textarea
         >
     </x-inputs.group>
 
     <x-inputs.group class="w-full">
-        <x-inputs.textarea name="social" label="Social" maxlength="255" required
+        <x-inputs.textarea name="social" label="Social" maxlength="255"
             >{{ old('social', ($editing ? json_encode($author->social) : ''))
             }}</x-inputs.textarea
         >
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.date
+            name="published_at"
+            label="Published At"
+            value="{{ old('published_at', ($editing ? optional($author->published_at)->format('Y-m-d') : '')) }}"
+            max="255"
+        ></x-inputs.date>
     </x-inputs.group>
 </div>

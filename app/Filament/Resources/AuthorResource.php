@@ -5,8 +5,8 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Author;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Card;
@@ -15,6 +15,7 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\RichEditor;
 use Filament\Tables\Filters\SelectFilter;
 use App\Filament\Filters\DateRangeFilter;
@@ -25,7 +26,7 @@ class AuthorResource extends Resource
 {
     protected static ?string $model = Author::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     protected static ?string $recordTitleAttribute = 'title';
 
@@ -48,7 +49,7 @@ class AuthorResource extends Resource
 
                     TextInput::make('salutation')
                         ->rules(['max:255', 'string'])
-                        ->required()
+                        ->nullable()
                         ->placeholder('Salutation')
                         ->columnSpan([
                             'default' => 12,
@@ -58,7 +59,7 @@ class AuthorResource extends Resource
 
                     TextInput::make('title')
                         ->rules(['max:255', 'string'])
-                        ->required()
+                        ->nullable()
                         ->placeholder('Title')
                         ->columnSpan([
                             'default' => 12,
@@ -78,7 +79,7 @@ class AuthorResource extends Resource
 
                     TextInput::make('full_name')
                         ->rules(['max:255', 'string'])
-                        ->required()
+                        ->nullable()
                         ->placeholder('Full Name')
                         ->columnSpan([
                             'default' => 12,
@@ -88,7 +89,7 @@ class AuthorResource extends Resource
 
                     TextInput::make('first_name')
                         ->rules(['max:255', 'string'])
-                        ->required()
+                        ->nullable()
                         ->placeholder('First Name')
                         ->columnSpan([
                             'default' => 12,
@@ -98,7 +99,7 @@ class AuthorResource extends Resource
 
                     TextInput::make('last_name')
                         ->rules(['max:255', 'string'])
-                        ->required()
+                        ->nullable()
                         ->placeholder('Last Name')
                         ->columnSpan([
                             'default' => 12,
@@ -118,7 +119,7 @@ class AuthorResource extends Resource
 
                     TextInput::make('website')
                         ->rules(['max:255', 'string'])
-                        ->required()
+                        ->nullable()
                         ->placeholder('Website')
                         ->columnSpan([
                             'default' => 12,
@@ -128,7 +129,7 @@ class AuthorResource extends Resource
 
                     RichEditor::make('address')
                         ->rules(['max:255', 'string'])
-                        ->required()
+                        ->nullable()
                         ->placeholder('Address')
                         ->columnSpan([
                             'default' => 12,
@@ -137,8 +138,17 @@ class AuthorResource extends Resource
                         ]),
 
                     KeyValue::make('social')
-                        ->required()
-                        ->required()
+                        ->nullable()
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    DatePicker::make('published_at')
+                        ->rules(['date'])
+                        ->nullable()
+                        ->placeholder('Published At')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,
@@ -193,6 +203,9 @@ class AuthorResource extends Resource
                     ->toggleable()
                     ->searchable()
                     ->limit(50),
+                Tables\Columns\TextColumn::make('published_at')
+                    ->toggleable()
+                    ->date(),
             ])
             ->filters([
                 DateRangeFilter::make('created_at'),
@@ -213,8 +226,8 @@ class AuthorResource extends Resource
             AuthorResource\RelationManagers\PostsRelationManager::class,
             AuthorResource\RelationManagers\PagesRelationManager::class,
             AuthorResource\RelationManagers\ProductsRelationManager::class,
-            AuthorResource\RelationManagers\ItemsRelationManager::class,
             AuthorResource\RelationManagers\CommentsRelationManager::class,
+            AuthorResource\RelationManagers\ItemsRelationManager::class,
         ];
     }
 

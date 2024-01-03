@@ -125,8 +125,8 @@ class CategoryControllerTest extends TestCase
     {
         $category = Category::factory()->create();
 
-        $language = Language::factory()->create();
         $category = Category::factory()->create();
+        $language = Language::factory()->create();
 
         $data = [
             'uid' => $this->faker->randomNumber(),
@@ -135,8 +135,13 @@ class CategoryControllerTest extends TestCase
             'content' => $this->faker->text(),
             'data' => [],
             'model' => $this->faker->text(255),
-            'language_id' => $language->id,
+            ' created_by_user_id' => $this->faker->text(255),
+            'created_by_user_name' => $this->faker->text(255),
+            'edited_by_user_id' => $this->faker->text(255),
+            'edited_by_user_name' => $this->faker->text(255),
+            'published_at' => $this->faker->dateTime(),
             'translation_id' => $category->id,
+            'language_id' => $language->id,
         ];
 
         $data['data'] = json_encode($data['data']);

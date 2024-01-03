@@ -63,6 +63,8 @@ class RevisionController extends Controller
 
         $validated['tags'] = json_decode($validated['tags'], true);
 
+        $validated['fields'] = json_decode($validated['fields'], true);
+
         $revision = Revision::create($validated);
 
         return redirect()
@@ -123,6 +125,8 @@ class RevisionController extends Controller
         $validated['categories'] = json_decode($validated['categories'], true);
 
         $validated['tags'] = json_decode($validated['tags'], true);
+
+        $validated['fields'] = json_decode($validated['fields'], true);
 
         $revision->update($validated);
 
