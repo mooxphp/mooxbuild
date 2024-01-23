@@ -56,7 +56,10 @@
                                     @lang('crud.users.inputs.email')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.users.inputs.whitelist_id')
+                                    @lang('crud.users.inputs.profile_photo_path')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.users.inputs.bypass_token')
                                 </th>
                                 <th></th>
                             </tr>
@@ -71,8 +74,10 @@
                                     {{ $user->email ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ optional($user->whitelist)->comment ??
-                                    '-' }}
+                                    {{ $user->profile_photo_path ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $user->bypass_token ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -139,7 +144,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="4">
+                                <td colspan="5">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -147,7 +152,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="4">
+                                <td colspan="5">
                                     <div class="mt-10 px-4">
                                         {!! $users->render() !!}
                                     </div>

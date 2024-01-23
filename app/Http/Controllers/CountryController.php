@@ -36,7 +36,7 @@ class CountryController extends Controller
     {
         $this->authorize('create', Country::class);
 
-        $continents = Continent::pluck('id', 'id');
+        $continents = Continent::pluck('title', 'id');
 
         return view('app.countries.create', compact('continents'));
     }
@@ -49,6 +49,10 @@ class CountryController extends Controller
         $this->authorize('create', Country::class);
 
         $validated = $request->validated();
+        $validated['native_name'] = json_decode(
+            $validated['native_name'],
+            true
+        );
 
         $country = Country::create($validated);
 
@@ -74,7 +78,7 @@ class CountryController extends Controller
     {
         $this->authorize('update', $country);
 
-        $continents = Continent::pluck('id', 'id');
+        $continents = Continent::pluck('title', 'id');
 
         return view('app.countries.edit', compact('country', 'continents'));
     }
@@ -89,6 +93,10 @@ class CountryController extends Controller
         $this->authorize('update', $country);
 
         $validated = $request->validated();
+        $validated['native_name'] = json_decode(
+            $validated['native_name'],
+            true
+        );
 
         $country->update($validated);
 

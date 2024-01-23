@@ -36,7 +36,7 @@ class PlatformTest extends TestCase
 
         $response = $this->getJson(route('api.platforms.index'));
 
-        $response->assertOk()->assertSee($platforms[0]->id);
+        $response->assertOk()->assertSee($platforms[0]->title);
     }
 
     /**
@@ -62,7 +62,12 @@ class PlatformTest extends TestCase
     {
         $platform = Platform::factory()->create();
 
-        $data = [];
+        $data = [
+            'master' => $this->faker->boolean(),
+            'title' => $this->faker->sentence(10),
+            'slug' => $this->faker->slug(),
+            'bind_to_domain' => $this->faker->text(255),
+        ];
 
         $response = $this->putJson(
             route('api.platforms.update', $platform),

@@ -67,9 +67,9 @@ class PostTest extends TestCase
         $post = Post::factory()->create();
 
         $author = Author::factory()->create();
-        $post = Post::factory()->create();
         $category = Category::factory()->create();
         $language = Language::factory()->create();
+        $post = Post::factory()->create();
 
         $data = [
             'uid' => $this->faker->randomNumber(),
@@ -85,9 +85,9 @@ class PostTest extends TestCase
             'edited_by_user_name' => $this->faker->text(255),
             'published_at' => $this->faker->dateTime(),
             'author_id' => $author->id,
-            'translation_id' => $post->id,
             'main_category_id' => $category->id,
             'language_id' => $language->id,
+            'translation_id' => $post->id,
         ];
 
         $response = $this->putJson(route('api.posts.update', $post), $data);

@@ -24,7 +24,8 @@ class UserStoreRequest extends FormRequest
             'name' => ['required', 'max:255', 'string'],
             'email' => ['required', 'unique:users,email', 'email'],
             'password' => ['required'],
-            'whitelist_id' => ['required', 'exists:whitelists,id'],
+            'profile_photo_path' => ['nullable', 'max:255', 'string'],
+            'bypass_token' => ['nullable', 'max:255', 'string'],
         ];
     }
 }

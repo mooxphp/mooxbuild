@@ -40,7 +40,7 @@ class CountryTimezonesTest extends TestCase
             route('api.countries.timezones.index', $country)
         );
 
-        $response->assertOk()->assertSee($timezone->id);
+        $response->assertOk()->assertSee($timezone->zone_name);
     }
 
     /**

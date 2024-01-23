@@ -314,7 +314,7 @@ class PostResource extends Resource
 
     public static function getRelations(): array
     {
-        return [];
+        return [PostResource\RelationManagers\PostsRelationManager::class];
     }
 
     public static function getPages(): array

@@ -49,12 +49,44 @@
                     <table class="w-full max-w-full mb-4 bg-transparent">
                         <thead class="text-gray-700">
                             <tr>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.platforms.inputs.master')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.platforms.inputs.title')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.platforms.inputs.slug')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.platforms.inputs.bind_to_domain')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.platforms.inputs.thumbnail')
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600">
                             @forelse($platforms as $platform)
                             <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3 text-left">
+                                    {{ $platform->master ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $platform->title ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $platform->slug ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $platform->bind_to_domain ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    <x-partials.thumbnail
+                                        src="{{ $platform->thumbnail ? \Storage::url($platform->thumbnail) : '' }}"
+                                    />
+                                </td>
                                 <td
                                     class="px-4 py-3 text-center"
                                     style="width: 134px;"
@@ -120,7 +152,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="1">
+                                <td colspan="6">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -128,7 +160,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="1">
+                                <td colspan="6">
                                     <div class="mt-10 px-4">
                                         {!! $platforms->render() !!}
                                     </div>

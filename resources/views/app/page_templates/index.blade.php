@@ -52,6 +52,18 @@
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.page_templates.inputs.page_id')
                                 </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.page_templates.inputs.title')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.page_templates.inputs.slug')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.page_templates.inputs.theme')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.page_templates.inputs.view')
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -61,6 +73,18 @@
                                 <td class="px-4 py-3 text-left">
                                     {{ optional($pageTemplate->page)->title ??
                                     '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $pageTemplate->title ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $pageTemplate->slug ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $pageTemplate->theme ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $pageTemplate->view ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -127,7 +151,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="2">
+                                <td colspan="6">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -135,7 +159,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="6">
                                     <div class="mt-10 px-4">
                                         {!! $pageTemplates->render() !!}
                                     </div>

@@ -106,7 +106,12 @@ class PlatformControllerTest extends TestCase
     {
         $platform = Platform::factory()->create();
 
-        $data = [];
+        $data = [
+            'master' => $this->faker->boolean(),
+            'title' => $this->faker->sentence(10),
+            'slug' => $this->faker->slug(),
+            'bind_to_domain' => $this->faker->text(255),
+        ];
 
         $response = $this->put(route('platforms.update', $platform), $data);
 

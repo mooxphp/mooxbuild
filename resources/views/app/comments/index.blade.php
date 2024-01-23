@@ -79,6 +79,12 @@
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.comments.inputs.avatar')
                                 </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.comments.inputs.is_spam')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.comments.inputs.is_public')
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -120,6 +126,12 @@
                                     <x-partials.thumbnail
                                         src="{{ $comment->avatar ? \Storage::url($comment->avatar) : '' }}"
                                     />
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $comment->is_spam ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $comment->is_public ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -186,7 +198,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="11">
+                                <td colspan="13">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -194,7 +206,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="11">
+                                <td colspan="13">
                                     <div class="mt-10 px-4">
                                         {!! $comments->render() !!}
                                     </div>

@@ -42,7 +42,7 @@ class PagePageTemplatesTest extends TestCase
             route('api.pages.page-templates.index', $page)
         );
 
-        $response->assertOk()->assertSee($pageTemplates[0]->id);
+        $response->assertOk()->assertSee($pageTemplates[0]->title);
     }
 
     /**

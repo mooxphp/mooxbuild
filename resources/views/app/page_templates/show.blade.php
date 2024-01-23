@@ -24,6 +24,30 @@
                             }}</span
                         >
                     </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.page_templates.inputs.title')
+                        </h5>
+                        <span>{{ $pageTemplate->title ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.page_templates.inputs.slug')
+                        </h5>
+                        <span>{{ $pageTemplate->slug ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.page_templates.inputs.theme')
+                        </h5>
+                        <span>{{ $pageTemplate->theme ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.page_templates.inputs.view')
+                        </h5>
+                        <span>{{ $pageTemplate->view ?? '-' }}</span>
+                    </div>
                 </div>
 
                 <div class="mt-10">

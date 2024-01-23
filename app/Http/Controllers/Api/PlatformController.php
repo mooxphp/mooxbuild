@@ -6,6 +6,7 @@ use App\Models\Platform;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\PlatformResource;
 use App\Http\Resources\PlatformCollection;
 use App\Http\Requests\PlatformStoreRequest;
@@ -31,6 +32,11 @@ class PlatformController extends Controller
         $this->authorize('create', Platform::class);
 
         $validated = $request->validated();
+        if ($request->hasFile('thumbnail')) {
+            $validated['thumbnail'] = $request
+                ->file('thumbnail')
+                ->store('public');
+        }
 
         $platform = Platform::create($validated);
 
@@ -52,6 +58,16 @@ class PlatformController extends Controller
 
         $validated = $request->validated();
 
+        if ($request->hasFile('thumbnail')) {
+            if ($platform->thumbnail) {
+                Storage::delete($platform->thumbnail);
+            }
+
+            $validated['thumbnail'] = $request
+                ->file('thumbnail')
+                ->store('public');
+        }
+
         $platform->update($validated);
 
         return new PlatformResource($platform);
@@ -60,6 +76,10 @@ class PlatformController extends Controller
     public function destroy(Request $request, Platform $platform): Response
     {
         $this->authorize('delete', $platform);
+
+        if ($platform->thumbnail) {
+            Storage::delete($platform->thumbnail);
+        }
 
         $platform->delete();
 

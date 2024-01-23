@@ -36,7 +36,7 @@ class ContinentTest extends TestCase
 
         $response = $this->getJson(route('api.continents.index'));
 
-        $response->assertOk()->assertSee($continents[0]->id);
+        $response->assertOk()->assertSee($continents[0]->title);
     }
 
     /**
@@ -62,7 +62,13 @@ class ContinentTest extends TestCase
     {
         $continent = Continent::factory()->create();
 
-        $data = [];
+        $continent = Continent::factory()->create();
+
+        $data = [
+            'title' => $this->faker->sentence(10),
+            'slug' => $this->faker->slug(),
+            'parent_continent_id' => $continent->id,
+        ];
 
         $response = $this->putJson(
             route('api.continents.update', $continent),

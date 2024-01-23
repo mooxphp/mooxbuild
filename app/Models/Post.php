@@ -45,11 +45,6 @@ class Post extends Model
         return $this->belongsTo(Author::class);
     }
 
-    public function translation()
-    {
-        return $this->belongsTo(Post::class, 'translation_id');
-    }
-
     public function mainCategory()
     {
         return $this->belongsTo(Category::class, 'main_category_id');
@@ -62,7 +57,12 @@ class Post extends Model
 
     public function hasTranslations()
     {
-        return $this->hasOne(Post::class, 'translation_id');
+        return $this->hasMany(Post::class, 'translation_id');
+    }
+
+    public function translation()
+    {
+        return $this->belongsTo(Post::class, 'translation_id');
     }
 
     public function categories()

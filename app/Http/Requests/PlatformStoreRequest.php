@@ -19,6 +19,12 @@ class PlatformStoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        return [
+            'master' => ['nullable', 'boolean'],
+            'title' => ['required', 'max:255', 'string'],
+            'slug' => ['required', 'max:255', 'string'],
+            'bind_to_domain' => ['nullable', 'max:255', 'string'],
+            'thumbnail' => ['nullable', 'file'],
+        ];
     }
 }

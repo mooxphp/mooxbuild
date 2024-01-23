@@ -135,4 +135,20 @@
             @enderror
         </div>
     </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.checkbox
+            name="is_spam"
+            label="Is Spam"
+            :checked="old('is_spam', ($editing ? $comment->is_spam : 0))"
+        ></x-inputs.checkbox>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.checkbox
+            name="is_public"
+            label="Is Public"
+            :checked="old('is_public', ($editing ? $comment->is_public : 0))"
+        ></x-inputs.checkbox>
+    </x-inputs.group>
 </div>

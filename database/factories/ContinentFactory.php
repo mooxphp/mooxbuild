@@ -22,6 +22,14 @@ class ContinentFactory extends Factory
      */
     public function definition(): array
     {
-        return [];
+        return [
+            'title' => $this->faker->sentence(10),
+            'slug' => $this->faker->slug(),
+            'parent_continent_id' => function () {
+                return \App\Models\Continent::factory()->create([
+                    'parent_continent_id' => null,
+                ])->id;
+            },
+        ];
     }
 }

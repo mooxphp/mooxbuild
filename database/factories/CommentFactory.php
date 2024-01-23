@@ -30,6 +30,8 @@ class CommentFactory extends Factory
             'is_from_author' => $this->faker->boolean(),
             'name' => $this->faker->name(),
             'email' => $this->faker->email(),
+            'is_spam' => $this->faker->boolean(),
+            'is_public' => $this->faker->boolean(),
             'parent_id' => function () {
                 return \App\Models\Comment::factory()->create([
                     'parent_id' => null,

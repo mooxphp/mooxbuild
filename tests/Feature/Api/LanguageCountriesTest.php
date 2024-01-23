@@ -40,7 +40,7 @@ class LanguageCountriesTest extends TestCase
             route('api.languages.countries.index', $language)
         );
 
-        $response->assertOk()->assertSee($country->id);
+        $response->assertOk()->assertSee($country->title);
     }
 
     /**

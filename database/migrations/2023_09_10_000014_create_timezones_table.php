@@ -12,6 +12,12 @@ return new class extends Migration {
     {
         Schema::create('timezones', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('zone_name');
+            $table->string('country_code', 2);
+            $table->string('abbreviation', 6);
+            $table->integer('time_start');
+            $table->integer('gmt_offset');
+            $table->boolean('dst');
 
             $table->timestamps();
         });

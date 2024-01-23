@@ -11,12 +11,27 @@ class Platform extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'master',
+        'title',
+        'slug',
+        'bind_to_domain',
+        'thumbnail',
+    ];
 
     protected $searchableFields = ['*'];
 
-    public function users()
+    protected $casts = [
+        'master' => 'boolean',
+    ];
+
+    public function syncs()
     {
-        return $this->morphedByMany(User::class, 'platformable');
+        return $this->hasMany(Sync::class, 'source_platform_id');
+    }
+
+    public function syncs2()
+    {
+        return $this->hasMany(Sync::class, 'target_platform_id');
     }
 }

@@ -19,6 +19,10 @@ class ContinentStoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        return [
+            'title' => ['required', 'max:255', 'string'],
+            'slug' => ['required', 'max:255', 'string'],
+            'parent_continent_id' => ['nullable', 'exists:continents,id'],
+        ];
     }
 }

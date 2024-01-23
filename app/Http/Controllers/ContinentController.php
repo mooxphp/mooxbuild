@@ -35,7 +35,9 @@ class ContinentController extends Controller
     {
         $this->authorize('create', Continent::class);
 
-        return view('app.continents.create');
+        $continents = Continent::pluck('title', 'id');
+
+        return view('app.continents.create', compact('continents'));
     }
 
     /**
@@ -71,7 +73,9 @@ class ContinentController extends Controller
     {
         $this->authorize('update', $continent);
 
-        return view('app.continents.edit', compact('continent'));
+        $continents = Continent::pluck('title', 'id');
+
+        return view('app.continents.edit', compact('continent', 'continents'));
     }
 
     /**

@@ -45,29 +45,6 @@ return [
         ],
     ],
 
-    'blacklists' => [
-        'name' => 'Blacklists',
-        'index_title' => 'Blacklists List',
-        'new_title' => 'New Blacklist',
-        'create_title' => 'Create Blacklist',
-        'edit_title' => 'Edit Blacklist',
-        'show_title' => 'Show Blacklist',
-        'inputs' => [],
-    ],
-
-    'bypass_tokens' => [
-        'name' => 'Bypass Tokens',
-        'index_title' => 'BypassTokens List',
-        'new_title' => 'New Bypass token',
-        'create_title' => 'Create BypassToken',
-        'edit_title' => 'Edit BypassToken',
-        'show_title' => 'Show BypassToken',
-        'inputs' => [
-            'token' => 'Token',
-            'user_id' => 'User',
-        ],
-    ],
-
     'carts' => [
         'name' => 'Carts',
         'index_title' => 'Carts List',
@@ -124,6 +101,8 @@ return [
             'name' => 'Name',
             'email' => 'Email',
             'avatar' => 'Avatar',
+            'is_spam' => 'Is Spam',
+            'is_public' => 'Is Public',
         ],
     ],
 
@@ -134,7 +113,11 @@ return [
         'create_title' => 'Create Continent',
         'edit_title' => 'Edit Continent',
         'show_title' => 'Show Continent',
-        'inputs' => [],
+        'inputs' => [
+            'title' => 'Title',
+            'slug' => 'Slug',
+            'parent_continent_id' => 'Continent',
+        ],
     ],
 
     'countries' => [
@@ -145,7 +128,20 @@ return [
         'edit_title' => 'Edit Country',
         'show_title' => 'Show Country',
         'inputs' => [
+            'title' => 'Title',
+            'slug' => 'Slug',
             'continent_id' => 'Continent',
+            'delivery' => 'Delivery',
+            'official' => 'Official',
+            'native_name' => 'Native Name',
+            'tld' => 'Tld',
+            'independent' => 'Independent',
+            'un_member' => 'Un Member',
+            'status' => 'Status',
+            'cca2' => 'Cca2',
+            'ccn3' => 'Ccn3',
+            'cca3' => 'Cca3',
+            'cioc' => 'Cioc',
         ],
     ],
 
@@ -168,6 +164,20 @@ return [
         'show_title' => 'Show Customer',
         'inputs' => [
             'user_id' => 'User',
+        ],
+    ],
+
+    'firewall_rules' => [
+        'name' => 'Firewall Rules',
+        'index_title' => 'FirewallRules List',
+        'new_title' => 'New Firewall rule',
+        'create_title' => 'Create FirewallRule',
+        'edit_title' => 'Edit FirewallRule',
+        'show_title' => 'Show FirewallRule',
+        'inputs' => [
+            'rule' => 'Rule',
+            'type' => 'Type',
+            'ip_address' => 'Ip Address',
         ],
     ],
 
@@ -213,6 +223,32 @@ return [
             'flag' => 'Flag',
             'active' => 'Active',
             'published' => 'Published',
+        ],
+    ],
+
+    'media' => [
+        'name' => 'Media',
+        'index_title' => 'Media List',
+        'new_title' => 'New Media',
+        'create_title' => 'Create Media',
+        'edit_title' => 'Edit Media',
+        'show_title' => 'Show Media',
+        'inputs' => [
+            'uuid' => 'Uuid',
+            'collection_name' => 'Collection Name',
+            'name' => 'Name',
+            'file_name' => 'File Name',
+            'mime_type' => 'Mime Type',
+            'disk' => 'Disk',
+            'conversions_disk' => 'Conversions Disk',
+            'size' => 'Size',
+            'manipulations' => 'Manipulations',
+            'custom_properties' => 'Custom Properties',
+            'generated_conversions' => 'Generated Conversions',
+            'responsive_images' => 'Responsive Images',
+            'order_column' => 'Order Column',
+            'model_id' => 'Model Id',
+            'model_type' => 'Model Type',
         ],
     ],
 
@@ -263,6 +299,10 @@ return [
         'show_title' => 'Show PageTemplate',
         'inputs' => [
             'page_id' => 'Page',
+            'title' => 'Title',
+            'slug' => 'Slug',
+            'theme' => 'Theme',
+            'view' => 'View',
         ],
     ],
 
@@ -273,7 +313,13 @@ return [
         'create_title' => 'Create Platform',
         'edit_title' => 'Edit Platform',
         'show_title' => 'Show Platform',
-        'inputs' => [],
+        'inputs' => [
+            'master' => 'Master',
+            'title' => 'Title',
+            'slug' => 'Slug',
+            'bind_to_domain' => 'Bind To Domain',
+            'thumbnail' => 'Thumbnail',
+        ],
     ],
 
     'posts' => [
@@ -421,31 +467,6 @@ return [
         'inputs' => [],
     ],
 
-    'whitelists' => [
-        'name' => 'Whitelists',
-        'index_title' => 'Whitelists List',
-        'new_title' => 'New Whitelist',
-        'create_title' => 'Create Whitelist',
-        'edit_title' => 'Edit Whitelist',
-        'show_title' => 'Show Whitelist',
-        'inputs' => [
-            'comment' => 'Comment',
-            'ip-address' => 'Ip Address',
-            'lookup' => 'Lookup',
-            'expires' => 'Expires',
-        ],
-    ],
-
-    'timezones' => [
-        'name' => 'Timezones',
-        'index_title' => 'Timezones List',
-        'new_title' => 'New Timezone',
-        'create_title' => 'Create Timezone',
-        'edit_title' => 'Edit Timezone',
-        'show_title' => 'Show Timezone',
-        'inputs' => [],
-    ],
-
     'tags' => [
         'name' => 'Tags',
         'index_title' => 'Tags List',
@@ -473,6 +494,23 @@ return [
         ],
     ],
 
+    'timezones' => [
+        'name' => 'Timezones',
+        'index_title' => 'Timezones List',
+        'new_title' => 'New Timezone',
+        'create_title' => 'Create Timezone',
+        'edit_title' => 'Edit Timezone',
+        'show_title' => 'Show Timezone',
+        'inputs' => [
+            'zone_name' => 'Zone Name',
+            'country_code' => 'Country Code',
+            'abbreviation' => 'Abbreviation',
+            'time_start' => 'Time Start',
+            'gmt_offset' => 'Gmt Offset',
+            'dst' => 'Dst',
+        ],
+    ],
+
     'users' => [
         'name' => 'Users',
         'index_title' => 'Users List',
@@ -484,19 +522,8 @@ return [
             'name' => 'Name',
             'email' => 'Email',
             'password' => 'Password',
-            'whitelist_id' => 'Whitelist',
-        ],
-    ],
-
-    'subscriptions' => [
-        'name' => 'Subscriptions',
-        'index_title' => 'Subscriptions List',
-        'new_title' => 'New Subscription',
-        'create_title' => 'Create Subscription',
-        'edit_title' => 'Edit Subscription',
-        'show_title' => 'Show Subscription',
-        'inputs' => [
-            'user_id' => 'User',
+            'profile_photo_path' => 'Profile Photo Path',
+            'bypass_token' => 'Bypass Token',
         ],
     ],
 ];

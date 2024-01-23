@@ -29,7 +29,12 @@ class PagePageTemplatesController extends Controller
     {
         $this->authorize('create', PageTemplate::class);
 
-        $validated = $request->validate([]);
+        $validated = $request->validate([
+            'title' => ['required', 'max:255', 'string'],
+            'slug' => ['required', 'max:255', 'string'],
+            'theme' => ['required', 'max:255', 'string'],
+            'view' => ['required', 'max:255', 'string'],
+        ]);
 
         $pageTemplate = $page->pageTemplates()->create($validated);
 

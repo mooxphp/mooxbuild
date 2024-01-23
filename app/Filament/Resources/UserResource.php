@@ -11,12 +11,10 @@ use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Card;
-use Filament\Forms\Components\Select;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Actions\EditAction;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
-use Filament\Tables\Filters\SelectFilter;
 use App\Filament\Filters\DateRangeFilter;
 use Filament\Tables\Actions\DeleteBulkAction;
 use App\Filament\Resources\UserResource\Pages;
@@ -75,12 +73,20 @@ class UserResource extends Resource
                             'lg' => 12,
                         ]),
 
-                    Select::make('whitelist_id')
-                        ->rules(['exists:whitelists,id'])
-                        ->required()
-                        ->relationship('whitelist', 'comment')
-                        ->searchable()
-                        ->placeholder('Whitelist')
+                    TextInput::make('profile_photo_path')
+                        ->rules(['max:255', 'string'])
+                        ->nullable()
+                        ->placeholder('Profile Photo Path')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('bypass_token')
+                        ->rules(['max:255', 'string'])
+                        ->nullable()
+                        ->placeholder('Bypass Token')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,
@@ -104,19 +110,16 @@ class UserResource extends Resource
                     ->toggleable()
                     ->searchable(true, null, true)
                     ->limit(50),
-                Tables\Columns\TextColumn::make('whitelist.comment')
+                Tables\Columns\TextColumn::make('profile_photo_path')
                     ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('bypass_token')
+                    ->toggleable()
+                    ->searchable(true, null, true)
                     ->limit(50),
             ])
-            ->filters([
-                DateRangeFilter::make('created_at'),
-
-                SelectFilter::make('whitelist_id')
-                    ->relationship('whitelist', 'comment')
-                    ->indicator('Whitelist')
-                    ->multiple()
-                    ->label('Whitelist'),
-            ])
+            ->filters([DateRangeFilter::make('created_at')])
             ->actions([ViewAction::make(), EditAction::make()])
             ->bulkActions([DeleteBulkAction::make()]);
     }
@@ -125,7 +128,7 @@ class UserResource extends Resource
     {
         return [
             UserResource\RelationManagers\AuthorsRelationManager::class,
-            UserResource\RelationManagers\BypassTokensRelationManager::class,
+            UserResource\RelationManagers\SyncsRelationManager::class,
         ];
     }
 

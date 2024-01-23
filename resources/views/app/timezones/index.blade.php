@@ -49,12 +49,48 @@
                     <table class="w-full max-w-full mb-4 bg-transparent">
                         <thead class="text-gray-700">
                             <tr>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.timezones.inputs.zone_name')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.timezones.inputs.country_code')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.timezones.inputs.abbreviation')
+                                </th>
+                                <th class="px-4 py-3 text-right">
+                                    @lang('crud.timezones.inputs.time_start')
+                                </th>
+                                <th class="px-4 py-3 text-right">
+                                    @lang('crud.timezones.inputs.gmt_offset')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.timezones.inputs.dst')
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600">
                             @forelse($timezones as $timezone)
                             <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3 text-left">
+                                    {{ $timezone->zone_name ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $timezone->country_code ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $timezone->abbreviation ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-right">
+                                    {{ $timezone->time_start ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-right">
+                                    {{ $timezone->gmt_offset ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $timezone->dst ?? '-' }}
+                                </td>
                                 <td
                                     class="px-4 py-3 text-center"
                                     style="width: 134px;"
@@ -120,7 +156,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="1">
+                                <td colspan="7">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -128,7 +164,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="1">
+                                <td colspan="7">
                                     <div class="mt-10 px-4">
                                         {!! $timezones->render() !!}
                                     </div>

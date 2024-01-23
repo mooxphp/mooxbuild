@@ -36,7 +36,7 @@ class TimezoneTest extends TestCase
 
         $response = $this->getJson(route('api.timezones.index'));
 
-        $response->assertOk()->assertSee($timezones[0]->id);
+        $response->assertOk()->assertSee($timezones[0]->zone_name);
     }
 
     /**
@@ -62,7 +62,14 @@ class TimezoneTest extends TestCase
     {
         $timezone = Timezone::factory()->create();
 
-        $data = [];
+        $data = [
+            'zone_name' => $this->faker->text(255),
+            'country_code' => $this->faker->countryCode(),
+            'abbreviation' => $this->faker->text(6),
+            'time_start' => $this->faker->randomNumber(0),
+            'gmt_offset' => $this->faker->randomNumber(0),
+            'dst' => $this->faker->boolean(),
+        ];
 
         $response = $this->putJson(
             route('api.timezones.update', $timezone),

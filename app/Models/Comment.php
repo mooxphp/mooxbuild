@@ -4,12 +4,14 @@ namespace App\Models;
 
 use App\Models\Scopes\Searchable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Comment extends Model
 {
     use HasFactory;
     use Searchable;
+    use SoftDeletes;
 
     protected $fillable = [
         'title',
@@ -22,6 +24,8 @@ class Comment extends Model
         'name',
         'email',
         'avatar',
+        'is_spam',
+        'is_public',
     ];
 
     protected $searchableFields = ['*'];
@@ -29,6 +33,8 @@ class Comment extends Model
     protected $casts = [
         'translations' => 'array',
         'is_from_author' => 'boolean',
+        'is_spam' => 'boolean',
+        'is_public' => 'boolean',
     ];
 
     public function parent()

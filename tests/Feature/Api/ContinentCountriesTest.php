@@ -42,7 +42,7 @@ class ContinentCountriesTest extends TestCase
             route('api.continents.countries.index', $continent)
         );
 
-        $response->assertOk()->assertSee($countries[0]->id);
+        $response->assertOk()->assertSee($countries[0]->title);
     }
 
     /**

@@ -14,7 +14,29 @@
                     ></a>
                 </x-slot>
 
-                <div class="mt-4 px-4"></div>
+                <div class="mt-4 px-4">
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.continents.inputs.title')
+                        </h5>
+                        <span>{{ $continent->title ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.continents.inputs.slug')
+                        </h5>
+                        <span>{{ $continent->slug ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.continents.inputs.parent_continent_id')
+                        </h5>
+                        <span
+                            >{{ optional($continent->continent)->title ?? '-'
+                            }}</span
+                        >
+                    </div>
+                </div>
 
                 <div class="mt-10">
                     <a href="{{ route('continents.index') }}" class="button">

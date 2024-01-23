@@ -11,9 +11,20 @@ class Timezone extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'zone_name',
+        'country_code',
+        'abbreviation',
+        'time_start',
+        'gmt_offset',
+        'dst',
+    ];
 
     protected $searchableFields = ['*'];
+
+    protected $casts = [
+        'dst' => 'boolean',
+    ];
 
     public function countries()
     {

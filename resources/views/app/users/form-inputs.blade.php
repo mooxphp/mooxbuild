@@ -34,12 +34,22 @@
     </x-inputs.group>
 
     <x-inputs.group class="w-full">
-        <x-inputs.select name="whitelist_id" label="Whitelist" required>
-            @php $selected = old('whitelist_id', ($editing ? $user->whitelist_id : '')) @endphp
-            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Whitelist</option>
-            @foreach($whitelists as $value => $label)
-            <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
-            @endforeach
-        </x-inputs.select>
+        <x-inputs.text
+            name="profile_photo_path"
+            label="Profile Photo Path"
+            :value="old('profile_photo_path', ($editing ? $user->profile_photo_path : ''))"
+            maxlength="255"
+            placeholder="Profile Photo Path"
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="bypass_token"
+            label="Bypass Token"
+            :value="old('bypass_token', ($editing ? $user->bypass_token : ''))"
+            maxlength="255"
+            placeholder="Bypass Token"
+        ></x-inputs.text>
     </x-inputs.group>
 </div>

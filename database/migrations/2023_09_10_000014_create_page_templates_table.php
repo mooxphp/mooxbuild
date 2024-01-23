@@ -13,6 +13,10 @@ return new class extends Migration {
         Schema::create('page_templates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('page_id');
+            $table->string('title');
+            $table->string('slug');
+            $table->string('theme');
+            $table->string('view');
 
             $table->timestamps();
         });

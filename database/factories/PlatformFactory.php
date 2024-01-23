@@ -22,6 +22,11 @@ class PlatformFactory extends Factory
      */
     public function definition(): array
     {
-        return [];
+        return [
+            'master' => $this->faker->boolean(),
+            'title' => $this->faker->sentence(10),
+            'slug' => $this->faker->slug(),
+            'bind_to_domain' => $this->faker->text(255),
+        ];
     }
 }

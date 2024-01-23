@@ -22,6 +22,13 @@ class TimezoneFactory extends Factory
      */
     public function definition(): array
     {
-        return [];
+        return [
+            'zone_name' => $this->faker->text(255),
+            'country_code' => $this->faker->countryCode(),
+            'abbreviation' => $this->faker->text(6),
+            'time_start' => $this->faker->randomNumber(0),
+            'gmt_offset' => $this->faker->randomNumber(0),
+            'dst' => $this->faker->boolean(),
+        ];
     }
 }

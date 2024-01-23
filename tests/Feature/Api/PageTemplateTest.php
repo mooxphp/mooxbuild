@@ -38,7 +38,7 @@ class PageTemplateTest extends TestCase
 
         $response = $this->getJson(route('api.page-templates.index'));
 
-        $response->assertOk()->assertSee($pageTemplates[0]->id);
+        $response->assertOk()->assertSee($pageTemplates[0]->title);
     }
 
     /**
@@ -67,6 +67,10 @@ class PageTemplateTest extends TestCase
         $page = Page::factory()->create();
 
         $data = [
+            'title' => $this->faker->sentence(10),
+            'slug' => $this->faker->slug(),
+            'theme' => $this->faker->text(255),
+            'view' => $this->faker->text(255),
             'page_id' => $page->id,
         ];
 

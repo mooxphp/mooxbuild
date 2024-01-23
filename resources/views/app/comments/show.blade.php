@@ -86,6 +86,18 @@
                             size="150"
                         />
                     </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.comments.inputs.is_spam')
+                        </h5>
+                        <span>{{ $comment->is_spam ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.comments.inputs.is_public')
+                        </h5>
+                        <span>{{ $comment->is_public ?? '-' }}</span>
+                    </div>
                 </div>
 
                 <div class="mt-10">

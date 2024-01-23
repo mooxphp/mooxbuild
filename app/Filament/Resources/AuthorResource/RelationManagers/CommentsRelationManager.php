@@ -114,6 +114,22 @@ class CommentsRelationManager extends RelationManager
                         'md' => 12,
                         'lg' => 12,
                     ]),
+
+                Toggle::make('is_spam')
+                    ->rules(['boolean'])
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
+
+                Toggle::make('is_public')
+                    ->rules(['boolean'])
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
             ]),
         ]);
     }
@@ -131,6 +147,8 @@ class CommentsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('name')->limit(50),
                 Tables\Columns\TextColumn::make('email')->limit(50),
                 Tables\Columns\ImageColumn::make('avatar')->rounded(),
+                Tables\Columns\IconColumn::make('is_spam'),
+                Tables\Columns\IconColumn::make('is_public'),
             ])
             ->filters([
                 Tables\Filters\Filter::make('created_at')

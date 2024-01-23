@@ -19,6 +19,13 @@ class TimezoneUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        return [
+            'zone_name' => ['required', 'max:255', 'string'],
+            'country_code' => ['required', 'max:2', 'string'],
+            'abbreviation' => ['required', 'max:6', 'string'],
+            'time_start' => ['required', 'numeric'],
+            'gmt_offset' => ['required', 'numeric'],
+            'dst' => ['required', 'boolean'],
+        ];
     }
 }

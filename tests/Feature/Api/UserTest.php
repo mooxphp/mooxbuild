@@ -4,8 +4,6 @@ namespace Tests\Feature\Api;
 
 use App\Models\User;
 
-use App\Models\Whitelist;
-
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -56,7 +54,7 @@ class UserTest extends TestCase
         unset($data['email_verified_at']);
         unset($data['two_factor_confirmed_at']);
         unset($data['current_team_id']);
-        unset($data['profile_photo_path']);
+        unset($data['avatar_url']);
 
         $this->assertDatabaseHas('users', $data);
 
@@ -70,12 +68,11 @@ class UserTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $whitelist = Whitelist::factory()->create();
-
         $data = [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique->email(),
-            'whitelist_id' => $whitelist->id,
+            'profile_photo_path' => $this->faker->text(255),
+            'bypass_token' => $this->faker->text(255),
         ];
 
         $data['password'] = \Str::random('8');
@@ -86,7 +83,7 @@ class UserTest extends TestCase
         unset($data['email_verified_at']);
         unset($data['two_factor_confirmed_at']);
         unset($data['current_team_id']);
-        unset($data['profile_photo_path']);
+        unset($data['avatar_url']);
 
         $data['id'] = $user->id;
 

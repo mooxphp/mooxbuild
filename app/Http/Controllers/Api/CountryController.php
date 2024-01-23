@@ -31,6 +31,10 @@ class CountryController extends Controller
         $this->authorize('create', Country::class);
 
         $validated = $request->validated();
+        $validated['native_name'] = json_decode(
+            $validated['native_name'],
+            true
+        );
 
         $country = Country::create($validated);
 
@@ -51,6 +55,11 @@ class CountryController extends Controller
         $this->authorize('update', $country);
 
         $validated = $request->validated();
+
+        $validated['native_name'] = json_decode(
+            $validated['native_name'],
+            true
+        );
 
         $country->update($validated);
 

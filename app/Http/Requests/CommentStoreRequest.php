@@ -30,6 +30,8 @@ class CommentStoreRequest extends FormRequest
             'name' => ['required', 'max:255', 'string'],
             'email' => ['required', 'email'],
             'avatar' => ['nullable', 'file'],
+            'is_spam' => ['nullable', 'boolean'],
+            'is_public' => ['nullable', 'boolean'],
         ];
     }
 }

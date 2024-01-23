@@ -9,6 +9,7 @@ use Filament\Resources\Table;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Tables\Actions\EditAction;
+use Filament\Forms\Components\TextInput;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Filters\SelectFilter;
@@ -21,11 +22,49 @@ class PageTemplatesRelationManager extends RelationManager
 {
     protected static string $relationship = 'pageTemplates';
 
-    protected static ?string $recordTitleAttribute = 'id';
+    protected static ?string $recordTitleAttribute = 'title';
 
     public static function form(Form $form): Form
     {
-        return $form->schema([Grid::make(['default' => 0])->schema([])]);
+        return $form->schema([
+            Grid::make(['default' => 0])->schema([
+                TextInput::make('title')
+                    ->rules(['max:255', 'string'])
+                    ->placeholder('Title')
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
+
+                TextInput::make('slug')
+                    ->rules(['max:255', 'string'])
+                    ->placeholder('Slug')
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
+
+                TextInput::make('theme')
+                    ->rules(['max:255', 'string'])
+                    ->placeholder('Theme')
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
+
+                TextInput::make('view')
+                    ->rules(['max:255', 'string'])
+                    ->placeholder('View')
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
+            ]),
+        ]);
     }
 
     public static function table(Table $table): Table
@@ -33,6 +72,10 @@ class PageTemplatesRelationManager extends RelationManager
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('page.title')->limit(50),
+                Tables\Columns\TextColumn::make('title')->limit(50),
+                Tables\Columns\TextColumn::make('slug')->limit(50),
+                Tables\Columns\TextColumn::make('theme')->limit(50),
+                Tables\Columns\TextColumn::make('view')->limit(50),
             ])
             ->filters([
                 Tables\Filters\Filter::make('created_at')

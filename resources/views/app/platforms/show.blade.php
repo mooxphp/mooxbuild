@@ -14,7 +14,41 @@
                     ></a>
                 </x-slot>
 
-                <div class="mt-4 px-4"></div>
+                <div class="mt-4 px-4">
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.platforms.inputs.master')
+                        </h5>
+                        <span>{{ $platform->master ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.platforms.inputs.title')
+                        </h5>
+                        <span>{{ $platform->title ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.platforms.inputs.slug')
+                        </h5>
+                        <span>{{ $platform->slug ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.platforms.inputs.bind_to_domain')
+                        </h5>
+                        <span>{{ $platform->bind_to_domain ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.platforms.inputs.thumbnail')
+                        </h5>
+                        <x-partials.thumbnail
+                            src="{{ $platform->thumbnail ? \Storage::url($platform->thumbnail) : '' }}"
+                            size="150"
+                        />
+                    </div>
+                </div>
 
                 <div class="mt-10">
                     <a href="{{ route('platforms.index') }}" class="button">

@@ -29,12 +29,15 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.users.inputs.whitelist_id')
+                            @lang('crud.users.inputs.profile_photo_path')
                         </h5>
-                        <span
-                            >{{ optional($user->whitelist)->comment ?? '-'
-                            }}</span
-                        >
+                        <span>{{ $user->profile_photo_path ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.users.inputs.bypass_token')
+                        </h5>
+                        <span>{{ $user->bypass_token ?? '-' }}</span>
                     </div>
                 </div>
 

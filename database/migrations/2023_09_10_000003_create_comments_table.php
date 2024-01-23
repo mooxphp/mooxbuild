@@ -22,8 +22,11 @@ return new class extends Migration {
             $table->string('name');
             $table->string('email');
             $table->string('avatar')->nullable();
+            $table->boolean('is_spam')->nullable();
+            $table->boolean('is_public')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -33,7 +33,21 @@ class ContinentCountriesController extends Controller
     ): CountryResource {
         $this->authorize('create', Country::class);
 
-        $validated = $request->validate([]);
+        $validated = $request->validate([
+            'title' => ['required', 'max:255', 'string'],
+            'slug' => ['required', 'max:255', 'string'],
+            'delivery' => ['nullable', 'boolean'],
+            'official' => ['required', 'max:255', 'string'],
+            'native_name' => ['required', 'max:255', 'json'],
+            'tld' => ['nullable', 'max:255', 'string'],
+            'independent' => ['nullable', 'boolean'],
+            'un_member' => ['nullable', 'boolean'],
+            'status' => ['nullable', 'in:officially-assigned,user-assigned'],
+            'cca2' => ['nullable', 'max:255', 'string'],
+            'ccn3' => ['nullable', 'max:255', 'string'],
+            'cca3' => ['nullable', 'max:255', 'string'],
+            'cioc' => ['nullable', 'max:255', 'string'],
+        ]);
 
         $country = $continent->countries()->create($validated);
 

@@ -11,9 +11,31 @@ class Country extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['continent_id'];
+    protected $fillable = [
+        'title',
+        'slug',
+        'continent_id',
+        'delivery',
+        'official',
+        'native_name',
+        'tld',
+        'independent',
+        'un_member',
+        'status',
+        'cca2',
+        'ccn3',
+        'cca3',
+        'cioc',
+    ];
 
     protected $searchableFields = ['*'];
+
+    protected $casts = [
+        'delivery' => 'boolean',
+        'native_name' => 'array',
+        'independent' => 'boolean',
+        'un_member' => 'boolean',
+    ];
 
     public function continent()
     {

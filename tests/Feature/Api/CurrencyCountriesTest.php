@@ -40,7 +40,7 @@ class CurrencyCountriesTest extends TestCase
             route('api.currencies.countries.index', $currency)
         );
 
-        $response->assertOk()->assertSee($country->id);
+        $response->assertOk()->assertSee($country->title);
     }
 
     /**

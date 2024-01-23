@@ -23,16 +23,6 @@
                         Authors
                         </x-dropdown-link>
                         @endcan
-                        @can('view-any', App\Models\Blacklist::class)
-                        <x-dropdown-link href="{{ route('blacklists.index') }}">
-                        Blacklists
-                        </x-dropdown-link>
-                        @endcan
-                        @can('view-any', App\Models\BypassToken::class)
-                        <x-dropdown-link href="{{ route('bypass-tokens.index') }}">
-                        Bypass Tokens
-                        </x-dropdown-link>
-                        @endcan
                         @can('view-any', App\Models\Cart::class)
                         <x-dropdown-link href="{{ route('carts.index') }}">
                         Carts
@@ -68,6 +58,11 @@
                         Customers
                         </x-dropdown-link>
                         @endcan
+                        @can('view-any', App\Models\FirewallRule::class)
+                        <x-dropdown-link href="{{ route('firewall-rules.index') }}">
+                        Firewall Rules
+                        </x-dropdown-link>
+                        @endcan
                         @can('view-any', App\Models\Item::class)
                         <x-dropdown-link href="{{ route('items.index') }}">
                         Items
@@ -76,6 +71,11 @@
                         @can('view-any', App\Models\Language::class)
                         <x-dropdown-link href="{{ route('languages.index') }}">
                         Languages
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Media::class)
+                        <x-dropdown-link href="{{ route('media.index') }}">
+                        Media
                         </x-dropdown-link>
                         @endcan
                         @can('view-any', App\Models\Order::class)
@@ -128,9 +128,9 @@
                         Settings
                         </x-dropdown-link>
                         @endcan
-                        @can('view-any', App\Models\Whitelist::class)
-                        <x-dropdown-link href="{{ route('whitelists.index') }}">
-                        Whitelists
+                        @can('view-any', App\Models\Tag::class)
+                        <x-dropdown-link href="{{ route('tags.index') }}">
+                        Tags
                         </x-dropdown-link>
                         @endcan
                         @can('view-any', App\Models\Timezone::class)
@@ -138,19 +138,9 @@
                         Timezones
                         </x-dropdown-link>
                         @endcan
-                        @can('view-any', App\Models\Tag::class)
-                        <x-dropdown-link href="{{ route('tags.index') }}">
-                        Tags
-                        </x-dropdown-link>
-                        @endcan
                         @can('view-any', App\Models\User::class)
                         <x-dropdown-link href="{{ route('users.index') }}">
                         Users
-                        </x-dropdown-link>
-                        @endcan
-                        @can('view-any', App\Models\Subscription::class)
-                        <x-dropdown-link href="{{ route('subscriptions.index') }}">
-                        Subscriptions
                         </x-dropdown-link>
                         @endcan
                 </x-nav-dropdown>
@@ -286,16 +276,6 @@
                 Authors
                 </x-responsive-nav-link>
                 @endcan
-                @can('view-any', App\Models\Blacklist::class)
-                <x-responsive-nav-link href="{{ route('blacklists.index') }}">
-                Blacklists
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\BypassToken::class)
-                <x-responsive-nav-link href="{{ route('bypass-tokens.index') }}">
-                Bypass Tokens
-                </x-responsive-nav-link>
-                @endcan
                 @can('view-any', App\Models\Cart::class)
                 <x-responsive-nav-link href="{{ route('carts.index') }}">
                 Carts
@@ -331,6 +311,11 @@
                 Customers
                 </x-responsive-nav-link>
                 @endcan
+                @can('view-any', App\Models\FirewallRule::class)
+                <x-responsive-nav-link href="{{ route('firewall-rules.index') }}">
+                Firewall Rules
+                </x-responsive-nav-link>
+                @endcan
                 @can('view-any', App\Models\Item::class)
                 <x-responsive-nav-link href="{{ route('items.index') }}">
                 Items
@@ -339,6 +324,11 @@
                 @can('view-any', App\Models\Language::class)
                 <x-responsive-nav-link href="{{ route('languages.index') }}">
                 Languages
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Media::class)
+                <x-responsive-nav-link href="{{ route('media.index') }}">
+                Media
                 </x-responsive-nav-link>
                 @endcan
                 @can('view-any', App\Models\Order::class)
@@ -391,9 +381,9 @@
                 Settings
                 </x-responsive-nav-link>
                 @endcan
-                @can('view-any', App\Models\Whitelist::class)
-                <x-responsive-nav-link href="{{ route('whitelists.index') }}">
-                Whitelists
+                @can('view-any', App\Models\Tag::class)
+                <x-responsive-nav-link href="{{ route('tags.index') }}">
+                Tags
                 </x-responsive-nav-link>
                 @endcan
                 @can('view-any', App\Models\Timezone::class)
@@ -401,19 +391,9 @@
                 Timezones
                 </x-responsive-nav-link>
                 @endcan
-                @can('view-any', App\Models\Tag::class)
-                <x-responsive-nav-link href="{{ route('tags.index') }}">
-                Tags
-                </x-responsive-nav-link>
-                @endcan
                 @can('view-any', App\Models\User::class)
                 <x-responsive-nav-link href="{{ route('users.index') }}">
                 Users
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\Subscription::class)
-                <x-responsive-nav-link href="{{ route('subscriptions.index') }}">
-                Subscriptions
                 </x-responsive-nav-link>
                 @endcan
 

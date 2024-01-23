@@ -20,8 +20,6 @@ class DatabaseSeeder extends Seeder
             ]);
 
         $this->call(AuthorSeeder::class);
-        $this->call(BlacklistSeeder::class);
-        $this->call(BypassTokenSeeder::class);
         $this->call(CartSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(CommentSeeder::class);
@@ -29,8 +27,10 @@ class DatabaseSeeder extends Seeder
         $this->call(CountrySeeder::class);
         $this->call(CurrencySeeder::class);
         $this->call(CustomerSeeder::class);
+        $this->call(FirewallRuleSeeder::class);
         $this->call(ItemSeeder::class);
         $this->call(LanguageSeeder::class);
+        $this->call(MediaSeeder::class);
         $this->call(OrderSeeder::class);
         $this->call(PageSeeder::class);
         $this->call(PageTemplateSeeder::class);
@@ -39,12 +39,12 @@ class DatabaseSeeder extends Seeder
         $this->call(PostalCodeSeeder::class);
         $this->call(ProductSeeder::class);
         $this->call(RevisionSeeder::class);
+        $this->call(RouteSeeder::class);
         $this->call(SeoSeeder::class);
         $this->call(SettingSeeder::class);
-        $this->call(SubscriptionSeeder::class);
+        $this->call(SyncSeeder::class);
         $this->call(TagSeeder::class);
         $this->call(TimezoneSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(WhitelistSeeder::class);
     }
 }

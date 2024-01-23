@@ -23,7 +23,13 @@ class User extends Authenticatable implements FilamentUser
     use HasProfilePhoto;
     use TwoFactorAuthenticatable;
 
-    protected $fillable = ['name', 'email', 'password', 'whitelist_id'];
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'profile_photo_path',
+        'bypass_token',
+    ];
 
     protected $searchableFields = ['*'];
 
@@ -49,24 +55,9 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasOne(Customer::class);
     }
 
-    public function whitelist()
+    public function syncs()
     {
-        return $this->belongsTo(Whitelist::class);
-    }
-
-    public function bypassTokens()
-    {
-        return $this->hasMany(BypassToken::class);
-    }
-
-    public function subscription()
-    {
-        return $this->hasOne(Subscription::class);
-    }
-
-    public function platforms()
-    {
-        return $this->morphToMany(Platform::class, 'platformable');
+        return $this->morphMany(Sync::class, 'syncable');
     }
 
     public function isSuperAdmin(): bool

@@ -26,6 +26,19 @@ class CountryControllerTest extends TestCase
         $this->withoutExceptionHandling();
     }
 
+    protected function castToJson($json)
+    {
+        if (is_array($json)) {
+            $json = addslashes(json_encode($json));
+        } elseif (is_null($json) || is_null(json_decode($json))) {
+            throw new \Exception(
+                'A valid JSON string was not provided for casting.'
+            );
+        }
+
+        return \DB::raw("CAST('{$json}' AS JSON)");
+    }
+
     /**
      * @test
      */
@@ -62,7 +75,11 @@ class CountryControllerTest extends TestCase
             ->make()
             ->toArray();
 
+        $data['native_name'] = json_encode($data['native_name']);
+
         $response = $this->post(route('countries.store'), $data);
+
+        $data['native_name'] = $this->castToJson($data['native_name']);
 
         $this->assertDatabaseHas('countries', $data);
 
@@ -111,12 +128,29 @@ class CountryControllerTest extends TestCase
         $continent = Continent::factory()->create();
 
         $data = [
+            'title' => $this->faker->sentence(10),
+            'slug' => $this->faker->slug(),
+            'delivery' => $this->faker->boolean(),
+            'official' => $this->faker->text(255),
+            'native_name' => [],
+            'tld' => $this->faker->text(255),
+            'independent' => $this->faker->boolean(),
+            'un_member' => $this->faker->boolean(),
+            'status' => 'officially-assigned',
+            'cca2' => $this->faker->text(255),
+            'ccn3' => $this->faker->text(255),
+            'cca3' => $this->faker->text(255),
+            'cioc' => $this->faker->text(255),
             'continent_id' => $continent->id,
         ];
+
+        $data['native_name'] = json_encode($data['native_name']);
 
         $response = $this->put(route('countries.update', $country), $data);
 
         $data['id'] = $country->id;
+
+        $data['native_name'] = $this->castToJson($data['native_name']);
 
         $this->assertDatabaseHas('countries', $data);
 

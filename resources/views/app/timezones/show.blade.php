@@ -14,7 +14,44 @@
                     ></a>
                 </x-slot>
 
-                <div class="mt-4 px-4"></div>
+                <div class="mt-4 px-4">
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.timezones.inputs.zone_name')
+                        </h5>
+                        <span>{{ $timezone->zone_name ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.timezones.inputs.country_code')
+                        </h5>
+                        <span>{{ $timezone->country_code ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.timezones.inputs.abbreviation')
+                        </h5>
+                        <span>{{ $timezone->abbreviation ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.timezones.inputs.time_start')
+                        </h5>
+                        <span>{{ $timezone->time_start ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.timezones.inputs.gmt_offset')
+                        </h5>
+                        <span>{{ $timezone->gmt_offset ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.timezones.inputs.dst')
+                        </h5>
+                        <span>{{ $timezone->dst ?? '-' }}</span>
+                    </div>
+                </div>
 
                 <div class="mt-10">
                     <a href="{{ route('timezones.index') }}" class="button">

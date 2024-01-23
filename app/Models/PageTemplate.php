@@ -11,7 +11,7 @@ class PageTemplate extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['page_id'];
+    protected $fillable = ['page_id', 'title', 'slug', 'theme', 'view'];
 
     protected $searchableFields = ['*'];
 

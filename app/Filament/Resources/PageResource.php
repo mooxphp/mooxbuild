@@ -2,26 +2,25 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
+use App\Filament\Filters\DateRangeFilter;
+use App\Filament\Resources\PageResource\Pages;
 use App\Models\Page;
-use Filament\Tables;
-use Filament\Resources\Form;
-use Filament\Resources\Table;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Card;
-use Filament\Forms\Components\Select;
-use Filament\Tables\Actions\ViewAction;
-use Filament\Tables\Actions\EditAction;
-use Filament\Forms\Components\KeyValue;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\RichEditor;
-use Filament\Tables\Filters\SelectFilter;
-use App\Filament\Filters\DateRangeFilter;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Resources\Form;
+use Filament\Resources\Resource;
+use Filament\Resources\Table;
+use Filament\Tables;
 use Filament\Tables\Actions\DeleteBulkAction;
-use App\Filament\Resources\PageResource\Pages;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Filters\SelectFilter;
 
 class PageResource extends Resource
 {
@@ -230,10 +229,9 @@ class PageResource extends Resource
                 Tables\Columns\TextColumn::make('mainCategory.title')
                     ->toggleable()
                     ->limit(50),
-                Tables\Columns\TextColumn::make('title')
+                Tables\Columns\TextInputColumn::make('title')
                     ->toggleable()
-                    ->searchable(true, null, true)
-                    ->limit(50),
+                    ->searchable(true, null, true),
                 Tables\Columns\TextColumn::make('slug')
                     ->toggleable()
                     ->searchable(true, null, true)

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\View\View;
-use App\Models\Whitelist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
@@ -37,9 +36,7 @@ class UserController extends Controller
     {
         $this->authorize('create', User::class);
 
-        $whitelists = Whitelist::pluck('comment', 'id');
-
-        return view('app.users.create', compact('whitelists'));
+        return view('app.users.create');
     }
 
     /**
@@ -77,9 +74,7 @@ class UserController extends Controller
     {
         $this->authorize('update', $user);
 
-        $whitelists = Whitelist::pluck('comment', 'id');
-
-        return view('app.users.edit', compact('user', 'whitelists'));
+        return view('app.users.edit', compact('user'));
     }
 
     /**

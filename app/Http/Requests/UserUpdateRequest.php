@@ -28,7 +28,8 @@ class UserUpdateRequest extends FormRequest
                 'email',
             ],
             'password' => ['nullable'],
-            'whitelist_id' => ['required', 'exists:whitelists,id'],
+            'profile_photo_path' => ['nullable', 'max:255', 'string'],
+            'bypass_token' => ['nullable', 'max:255', 'string'],
         ];
     }
 }

@@ -17,12 +17,92 @@
                 <div class="mt-4 px-4">
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
+                            @lang('crud.countries.inputs.title')
+                        </h5>
+                        <span>{{ $country->title ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.countries.inputs.slug')
+                        </h5>
+                        <span>{{ $country->slug ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
                             @lang('crud.countries.inputs.continent_id')
                         </h5>
                         <span
-                            >{{ optional($country->continent)->id ?? '-'
+                            >{{ optional($country->continent)->title ?? '-'
                             }}</span
                         >
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.countries.inputs.delivery')
+                        </h5>
+                        <span>{{ $country->delivery ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.countries.inputs.official')
+                        </h5>
+                        <span>{{ $country->official ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.countries.inputs.native_name')
+                        </h5>
+                        <pre>
+{{ json_encode($country->native_name) ?? '-' }}</pre
+                        >
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.countries.inputs.tld')
+                        </h5>
+                        <span>{{ $country->tld ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.countries.inputs.independent')
+                        </h5>
+                        <span>{{ $country->independent ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.countries.inputs.un_member')
+                        </h5>
+                        <span>{{ $country->un_member ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.countries.inputs.status')
+                        </h5>
+                        <span>{{ $country->status ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.countries.inputs.cca2')
+                        </h5>
+                        <span>{{ $country->cca2 ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.countries.inputs.ccn3')
+                        </h5>
+                        <span>{{ $country->ccn3 ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.countries.inputs.cca3')
+                        </h5>
+                        <span>{{ $country->cca3 ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.countries.inputs.cioc')
+                        </h5>
+                        <span>{{ $country->cioc ?? '-' }}</span>
                     </div>
                 </div>
 

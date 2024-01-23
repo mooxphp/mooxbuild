@@ -6,6 +6,7 @@ use App\Models\Platform;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PlatformStoreRequest;
 use App\Http\Requests\PlatformUpdateRequest;
 
@@ -46,6 +47,11 @@ class PlatformController extends Controller
         $this->authorize('create', Platform::class);
 
         $validated = $request->validated();
+        if ($request->hasFile('thumbnail')) {
+            $validated['thumbnail'] = $request
+                ->file('thumbnail')
+                ->store('public');
+        }
 
         $platform = Platform::create($validated);
 
@@ -84,6 +90,15 @@ class PlatformController extends Controller
         $this->authorize('update', $platform);
 
         $validated = $request->validated();
+        if ($request->hasFile('thumbnail')) {
+            if ($platform->thumbnail) {
+                Storage::delete($platform->thumbnail);
+            }
+
+            $validated['thumbnail'] = $request
+                ->file('thumbnail')
+                ->store('public');
+        }
 
         $platform->update($validated);
 
@@ -100,6 +115,10 @@ class PlatformController extends Controller
         Platform $platform
     ): RedirectResponse {
         $this->authorize('delete', $platform);
+
+        if ($platform->thumbnail) {
+            Storage::delete($platform->thumbnail);
+        }
 
         $platform->delete();
 

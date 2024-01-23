@@ -50,7 +50,46 @@
                         <thead class="text-gray-700">
                             <tr>
                                 <th class="px-4 py-3 text-left">
+                                    @lang('crud.countries.inputs.title')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.countries.inputs.slug')
+                                </th>
+                                <th class="px-4 py-3 text-left">
                                     @lang('crud.countries.inputs.continent_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.countries.inputs.delivery')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.countries.inputs.official')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.countries.inputs.native_name')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.countries.inputs.tld')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.countries.inputs.independent')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.countries.inputs.un_member')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.countries.inputs.status')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.countries.inputs.cca2')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.countries.inputs.ccn3')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.countries.inputs.cca3')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.countries.inputs.cioc')
                                 </th>
                                 <th></th>
                             </tr>
@@ -59,8 +98,49 @@
                             @forelse($countries as $country)
                             <tr class="hover:bg-gray-50">
                                 <td class="px-4 py-3 text-left">
-                                    {{ optional($country->continent)->id ?? '-'
-                                    }}
+                                    {{ $country->title ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $country->slug ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ optional($country->continent)->title ??
+                                    '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $country->delivery ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $country->official ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-right">
+                                    <pre>
+{{ json_encode($country->native_name) ?? '-' }}</pre
+                                    >
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $country->tld ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $country->independent ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $country->un_member ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $country->status ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $country->cca2 ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $country->ccn3 ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $country->cca3 ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $country->cioc ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -127,7 +207,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="2">
+                                <td colspan="15">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -135,7 +215,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="15">
                                     <div class="mt-10 px-4">
                                         {!! $countries->render() !!}
                                     </div>

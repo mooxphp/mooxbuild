@@ -139,6 +139,24 @@ class CommentResource extends Resource
                             'md' => 12,
                             'lg' => 12,
                         ]),
+
+                    Toggle::make('is_spam')
+                        ->rules(['boolean'])
+                        ->nullable()
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    Toggle::make('is_public')
+                        ->rules(['boolean'])
+                        ->nullable()
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
                 ]),
             ]),
         ]);
@@ -181,6 +199,12 @@ class CommentResource extends Resource
                 Tables\Columns\ImageColumn::make('avatar')
                     ->toggleable()
                     ->circular(),
+                Tables\Columns\IconColumn::make('is_spam')
+                    ->toggleable()
+                    ->boolean(),
+                Tables\Columns\IconColumn::make('is_public')
+                    ->toggleable()
+                    ->boolean(),
             ])
             ->filters([
                 DateRangeFilter::make('created_at'),

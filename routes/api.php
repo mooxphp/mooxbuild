@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\MediaController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\CommentController;
@@ -23,20 +24,18 @@ use App\Http\Controllers\Api\LanguageController;
 use App\Http\Controllers\Api\PlatformController;
 use App\Http\Controllers\Api\RevisionController;
 use App\Http\Controllers\Api\TimezoneController;
-use App\Http\Controllers\Api\BlacklistController;
 use App\Http\Controllers\Api\ContinentController;
 use App\Http\Controllers\Api\ItemItemsController;
 use App\Http\Controllers\Api\PagePagesController;
-use App\Http\Controllers\Api\WhitelistController;
+use App\Http\Controllers\Api\PostPostsController;
 use App\Http\Controllers\Api\PostalCodeController;
 use App\Http\Controllers\Api\AuthorPostsController;
 use App\Http\Controllers\Api\AuthorPagesController;
 use App\Http\Controllers\Api\AuthorItemsController;
-use App\Http\Controllers\Api\BypassTokenController;
 use App\Http\Controllers\Api\UserAuthorsController;
+use App\Http\Controllers\Api\FirewallRuleController;
 use App\Http\Controllers\Api\LanguageTagsController;
 use App\Http\Controllers\Api\PageTemplateController;
-use App\Http\Controllers\Api\SubscriptionController;
 use App\Http\Controllers\Api\CategoryPostsController;
 use App\Http\Controllers\Api\CategoryItemsController;
 use App\Http\Controllers\Api\CategoryPagesController;
@@ -44,6 +43,7 @@ use App\Http\Controllers\Api\CustomerCartsController;
 use App\Http\Controllers\Api\LanguagePostsController;
 use App\Http\Controllers\Api\LanguagePagesController;
 use App\Http\Controllers\Api\LanguageItemsController;
+use App\Http\Controllers\Api\PlatformSyncsController;
 use App\Http\Controllers\Api\AuthorProductsController;
 use App\Http\Controllers\Api\AuthorCommentsController;
 use App\Http\Controllers\Api\ProductProductsController;
@@ -51,7 +51,6 @@ use App\Http\Controllers\Api\CategoryProductsController;
 use App\Http\Controllers\Api\CountryTimezonesController;
 use App\Http\Controllers\Api\CountryLanguagesController;
 use App\Http\Controllers\Api\LanguageProductsController;
-use App\Http\Controllers\Api\UserBypassTokensController;
 use App\Http\Controllers\Api\CountryCurrenciesController;
 use App\Http\Controllers\Api\CurrencyCountriesController;
 use App\Http\Controllers\Api\LanguageCountriesController;
@@ -133,10 +132,6 @@ Route::name('api.')
             AuthorItemsController::class,
             'store',
         ])->name('authors.items.store');
-
-        Route::apiResource('blacklists', BlacklistController::class);
-
-        Route::apiResource('bypass-tokens', BypassTokenController::class);
 
         Route::apiResource('carts', CartController::class);
 
@@ -268,6 +263,8 @@ Route::name('api.')
             'store',
         ])->name('customers.carts.store');
 
+        Route::apiResource('firewall-rules', FirewallRuleController::class);
+
         Route::apiResource('items', ItemController::class);
 
         // Item Has Translations
@@ -356,6 +353,8 @@ Route::name('api.')
             'destroy',
         ])->name('languages.countries.destroy');
 
+        Route::apiResource('media', MediaController::class);
+
         Route::apiResource('orders', OrderController::class);
 
         Route::apiResource('pages', PageController::class);
@@ -384,7 +383,37 @@ Route::name('api.')
 
         Route::apiResource('platforms', PlatformController::class);
 
+        // Platform Syncs
+        Route::get('/platforms/{platform}/syncs', [
+            PlatformSyncsController::class,
+            'index',
+        ])->name('platforms.syncs.index');
+        Route::post('/platforms/{platform}/syncs', [
+            PlatformSyncsController::class,
+            'store',
+        ])->name('platforms.syncs.store');
+
+        // Platform Syncs2
+        Route::get('/platforms/{platform}/syncs', [
+            PlatformSyncsController::class,
+            'index',
+        ])->name('platforms.syncs.index');
+        Route::post('/platforms/{platform}/syncs', [
+            PlatformSyncsController::class,
+            'store',
+        ])->name('platforms.syncs.store');
+
         Route::apiResource('posts', PostController::class);
+
+        // Post Has Translations
+        Route::get('/posts/{post}/posts', [
+            PostPostsController::class,
+            'index',
+        ])->name('posts.posts.index');
+        Route::post('/posts/{post}/posts', [
+            PostPostsController::class,
+            'store',
+        ])->name('posts.posts.store');
 
         Route::apiResource('postal-codes', PostalCodeController::class);
 
@@ -406,7 +435,7 @@ Route::name('api.')
 
         Route::apiResource('settings', SettingController::class);
 
-        Route::apiResource('whitelists', WhitelistController::class);
+        Route::apiResource('tags', TagController::class);
 
         Route::apiResource('timezones', TimezoneController::class);
 
@@ -424,8 +453,6 @@ Route::name('api.')
             'destroy',
         ])->name('timezones.countries.destroy');
 
-        Route::apiResource('tags', TagController::class);
-
         Route::apiResource('users', UserController::class);
 
         // User Authors
@@ -437,16 +464,4 @@ Route::name('api.')
             UserAuthorsController::class,
             'store',
         ])->name('users.authors.store');
-
-        // User Bypass Tokens
-        Route::get('/users/{user}/bypass-tokens', [
-            UserBypassTokensController::class,
-            'index',
-        ])->name('users.bypass-tokens.index');
-        Route::post('/users/{user}/bypass-tokens', [
-            UserBypassTokensController::class,
-            'store',
-        ])->name('users.bypass-tokens.store');
-
-        Route::apiResource('subscriptions', SubscriptionController::class);
     });

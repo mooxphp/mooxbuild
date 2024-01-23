@@ -136,6 +136,8 @@ class CommentControllerTest extends TestCase
             'is_from_author' => $this->faker->boolean(),
             'name' => $this->faker->name(),
             'email' => $this->faker->email(),
+            'is_spam' => $this->faker->boolean(),
+            'is_public' => $this->faker->boolean(),
             'parent_id' => $comment->id,
             'author_id' => $author->id,
         ];
@@ -164,6 +166,6 @@ class CommentControllerTest extends TestCase
 
         $response->assertRedirect(route('comments.index'));
 
-        $this->assertModelMissing($comment);
+        $this->assertSoftDeleted($comment);
     }
 }

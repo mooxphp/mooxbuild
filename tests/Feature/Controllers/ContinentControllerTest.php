@@ -106,7 +106,13 @@ class ContinentControllerTest extends TestCase
     {
         $continent = Continent::factory()->create();
 
-        $data = [];
+        $continent = Continent::factory()->create();
+
+        $data = [
+            'title' => $this->faker->sentence(10),
+            'slug' => $this->faker->slug(),
+            'parent_continent_id' => $continent->id,
+        ];
 
         $response = $this->put(route('continents.update', $continent), $data);
 

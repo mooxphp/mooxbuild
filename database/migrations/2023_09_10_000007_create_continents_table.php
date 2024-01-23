@@ -12,6 +12,9 @@ return new class extends Migration {
     {
         Schema::create('continents', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title');
+            $table->string('slug');
+            $table->unsignedBigInteger('parent_continent_id')->nullable();
 
             $table->timestamps();
         });

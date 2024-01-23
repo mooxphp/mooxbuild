@@ -49,12 +49,31 @@
                     <table class="w-full max-w-full mb-4 bg-transparent">
                         <thead class="text-gray-700">
                             <tr>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.continents.inputs.title')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.continents.inputs.slug')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.continents.inputs.parent_continent_id')
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody class="text-gray-600">
                             @forelse($continents as $continent)
                             <tr class="hover:bg-gray-50">
+                                <td class="px-4 py-3 text-left">
+                                    {{ $continent->title ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $continent->slug ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ optional($continent->continent)->title ??
+                                    '-' }}
+                                </td>
                                 <td
                                     class="px-4 py-3 text-center"
                                     style="width: 134px;"
@@ -120,7 +139,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="1">
+                                <td colspan="4">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -128,7 +147,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="1">
+                                <td colspan="4">
                                     <div class="mt-10 px-4">
                                         {!! $continents->render() !!}
                                     </div>

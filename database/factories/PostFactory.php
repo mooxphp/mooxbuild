@@ -36,13 +36,13 @@ class PostFactory extends Factory
             'edited_by_user_name' => $this->faker->text(255),
             'published_at' => $this->faker->dateTime(),
             'author_id' => \App\Models\Author::factory(),
+            'main_category_id' => \App\Models\Category::factory(),
+            'language_id' => \App\Models\Language::factory(),
             'translation_id' => function () {
                 return \App\Models\Post::factory()->create([
                     'translation_id' => null,
                 ])->id;
             },
-            'main_category_id' => \App\Models\Category::factory(),
-            'language_id' => \App\Models\Language::factory(),
         ];
     }
 }

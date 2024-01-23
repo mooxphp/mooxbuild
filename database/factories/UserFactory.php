@@ -28,7 +28,9 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => \Hash::make('password'),
             'remember_token' => Str::random(10),
-            'whitelist_id' => \App\Models\Whitelist::factory(),
+            'avatar_url' => $this->faker->text(2048),
+            'profile_photo_path' => $this->faker->text(255),
+            'bypass_token' => $this->faker->text(255),
         ];
     }
 
