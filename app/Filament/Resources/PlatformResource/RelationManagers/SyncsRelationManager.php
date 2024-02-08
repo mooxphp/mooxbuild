@@ -25,8 +25,6 @@ class SyncsRelationManager extends RelationManager
 
     protected static ?string $recordTitleAttribute = 'syncable_type';
 
-    protected static bool $shouldRegisterNavigation = false;
-
     public static function form(Form $form): Form
     {
         return $form->schema([

@@ -89,4 +89,9 @@ class Page extends Model
     {
         return $this->morphOne(Seo::class, 'seoable');
     }
+
+    public function contents()
+    {
+        return $this->morphToMany(Content::class, 'contentable');
+    }
 }

@@ -25,7 +25,6 @@ class PageTemplateFactory extends Factory
         return [
             'title' => $this->faker->sentence(10),
             'slug' => $this->faker->slug(),
-            'theme' => $this->faker->text(255),
             'view' => $this->faker->text(255),
             'page_id' => \App\Models\Page::factory(),
         ];

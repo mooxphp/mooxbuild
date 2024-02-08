@@ -29,6 +29,12 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
+                            @lang('crud.firewall_rules.inputs.all_rule')
+                        </h5>
+                        <span>{{ $firewallRule->all_rule ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
                             @lang('crud.firewall_rules.inputs.ip_address')
                         </h5>
                         <span>{{ $firewallRule->ip_address ?? '-' }}</span>

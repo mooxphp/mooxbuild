@@ -64,16 +64,6 @@ class PageTemplateResource extends Resource
                             'lg' => 12,
                         ]),
 
-                    TextInput::make('theme')
-                        ->rules(['max:255', 'string'])
-                        ->required()
-                        ->placeholder('Theme')
-                        ->columnSpan([
-                            'default' => 12,
-                            'md' => 12,
-                            'lg' => 12,
-                        ]),
-
                     TextInput::make('view')
                         ->rules(['max:255', 'string'])
                         ->required()
@@ -101,10 +91,6 @@ class PageTemplateResource extends Resource
                     ->searchable(true, null, true)
                     ->limit(50),
                 Tables\Columns\TextColumn::make('slug')
-                    ->toggleable()
-                    ->searchable(true, null, true)
-                    ->limit(50),
-                Tables\Columns\TextColumn::make('theme')
                     ->toggleable()
                     ->searchable(true, null, true)
                     ->limit(50),

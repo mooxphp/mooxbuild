@@ -35,17 +35,6 @@
 
     <x-inputs.group class="w-full">
         <x-inputs.text
-            name="theme"
-            label="Theme"
-            :value="old('theme', ($editing ? $pageTemplate->theme : ''))"
-            maxlength="255"
-            placeholder="Theme"
-            required
-        ></x-inputs.text>
-    </x-inputs.group>
-
-    <x-inputs.group class="w-full">
-        <x-inputs.text
             name="view"
             label="View"
             :value="old('view', ($editing ? $pageTemplate->view : ''))"

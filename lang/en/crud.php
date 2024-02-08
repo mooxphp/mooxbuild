@@ -22,6 +22,36 @@ return [
         'removed' => 'Successfully removed',
     ],
 
+    'activity_logs' => [
+        'name' => 'Activity Logs',
+        'index_title' => 'ActivityLogs List',
+        'new_title' => 'New Activity log',
+        'create_title' => 'Create ActivityLog',
+        'edit_title' => 'Edit ActivityLog',
+        'show_title' => 'Show ActivityLog',
+        'inputs' => [
+            'log_name' => 'Log Name',
+            'description' => 'Description',
+            'subject_type' => 'Subject Type',
+            'event' => 'Event',
+            'subject_id' => 'Subject Id',
+            'causer_type' => 'Causer Type',
+            'causer_id' => 'Causer Id',
+            'properties' => 'Properties',
+            'batch_uuid' => 'Batch Uuid',
+        ],
+    ],
+
+    'addresses' => [
+        'name' => 'Addresses',
+        'index_title' => 'Addresses List',
+        'new_title' => 'New Address',
+        'create_title' => 'Create Address',
+        'edit_title' => 'Edit Address',
+        'show_title' => 'Show Address',
+        'inputs' => [],
+    ],
+
     'authors' => [
         'name' => 'Authors',
         'index_title' => 'Authors List',
@@ -106,6 +136,50 @@ return [
         ],
     ],
 
+    'companies' => [
+        'name' => 'Companies',
+        'index_title' => 'Companies List',
+        'new_title' => 'New Company',
+        'create_title' => 'Create Company',
+        'edit_title' => 'Edit Company',
+        'show_title' => 'Show Company',
+        'inputs' => [],
+    ],
+
+    'contents' => [
+        'name' => 'Contents',
+        'index_title' => 'Contents List',
+        'new_title' => 'New Content',
+        'create_title' => 'Create Content',
+        'edit_title' => 'Edit Content',
+        'show_title' => 'Show Content',
+        'inputs' => [
+            'content_element_id' => 'Content Element',
+            'title' => 'Title',
+            'slug' => 'Slug',
+            'data' => 'Data',
+            'settings' => 'Settings',
+        ],
+    ],
+
+    'content_elements' => [
+        'name' => 'Content Elements',
+        'index_title' => 'ContentElements List',
+        'new_title' => 'New Content element',
+        'create_title' => 'Create ContentElement',
+        'edit_title' => 'Edit ContentElement',
+        'show_title' => 'Show ContentElement',
+        'inputs' => [
+            'title' => 'Title',
+            'slug' => 'Slug',
+            'description' => 'Description',
+            'data_structure' => 'Data Structure',
+            'template' => 'Template',
+            'component' => 'Component',
+            'theme_id' => 'Theme',
+        ],
+    ],
+
     'continents' => [
         'name' => 'Continents',
         'index_title' => 'Continents List',
@@ -167,6 +241,33 @@ return [
         ],
     ],
 
+    'departments' => [
+        'name' => 'Departments',
+        'index_title' => 'Departments List',
+        'new_title' => 'New Department',
+        'create_title' => 'Create Department',
+        'edit_title' => 'Edit Department',
+        'show_title' => 'Show Department',
+        'inputs' => [],
+    ],
+
+    'failed_jobs' => [
+        'name' => 'Failed Jobs',
+        'index_title' => 'FailedJobs List',
+        'new_title' => 'New Failed job',
+        'create_title' => 'Create FailedJob',
+        'edit_title' => 'Edit FailedJob',
+        'show_title' => 'Show FailedJob',
+        'inputs' => [
+            'uuid' => 'Uuid',
+            'connection' => 'Connection',
+            'queue' => 'Queue',
+            'payload' => 'Payload',
+            'exception' => 'Exception',
+            'failed_at' => 'Failed At',
+        ],
+    ],
+
     'firewall_rules' => [
         'name' => 'Firewall Rules',
         'index_title' => 'FirewallRules List',
@@ -177,6 +278,7 @@ return [
         'inputs' => [
             'rule' => 'Rule',
             'type' => 'Type',
+            'all_rule' => 'All Rule',
             'ip_address' => 'Ip Address',
         ],
     ],
@@ -206,6 +308,105 @@ return [
             'language_id' => 'Language',
             'translation_id' => 'Translation',
             'published_at' => 'Published At',
+        ],
+    ],
+
+    'jobs' => [
+        'name' => 'Jobs',
+        'index_title' => 'Jobs List',
+        'new_title' => 'New Job',
+        'create_title' => 'Create Job',
+        'edit_title' => 'Edit Job',
+        'show_title' => 'Show Job',
+        'inputs' => [
+            'queue' => 'Queue',
+            'payload' => 'Payload',
+            'attempts' => 'Attempts',
+            'reserved_at' => 'Reserved At',
+            'available_at' => 'Available At',
+            'created_at' => 'Created At',
+        ],
+    ],
+
+    'job_batches' => [
+        'name' => 'Job Batches',
+        'index_title' => 'JobBatches List',
+        'new_title' => 'New Job batch',
+        'create_title' => 'Create JobBatch',
+        'edit_title' => 'Edit JobBatch',
+        'show_title' => 'Show JobBatch',
+        'inputs' => [
+            'name' => 'Name',
+            'total_jobs' => 'Total Jobs',
+            'pending_jobs' => 'Pending Jobs',
+            'failed_jobs' => 'Failed Jobs',
+            'failed_job_ids' => 'Failed Job Ids',
+            'options' => 'Options',
+            'cancelled_at' => 'Cancelled At',
+            'created_at' => 'Created At',
+            'finished_at' => 'Finished At',
+        ],
+    ],
+
+    'job_batch_managers' => [
+        'name' => 'Job Batch Managers',
+        'index_title' => 'JobBatchManagers List',
+        'new_title' => 'New Job batch manager',
+        'create_title' => 'Create JobBatchManager',
+        'edit_title' => 'Edit JobBatchManager',
+        'show_title' => 'Show JobBatchManager',
+        'inputs' => [
+            'batch_id' => 'Batch Id',
+            'name' => 'Name',
+            'total_jobs' => 'Total Jobs',
+            'pending_jobs' => 'Pending Jobs',
+            'failed_jobs' => 'Failed Jobs',
+            'failed_job_ids' => 'Failed Job Ids',
+            'options' => 'Options',
+            'cancelled_at' => 'Cancelled At',
+            'finished_at' => 'Finished At',
+            'status' => 'Status',
+        ],
+    ],
+
+    'job_managers' => [
+        'name' => 'Job Managers',
+        'index_title' => 'JobManagers List',
+        'new_title' => 'New Job manager',
+        'create_title' => 'Create JobManager',
+        'edit_title' => 'Edit JobManager',
+        'show_title' => 'Show JobManager',
+        'inputs' => [
+            'job_id' => 'Job Id',
+            'name' => 'Name',
+            'queue' => 'Queue',
+            'available_at' => 'Available At',
+            'started_at' => 'Started At',
+            'finished_at' => 'Finished At',
+            'failed' => 'Failed',
+            'attempt' => 'Attempt',
+            'progress' => 'Progress',
+            'exception_message' => 'Exception Message',
+            'status' => 'Status',
+            'job_queue_worker_id' => 'Job Queue Worker',
+        ],
+    ],
+
+    'job_queue_workers' => [
+        'name' => 'Job Queue Workers',
+        'index_title' => 'JobQueueWorkers List',
+        'new_title' => 'New Job queue worker',
+        'create_title' => 'Create JobQueueWorker',
+        'edit_title' => 'Edit JobQueueWorker',
+        'show_title' => 'Show JobQueueWorker',
+        'inputs' => [
+            'worker_pid' => 'Worker Pid',
+            'queue' => 'Queue',
+            'worker_server' => 'Worker Server',
+            'supervisor' => 'Supervisor',
+            'status' => 'Status',
+            'started_at' => 'Started At',
+            'stopped_at' => 'Stopped At',
         ],
     ],
 
@@ -301,7 +502,6 @@ return [
             'page_id' => 'Page',
             'title' => 'Title',
             'slug' => 'Slug',
-            'theme' => 'Theme',
             'view' => 'View',
         ],
     ],
@@ -420,6 +620,16 @@ return [
         ],
     ],
 
+    'routes' => [
+        'name' => 'Routes',
+        'index_title' => 'Routes List',
+        'new_title' => 'New Route',
+        'create_title' => 'Create Route',
+        'edit_title' => 'Edit Route',
+        'show_title' => 'Show Route',
+        'inputs' => [],
+    ],
+
     'seos' => [
         'name' => 'Seos',
         'index_title' => 'Seos List',
@@ -467,6 +677,22 @@ return [
         'inputs' => [],
     ],
 
+    'syncs' => [
+        'name' => 'Syncs',
+        'index_title' => 'Syncs List',
+        'new_title' => 'New Sync',
+        'create_title' => 'Create Sync',
+        'edit_title' => 'Edit Sync',
+        'show_title' => 'Show Sync',
+        'inputs' => [
+            'syncable_id' => 'Syncable Id',
+            'syncable_type' => 'Syncable Type',
+            'source_platform_id' => 'Source Platform',
+            'target_platform_id' => 'Target Platform',
+            'last_sync' => 'Last Sync',
+        ],
+    ],
+
     'tags' => [
         'name' => 'Tags',
         'index_title' => 'Tags List',
@@ -491,6 +717,32 @@ return [
             'language_id' => 'Language',
             'translation_id' => 'Translation',
             'published_at' => 'Published At',
+        ],
+    ],
+
+    'teams' => [
+        'name' => 'Teams',
+        'index_title' => 'Teams List',
+        'new_title' => 'New Team',
+        'create_title' => 'Create Team',
+        'edit_title' => 'Edit Team',
+        'show_title' => 'Show Team',
+        'inputs' => [],
+    ],
+
+    'themes' => [
+        'name' => 'Themes',
+        'index_title' => 'Themes List',
+        'new_title' => 'New Theme',
+        'create_title' => 'Create Theme',
+        'edit_title' => 'Edit Theme',
+        'show_title' => 'Show Theme',
+        'inputs' => [
+            'title' => 'Title',
+            'slug' => 'Slug',
+            'theme_package' => 'Theme Package',
+            'themeable_id' => 'Themeable Id',
+            'themeable_type' => 'Themeable Type',
         ],
     ],
 
@@ -525,5 +777,15 @@ return [
             'profile_photo_path' => 'Profile Photo Path',
             'bypass_token' => 'Bypass Token',
         ],
+    ],
+
+    'wishlists' => [
+        'name' => 'Wishlists',
+        'index_title' => 'Wishlists List',
+        'new_title' => 'New Wishlist',
+        'create_title' => 'Create Wishlist',
+        'edit_title' => 'Edit Wishlist',
+        'show_title' => 'Show Wishlist',
+        'inputs' => [],
     ],
 ];

@@ -23,7 +23,6 @@ class PageTemplateStoreRequest extends FormRequest
             'page_id' => ['required', 'exists:pages,id'],
             'title' => ['required', 'max:255', 'string'],
             'slug' => ['required', 'max:255', 'string'],
-            'theme' => ['required', 'max:255', 'string'],
             'view' => ['required', 'max:255', 'string'],
         ];
     }

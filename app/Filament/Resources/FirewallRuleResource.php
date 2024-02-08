@@ -11,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
@@ -56,6 +57,15 @@ class FirewallRuleResource extends Resource
                             'lg' => 12,
                         ]),
 
+                    Toggle::make('all_rule')
+                        ->rules(['boolean'])
+                        ->nullable()
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
                     TextInput::make('ip_address')
                         ->rules(['max:255'])
                         ->nullable()
@@ -86,6 +96,9 @@ class FirewallRuleResource extends Resource
                         'allow' => 'Allow',
                         'deny' => 'Deny',
                     ]),
+                Tables\Columns\IconColumn::make('all_rule')
+                    ->toggleable()
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('ip_address')
                     ->toggleable()
                     ->searchable(true, null, true)

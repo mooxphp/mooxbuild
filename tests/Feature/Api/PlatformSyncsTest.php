@@ -62,12 +62,6 @@ class PlatformSyncsTest extends TestCase
             $data
         );
 
-        unset($data['syncable_id']);
-        unset($data['syncable_type']);
-        unset($data['source_platform_id']);
-        unset($data['target_platform_id']);
-        unset($data['last_sync']);
-
         $this->assertDatabaseHas('syncs', $data);
 
         $response->assertStatus(201)->assertJsonFragment($data);

@@ -50,8 +50,6 @@ class FirewallRuleTest extends TestCase
 
         $response = $this->postJson(route('api.firewall-rules.store'), $data);
 
-        unset($data['all_rule']);
-
         $this->assertDatabaseHas('firewall_rules', $data);
 
         $response->assertStatus(201)->assertJsonFragment($data);
@@ -75,8 +73,6 @@ class FirewallRuleTest extends TestCase
             route('api.firewall-rules.update', $firewallRule),
             $data
         );
-
-        unset($data['all_rule']);
 
         $data['id'] = $firewallRule->id;
 

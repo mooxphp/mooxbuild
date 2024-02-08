@@ -59,9 +59,6 @@
                                     @lang('crud.page_templates.inputs.slug')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.page_templates.inputs.theme')
-                                </th>
-                                <th class="px-4 py-3 text-left">
                                     @lang('crud.page_templates.inputs.view')
                                 </th>
                                 <th></th>
@@ -79,9 +76,6 @@
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $pageTemplate->slug ?? '-' }}
-                                </td>
-                                <td class="px-4 py-3 text-left">
-                                    {{ $pageTemplate->theme ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $pageTemplate->view ?? '-' }}
@@ -151,7 +145,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="6">
+                                <td colspan="5">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -159,7 +153,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="6">
+                                <td colspan="5">
                                     <div class="mt-10 px-4">
                                         {!! $pageTemplates->render() !!}
                                     </div>

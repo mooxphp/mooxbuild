@@ -22,6 +22,7 @@ class FirewallRuleStoreRequest extends FormRequest
         return [
             'rule' => ['required', 'max:255', 'string'],
             'type' => ['required', 'in:allow,deny'],
+            'all_rule' => ['nullable', 'boolean'],
             'ip_address' => ['nullable', 'max:255'],
         ];
     }

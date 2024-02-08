@@ -21,6 +21,14 @@
     </x-inputs.group>
 
     <x-inputs.group class="w-full">
+        <x-inputs.checkbox
+            name="all_rule"
+            label="All Rule"
+            :checked="old('all_rule', ($editing ? $firewallRule->all_rule : 0))"
+        ></x-inputs.checkbox>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
         <x-inputs.text
             name="ip_address"
             label="Ip Address"

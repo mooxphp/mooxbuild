@@ -2,33 +2,47 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\SeoController;
 use App\Http\Controllers\Api\TagController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ItemController;
 use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\SyncController;
+use App\Http\Controllers\Api\TeamController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\MediaController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\RouteController;
+use App\Http\Controllers\Api\ThemeController;
 use App\Http\Controllers\Api\AuthorController;
+use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\CompanyController;
+use App\Http\Controllers\Api\ContentController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CurrencyController;
 use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\JobBatchController;
 use App\Http\Controllers\Api\LanguageController;
 use App\Http\Controllers\Api\PlatformController;
 use App\Http\Controllers\Api\RevisionController;
 use App\Http\Controllers\Api\TimezoneController;
+use App\Http\Controllers\Api\WishlistController;
 use App\Http\Controllers\Api\ContinentController;
+use App\Http\Controllers\Api\FailedJobController;
 use App\Http\Controllers\Api\ItemItemsController;
 use App\Http\Controllers\Api\PagePagesController;
 use App\Http\Controllers\Api\PostPostsController;
+use App\Http\Controllers\Api\DepartmentController;
+use App\Http\Controllers\Api\JobManagerController;
 use App\Http\Controllers\Api\PostalCodeController;
+use App\Http\Controllers\Api\ActivityLogController;
 use App\Http\Controllers\Api\AuthorPostsController;
 use App\Http\Controllers\Api\AuthorPagesController;
 use App\Http\Controllers\Api\AuthorItemsController;
@@ -46,6 +60,9 @@ use App\Http\Controllers\Api\LanguageItemsController;
 use App\Http\Controllers\Api\PlatformSyncsController;
 use App\Http\Controllers\Api\AuthorProductsController;
 use App\Http\Controllers\Api\AuthorCommentsController;
+use App\Http\Controllers\Api\ContentElementController;
+use App\Http\Controllers\Api\JobQueueWorkerController;
+use App\Http\Controllers\Api\JobBatchManagerController;
 use App\Http\Controllers\Api\ProductProductsController;
 use App\Http\Controllers\Api\CategoryProductsController;
 use App\Http\Controllers\Api\CountryTimezonesController;
@@ -58,6 +75,8 @@ use App\Http\Controllers\Api\PagePageTemplatesController;
 use App\Http\Controllers\Api\TimezoneCountriesController;
 use App\Http\Controllers\Api\ContinentCountriesController;
 use App\Http\Controllers\Api\LanguageCategoriesController;
+use App\Http\Controllers\Api\ThemeContentElementsController;
+use App\Http\Controllers\Api\JobQueueWorkerJobManagersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +100,10 @@ Route::middleware('auth:sanctum')
 Route::name('api.')
     ->middleware('auth:sanctum')
     ->group(function () {
+        Route::apiResource('activity-logs', ActivityLogController::class);
+
+        Route::apiResource('addresses', AddressController::class);
+
         Route::apiResource('authors', AuthorController::class);
 
         // Author Posts
@@ -179,6 +202,12 @@ Route::name('api.')
 
         Route::apiResource('comments', CommentController::class);
 
+        Route::apiResource('companies', CompanyController::class);
+
+        Route::apiResource('contents', ContentController::class);
+
+        Route::apiResource('content-elements', ContentElementController::class);
+
         Route::apiResource('continents', ContinentController::class);
 
         // Continent Countries
@@ -263,6 +292,10 @@ Route::name('api.')
             'store',
         ])->name('customers.carts.store');
 
+        Route::apiResource('departments', DepartmentController::class);
+
+        Route::apiResource('failed-jobs', FailedJobController::class);
+
         Route::apiResource('firewall-rules', FirewallRuleController::class);
 
         Route::apiResource('items', ItemController::class);
@@ -276,6 +309,32 @@ Route::name('api.')
             ItemItemsController::class,
             'store',
         ])->name('items.items.store');
+
+        Route::apiResource('jobs', JobController::class);
+
+        Route::apiResource('job-batches', JobBatchController::class);
+
+        Route::apiResource(
+            'job-batch-managers',
+            JobBatchManagerController::class
+        );
+
+        Route::apiResource('job-managers', JobManagerController::class);
+
+        Route::apiResource(
+            'job-queue-workers',
+            JobQueueWorkerController::class
+        );
+
+        // JobQueueWorker Job Managers
+        Route::get('/job-queue-workers/{jobQueueWorker}/job-managers', [
+            JobQueueWorkerJobManagersController::class,
+            'index',
+        ])->name('job-queue-workers.job-managers.index');
+        Route::post('/job-queue-workers/{jobQueueWorker}/job-managers', [
+            JobQueueWorkerJobManagersController::class,
+            'store',
+        ])->name('job-queue-workers.job-managers.store');
 
         Route::apiResource('languages', LanguageController::class);
 
@@ -431,11 +490,29 @@ Route::name('api.')
 
         Route::apiResource('revisions', RevisionController::class);
 
+        Route::apiResource('routes', RouteController::class);
+
         Route::apiResource('seos', SeoController::class);
 
         Route::apiResource('settings', SettingController::class);
 
+        Route::apiResource('syncs', SyncController::class);
+
         Route::apiResource('tags', TagController::class);
+
+        Route::apiResource('teams', TeamController::class);
+
+        Route::apiResource('themes', ThemeController::class);
+
+        // Theme Content Elements
+        Route::get('/themes/{theme}/content-elements', [
+            ThemeContentElementsController::class,
+            'index',
+        ])->name('themes.content-elements.index');
+        Route::post('/themes/{theme}/content-elements', [
+            ThemeContentElementsController::class,
+            'store',
+        ])->name('themes.content-elements.store');
 
         Route::apiResource('timezones', TimezoneController::class);
 
@@ -464,4 +541,6 @@ Route::name('api.')
             UserAuthorsController::class,
             'store',
         ])->name('users.authors.store');
+
+        Route::apiResource('wishlists', WishlistController::class);
     });

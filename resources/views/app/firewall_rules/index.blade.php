@@ -56,6 +56,9 @@
                                     @lang('crud.firewall_rules.inputs.type')
                                 </th>
                                 <th class="px-4 py-3 text-left">
+                                    @lang('crud.firewall_rules.inputs.all_rule')
+                                </th>
+                                <th class="px-4 py-3 text-left">
                                     @lang('crud.firewall_rules.inputs.ip_address')
                                 </th>
                                 <th></th>
@@ -69,6 +72,9 @@
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $firewallRule->type ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $firewallRule->all_rule ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $firewallRule->ip_address ?? '-' }}
@@ -138,7 +144,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="4">
+                                <td colspan="5">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -146,7 +152,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="4">
+                                <td colspan="5">
                                     <div class="mt-10 px-4">
                                         {!! $firewallRules->render() !!}
                                     </div>

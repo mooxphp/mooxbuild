@@ -19,16 +19,28 @@ class DatabaseSeeder extends Seeder
                 'password' => \Hash::make('admin'),
             ]);
 
+        $this->call(ActivityLogSeeder::class);
+        $this->call(AddressSeeder::class);
         $this->call(AuthorSeeder::class);
         $this->call(CartSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(CommentSeeder::class);
+        $this->call(CompanySeeder::class);
+        $this->call(ContentSeeder::class);
+        $this->call(ContentElementSeeder::class);
         $this->call(ContinentSeeder::class);
         $this->call(CountrySeeder::class);
         $this->call(CurrencySeeder::class);
         $this->call(CustomerSeeder::class);
+        $this->call(DepartmentSeeder::class);
+        $this->call(FailedJobSeeder::class);
         $this->call(FirewallRuleSeeder::class);
         $this->call(ItemSeeder::class);
+        $this->call(JobSeeder::class);
+        $this->call(JobBatchSeeder::class);
+        $this->call(JobBatchManagerSeeder::class);
+        $this->call(JobManagerSeeder::class);
+        $this->call(JobQueueWorkerSeeder::class);
         $this->call(LanguageSeeder::class);
         $this->call(MediaSeeder::class);
         $this->call(OrderSeeder::class);
@@ -44,7 +56,10 @@ class DatabaseSeeder extends Seeder
         $this->call(SettingSeeder::class);
         $this->call(SyncSeeder::class);
         $this->call(TagSeeder::class);
+        $this->call(TeamSeeder::class);
+        $this->call(ThemeSeeder::class);
         $this->call(TimezoneSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(WishlistSeeder::class);
     }
 }

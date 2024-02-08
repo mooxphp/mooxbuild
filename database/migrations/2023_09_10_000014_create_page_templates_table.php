@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->unsignedBigInteger('page_id');
             $table->string('title');
             $table->string('slug');
-            $table->string('theme');
             $table->string('view');
 
             $table->timestamps();

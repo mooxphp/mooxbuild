@@ -46,15 +46,6 @@ class PageTemplatesRelationManager extends RelationManager
                         'lg' => 12,
                     ]),
 
-                TextInput::make('theme')
-                    ->rules(['max:255', 'string'])
-                    ->placeholder('Theme')
-                    ->columnSpan([
-                        'default' => 12,
-                        'md' => 12,
-                        'lg' => 12,
-                    ]),
-
                 TextInput::make('view')
                     ->rules(['max:255', 'string'])
                     ->placeholder('View')
@@ -74,7 +65,6 @@ class PageTemplatesRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('page.title')->limit(50),
                 Tables\Columns\TextColumn::make('title')->limit(50),
                 Tables\Columns\TextColumn::make('slug')->limit(50),
-                Tables\Columns\TextColumn::make('theme')->limit(50),
                 Tables\Columns\TextColumn::make('view')->limit(50),
             ])
             ->filters([

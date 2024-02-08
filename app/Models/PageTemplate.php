@@ -11,7 +11,7 @@ class PageTemplate extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['page_id', 'title', 'slug', 'theme', 'view'];
+    protected $fillable = ['page_id', 'title', 'slug', 'view'];
 
     protected $searchableFields = ['*'];
 
@@ -20,5 +20,10 @@ class PageTemplate extends Model
     public function page()
     {
         return $this->belongsTo(Page::class);
+    }
+
+    public function theme()
+    {
+        return $this->morphOne(Theme::class, 'themeable');
     }
 }

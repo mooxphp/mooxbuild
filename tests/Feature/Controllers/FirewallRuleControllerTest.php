@@ -62,8 +62,6 @@ class FirewallRuleControllerTest extends TestCase
 
         $response = $this->post(route('firewall-rules.store'), $data);
 
-        unset($data['all_rule']);
-
         $this->assertDatabaseHas('firewall_rules', $data);
 
         $firewallRule = FirewallRule::latest('id')->first();
@@ -119,8 +117,6 @@ class FirewallRuleControllerTest extends TestCase
             route('firewall-rules.update', $firewallRule),
             $data
         );
-
-        unset($data['all_rule']);
 
         $data['id'] = $firewallRule->id;
 

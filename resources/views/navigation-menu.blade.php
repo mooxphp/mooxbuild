@@ -18,6 +18,16 @@
                 </div>
 
                 <x-nav-dropdown title="Apps" align="right" width="48">
+                        @can('view-any', App\Models\ActivityLog::class)
+                        <x-dropdown-link href="{{ route('activity-logs.index') }}">
+                        Activity Logs
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Address::class)
+                        <x-dropdown-link href="{{ route('addresses.index') }}">
+                        Addresses
+                        </x-dropdown-link>
+                        @endcan
                         @can('view-any', App\Models\Author::class)
                         <x-dropdown-link href="{{ route('authors.index') }}">
                         Authors
@@ -36,6 +46,21 @@
                         @can('view-any', App\Models\Comment::class)
                         <x-dropdown-link href="{{ route('comments.index') }}">
                         Comments
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Company::class)
+                        <x-dropdown-link href="{{ route('companies.index') }}">
+                        Companies
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Content::class)
+                        <x-dropdown-link href="{{ route('contents.index') }}">
+                        Contents
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\ContentElement::class)
+                        <x-dropdown-link href="{{ route('content-elements.index') }}">
+                        Content Elements
                         </x-dropdown-link>
                         @endcan
                         @can('view-any', App\Models\Continent::class)
@@ -58,6 +83,16 @@
                         Customers
                         </x-dropdown-link>
                         @endcan
+                        @can('view-any', App\Models\Department::class)
+                        <x-dropdown-link href="{{ route('departments.index') }}">
+                        Departments
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\FailedJob::class)
+                        <x-dropdown-link href="{{ route('failed-jobs.index') }}">
+                        Failed Jobs
+                        </x-dropdown-link>
+                        @endcan
                         @can('view-any', App\Models\FirewallRule::class)
                         <x-dropdown-link href="{{ route('firewall-rules.index') }}">
                         Firewall Rules
@@ -66,6 +101,31 @@
                         @can('view-any', App\Models\Item::class)
                         <x-dropdown-link href="{{ route('items.index') }}">
                         Items
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Job::class)
+                        <x-dropdown-link href="{{ route('jobs.index') }}">
+                        Jobs
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\JobBatch::class)
+                        <x-dropdown-link href="{{ route('job-batches.index') }}">
+                        Job Batches
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\JobBatchManager::class)
+                        <x-dropdown-link href="{{ route('job-batch-managers.index') }}">
+                        Job Batch Managers
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\JobManager::class)
+                        <x-dropdown-link href="{{ route('job-managers.index') }}">
+                        Job Managers
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\JobQueueWorker::class)
+                        <x-dropdown-link href="{{ route('job-queue-workers.index') }}">
+                        Job Queue Workers
                         </x-dropdown-link>
                         @endcan
                         @can('view-any', App\Models\Language::class)
@@ -118,6 +178,11 @@
                         Revisions
                         </x-dropdown-link>
                         @endcan
+                        @can('view-any', App\Models\Route::class)
+                        <x-dropdown-link href="{{ route('routes.index') }}">
+                        Routes
+                        </x-dropdown-link>
+                        @endcan
                         @can('view-any', App\Models\Seo::class)
                         <x-dropdown-link href="{{ route('seos.index') }}">
                         Seos
@@ -128,9 +193,24 @@
                         Settings
                         </x-dropdown-link>
                         @endcan
+                        @can('view-any', App\Models\Sync::class)
+                        <x-dropdown-link href="{{ route('syncs.index') }}">
+                        Syncs
+                        </x-dropdown-link>
+                        @endcan
                         @can('view-any', App\Models\Tag::class)
                         <x-dropdown-link href="{{ route('tags.index') }}">
                         Tags
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Team::class)
+                        <x-dropdown-link href="{{ route('teams.index') }}">
+                        Teams
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Theme::class)
+                        <x-dropdown-link href="{{ route('themes.index') }}">
+                        Themes
                         </x-dropdown-link>
                         @endcan
                         @can('view-any', App\Models\Timezone::class)
@@ -141,6 +221,11 @@
                         @can('view-any', App\Models\User::class)
                         <x-dropdown-link href="{{ route('users.index') }}">
                         Users
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Wishlist::class)
+                        <x-dropdown-link href="{{ route('wishlists.index') }}">
+                        Wishlists
                         </x-dropdown-link>
                         @endcan
                 </x-nav-dropdown>
@@ -271,6 +356,16 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             
+                @can('view-any', App\Models\ActivityLog::class)
+                <x-responsive-nav-link href="{{ route('activity-logs.index') }}">
+                Activity Logs
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Address::class)
+                <x-responsive-nav-link href="{{ route('addresses.index') }}">
+                Addresses
+                </x-responsive-nav-link>
+                @endcan
                 @can('view-any', App\Models\Author::class)
                 <x-responsive-nav-link href="{{ route('authors.index') }}">
                 Authors
@@ -289,6 +384,21 @@
                 @can('view-any', App\Models\Comment::class)
                 <x-responsive-nav-link href="{{ route('comments.index') }}">
                 Comments
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Company::class)
+                <x-responsive-nav-link href="{{ route('companies.index') }}">
+                Companies
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Content::class)
+                <x-responsive-nav-link href="{{ route('contents.index') }}">
+                Contents
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\ContentElement::class)
+                <x-responsive-nav-link href="{{ route('content-elements.index') }}">
+                Content Elements
                 </x-responsive-nav-link>
                 @endcan
                 @can('view-any', App\Models\Continent::class)
@@ -311,6 +421,16 @@
                 Customers
                 </x-responsive-nav-link>
                 @endcan
+                @can('view-any', App\Models\Department::class)
+                <x-responsive-nav-link href="{{ route('departments.index') }}">
+                Departments
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\FailedJob::class)
+                <x-responsive-nav-link href="{{ route('failed-jobs.index') }}">
+                Failed Jobs
+                </x-responsive-nav-link>
+                @endcan
                 @can('view-any', App\Models\FirewallRule::class)
                 <x-responsive-nav-link href="{{ route('firewall-rules.index') }}">
                 Firewall Rules
@@ -319,6 +439,31 @@
                 @can('view-any', App\Models\Item::class)
                 <x-responsive-nav-link href="{{ route('items.index') }}">
                 Items
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Job::class)
+                <x-responsive-nav-link href="{{ route('jobs.index') }}">
+                Jobs
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\JobBatch::class)
+                <x-responsive-nav-link href="{{ route('job-batches.index') }}">
+                Job Batches
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\JobBatchManager::class)
+                <x-responsive-nav-link href="{{ route('job-batch-managers.index') }}">
+                Job Batch Managers
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\JobManager::class)
+                <x-responsive-nav-link href="{{ route('job-managers.index') }}">
+                Job Managers
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\JobQueueWorker::class)
+                <x-responsive-nav-link href="{{ route('job-queue-workers.index') }}">
+                Job Queue Workers
                 </x-responsive-nav-link>
                 @endcan
                 @can('view-any', App\Models\Language::class)
@@ -371,6 +516,11 @@
                 Revisions
                 </x-responsive-nav-link>
                 @endcan
+                @can('view-any', App\Models\Route::class)
+                <x-responsive-nav-link href="{{ route('routes.index') }}">
+                Routes
+                </x-responsive-nav-link>
+                @endcan
                 @can('view-any', App\Models\Seo::class)
                 <x-responsive-nav-link href="{{ route('seos.index') }}">
                 Seos
@@ -381,9 +531,24 @@
                 Settings
                 </x-responsive-nav-link>
                 @endcan
+                @can('view-any', App\Models\Sync::class)
+                <x-responsive-nav-link href="{{ route('syncs.index') }}">
+                Syncs
+                </x-responsive-nav-link>
+                @endcan
                 @can('view-any', App\Models\Tag::class)
                 <x-responsive-nav-link href="{{ route('tags.index') }}">
                 Tags
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Team::class)
+                <x-responsive-nav-link href="{{ route('teams.index') }}">
+                Teams
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Theme::class)
+                <x-responsive-nav-link href="{{ route('themes.index') }}">
+                Themes
                 </x-responsive-nav-link>
                 @endcan
                 @can('view-any', App\Models\Timezone::class)
@@ -394,6 +559,11 @@
                 @can('view-any', App\Models\User::class)
                 <x-responsive-nav-link href="{{ route('users.index') }}">
                 Users
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Wishlist::class)
+                <x-responsive-nav-link href="{{ route('wishlists.index') }}">
+                Wishlists
                 </x-responsive-nav-link>
                 @endcan
 
