@@ -115,6 +115,7 @@ class JobQueueWorkerControllerTest extends TestCase
         $data = [
             'worker_pid' => $this->faker->text(255),
             'queue' => $this->faker->text(255),
+            'connection' => $this->faker->text(255),
             'worker_server' => $this->faker->text(255),
             'supervisor' => $this->faker->text(255),
             'status' => $this->faker->word(),

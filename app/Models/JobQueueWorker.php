@@ -14,6 +14,7 @@ class JobQueueWorker extends Model
     protected $fillable = [
         'worker_pid',
         'queue',
+        'connection',
         'worker_server',
         'supervisor',
         'status',

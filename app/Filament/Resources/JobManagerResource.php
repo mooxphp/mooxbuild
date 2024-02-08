@@ -65,6 +65,16 @@ class JobManagerResource extends Resource
                             'lg' => 12,
                         ]),
 
+                    TextInput::make('connection')
+                        ->rules(['max:255', 'string'])
+                        ->nullable()
+                        ->placeholder('Connection')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
                     DatePicker::make('available_at')
                         ->rules(['date'])
                         ->required()
@@ -176,6 +186,10 @@ class JobManagerResource extends Resource
                     ->searchable(true, null, true)
                     ->limit(50),
                 Tables\Columns\TextColumn::make('queue')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('connection')
                     ->toggleable()
                     ->searchable(true, null, true)
                     ->limit(50),

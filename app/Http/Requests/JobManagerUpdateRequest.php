@@ -23,6 +23,7 @@ class JobManagerUpdateRequest extends FormRequest
             'job_id' => ['required', 'max:255', 'string'],
             'name' => ['nullable', 'max:255', 'string'],
             'queue' => ['nullable', 'max:255', 'string'],
+            'connection' => ['nullable', 'max:255', 'string'],
             'available_at' => ['required', 'date'],
             'started_at' => ['nullable', 'date'],
             'finished_at' => ['nullable', 'date'],

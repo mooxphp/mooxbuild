@@ -15,6 +15,7 @@ class JobManager extends Model
         'job_id',
         'name',
         'queue',
+        'connection',
         'available_at',
         'started_at',
         'finished_at',

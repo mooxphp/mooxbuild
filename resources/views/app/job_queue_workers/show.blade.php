@@ -31,6 +31,12 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
+                            @lang('crud.job_queue_workers.inputs.connection')
+                        </h5>
+                        <span>{{ $jobQueueWorker->connection ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
                             @lang('crud.job_queue_workers.inputs.worker_server')
                         </h5>
                         <span>{{ $jobQueueWorker->worker_server ?? '-' }}</span>

@@ -25,6 +25,17 @@
 
     <x-inputs.group class="w-full">
         <x-inputs.text
+            name="connection"
+            label="Connection"
+            :value="old('connection', ($editing ? $jobQueueWorker->connection : ''))"
+            maxlength="255"
+            placeholder="Connection"
+            required
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.text
             name="worker_server"
             label="Worker Server"
             :value="old('worker_server', ($editing ? $jobQueueWorker->worker_server : ''))"

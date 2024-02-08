@@ -114,6 +114,7 @@ class JobManagerControllerTest extends TestCase
             'job_id' => $this->faker->text(255),
             'name' => $this->faker->name(),
             'queue' => $this->faker->text(255),
+            'connection' => $this->faker->text(255),
             'available_at' => $this->faker->dateTime(),
             'started_at' => $this->faker->dateTime(),
             'finished_at' => $this->faker->dateTime(),

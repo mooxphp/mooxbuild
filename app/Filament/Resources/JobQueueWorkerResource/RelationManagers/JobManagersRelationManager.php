@@ -58,6 +58,15 @@ class JobManagersRelationManager extends RelationManager
                         'lg' => 12,
                     ]),
 
+                TextInput::make('connection')
+                    ->rules(['max:255', 'string'])
+                    ->placeholder('Connection')
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
+
                 DatePicker::make('available_at')
                     ->rules(['date'])
                     ->placeholder('Available At')
@@ -141,6 +150,7 @@ class JobManagersRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('job_id')->limit(50),
                 Tables\Columns\TextColumn::make('name')->limit(50),
                 Tables\Columns\TextColumn::make('queue')->limit(50),
+                Tables\Columns\TextColumn::make('connection')->limit(50),
                 Tables\Columns\TextColumn::make('available_at')->date(),
                 Tables\Columns\TextColumn::make('started_at')->date(),
                 Tables\Columns\TextColumn::make('finished_at')->date(),

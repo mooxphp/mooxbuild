@@ -35,6 +35,12 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
+                            @lang('crud.job_managers.inputs.connection')
+                        </h5>
+                        <span>{{ $jobManager->connection ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
                             @lang('crud.job_managers.inputs.available_at')
                         </h5>
                         <span>{{ $jobManager->available_at ?? '-' }}</span>

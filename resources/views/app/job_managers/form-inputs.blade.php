@@ -33,6 +33,16 @@
     </x-inputs.group>
 
     <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="connection"
+            label="Connection"
+            :value="old('connection', ($editing ? $jobManager->connection : ''))"
+            maxlength="255"
+            placeholder="Connection"
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
         <x-inputs.date
             name="available_at"
             label="Available At"

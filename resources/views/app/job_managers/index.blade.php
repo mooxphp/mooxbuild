@@ -59,6 +59,9 @@
                                     @lang('crud.job_managers.inputs.queue')
                                 </th>
                                 <th class="px-4 py-3 text-left">
+                                    @lang('crud.job_managers.inputs.connection')
+                                </th>
+                                <th class="px-4 py-3 text-left">
                                     @lang('crud.job_managers.inputs.available_at')
                                 </th>
                                 <th class="px-4 py-3 text-left">
@@ -99,6 +102,9 @@
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $jobManager->queue ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $jobManager->connection ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $jobManager->available_at ?? '-' }}
@@ -194,7 +200,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="13">
+                                <td colspan="14">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -202,7 +208,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="13">
+                                <td colspan="14">
                                     <div class="mt-10 px-4">
                                         {!! $jobManagers->render() !!}
                                     </div>

@@ -22,6 +22,7 @@ class JobQueueWorkerStoreRequest extends FormRequest
         return [
             'worker_pid' => ['required', 'max:255', 'string'],
             'queue' => ['required', 'max:255', 'string'],
+            'connection' => ['required', 'max:255', 'string'],
             'worker_server' => ['nullable', 'max:255', 'string'],
             'supervisor' => ['nullable', 'max:255', 'string'],
             'status' => ['required', 'max:255', 'string'],

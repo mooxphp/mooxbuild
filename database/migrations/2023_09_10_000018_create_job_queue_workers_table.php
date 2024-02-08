@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->bigIncrements('id');
             $table->string('worker_pid');
             $table->string('queue');
+            $table->string('connection');
             $table->string('worker_server')->nullable();
             $table->string('supervisor')->nullable();
             $table->string('status');

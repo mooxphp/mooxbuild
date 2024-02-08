@@ -51,6 +51,16 @@ class JobQueueWorkerResource extends Resource
                             'lg' => 12,
                         ]),
 
+                    TextInput::make('connection')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Connection')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
                     TextInput::make('worker_server')
                         ->rules(['max:255', 'string'])
                         ->nullable()
@@ -115,6 +125,10 @@ class JobQueueWorkerResource extends Resource
                     ->searchable(true, null, true)
                     ->limit(50),
                 Tables\Columns\TextColumn::make('queue')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('connection')
                     ->toggleable()
                     ->searchable(true, null, true)
                     ->limit(50),

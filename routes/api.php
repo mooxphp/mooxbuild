@@ -40,8 +40,8 @@ use App\Http\Controllers\Api\ItemItemsController;
 use App\Http\Controllers\Api\PagePagesController;
 use App\Http\Controllers\Api\PostPostsController;
 use App\Http\Controllers\Api\DepartmentController;
-use App\Http\Controllers\Api\JobManagerController;
 use App\Http\Controllers\Api\PostalCodeController;
+use App\Http\Controllers\Api\JobManagerController;
 use App\Http\Controllers\Api\ActivityLogController;
 use App\Http\Controllers\Api\AuthorPostsController;
 use App\Http\Controllers\Api\AuthorPagesController;
@@ -319,23 +319,6 @@ Route::name('api.')
             JobBatchManagerController::class
         );
 
-        Route::apiResource('job-managers', JobManagerController::class);
-
-        Route::apiResource(
-            'job-queue-workers',
-            JobQueueWorkerController::class
-        );
-
-        // JobQueueWorker Job Managers
-        Route::get('/job-queue-workers/{jobQueueWorker}/job-managers', [
-            JobQueueWorkerJobManagersController::class,
-            'index',
-        ])->name('job-queue-workers.job-managers.index');
-        Route::post('/job-queue-workers/{jobQueueWorker}/job-managers', [
-            JobQueueWorkerJobManagersController::class,
-            'store',
-        ])->name('job-queue-workers.job-managers.store');
-
         Route::apiResource('languages', LanguageController::class);
 
         // Language Tags
@@ -543,4 +526,21 @@ Route::name('api.')
         ])->name('users.authors.store');
 
         Route::apiResource('wishlists', WishlistController::class);
+
+        Route::apiResource('job-managers', JobManagerController::class);
+
+        Route::apiResource(
+            'job-queue-workers',
+            JobQueueWorkerController::class
+        );
+
+        // JobQueueWorker Job Managers
+        Route::get('/job-queue-workers/{jobQueueWorker}/job-managers', [
+            JobQueueWorkerJobManagersController::class,
+            'index',
+        ])->name('job-queue-workers.job-managers.index');
+        Route::post('/job-queue-workers/{jobQueueWorker}/job-managers', [
+            JobQueueWorkerJobManagersController::class,
+            'store',
+        ])->name('job-queue-workers.job-managers.store');
     });

@@ -118,16 +118,6 @@
                         Job Batch Managers
                         </x-dropdown-link>
                         @endcan
-                        @can('view-any', App\Models\JobManager::class)
-                        <x-dropdown-link href="{{ route('job-managers.index') }}">
-                        Job Managers
-                        </x-dropdown-link>
-                        @endcan
-                        @can('view-any', App\Models\JobQueueWorker::class)
-                        <x-dropdown-link href="{{ route('job-queue-workers.index') }}">
-                        Job Queue Workers
-                        </x-dropdown-link>
-                        @endcan
                         @can('view-any', App\Models\Language::class)
                         <x-dropdown-link href="{{ route('languages.index') }}">
                         Languages
@@ -226,6 +216,16 @@
                         @can('view-any', App\Models\Wishlist::class)
                         <x-dropdown-link href="{{ route('wishlists.index') }}">
                         Wishlists
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\JobManager::class)
+                        <x-dropdown-link href="{{ route('job-managers.index') }}">
+                        Job Managers
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\JobQueueWorker::class)
+                        <x-dropdown-link href="{{ route('job-queue-workers.index') }}">
+                        Job Queue Workers
                         </x-dropdown-link>
                         @endcan
                 </x-nav-dropdown>
@@ -456,16 +456,6 @@
                 Job Batch Managers
                 </x-responsive-nav-link>
                 @endcan
-                @can('view-any', App\Models\JobManager::class)
-                <x-responsive-nav-link href="{{ route('job-managers.index') }}">
-                Job Managers
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\JobQueueWorker::class)
-                <x-responsive-nav-link href="{{ route('job-queue-workers.index') }}">
-                Job Queue Workers
-                </x-responsive-nav-link>
-                @endcan
                 @can('view-any', App\Models\Language::class)
                 <x-responsive-nav-link href="{{ route('languages.index') }}">
                 Languages
@@ -564,6 +554,16 @@
                 @can('view-any', App\Models\Wishlist::class)
                 <x-responsive-nav-link href="{{ route('wishlists.index') }}">
                 Wishlists
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\JobManager::class)
+                <x-responsive-nav-link href="{{ route('job-managers.index') }}">
+                Job Managers
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\JobQueueWorker::class)
+                <x-responsive-nav-link href="{{ route('job-queue-workers.index') }}">
+                Job Queue Workers
                 </x-responsive-nav-link>
                 @endcan
 

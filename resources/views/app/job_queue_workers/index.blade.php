@@ -56,6 +56,9 @@
                                     @lang('crud.job_queue_workers.inputs.queue')
                                 </th>
                                 <th class="px-4 py-3 text-left">
+                                    @lang('crud.job_queue_workers.inputs.connection')
+                                </th>
+                                <th class="px-4 py-3 text-left">
                                     @lang('crud.job_queue_workers.inputs.worker_server')
                                 </th>
                                 <th class="px-4 py-3 text-left">
@@ -81,6 +84,9 @@
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $jobQueueWorker->queue ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $jobQueueWorker->connection ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $jobQueueWorker->worker_server ?? '-' }}
@@ -162,7 +168,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="8">
+                                <td colspan="9">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -170,7 +176,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="8">
+                                <td colspan="9">
                                     <div class="mt-10 px-4">
                                         {!! $jobQueueWorkers->render() !!}
                                     </div>

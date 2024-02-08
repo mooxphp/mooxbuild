@@ -36,8 +36,8 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\ContinentController;
 use App\Http\Controllers\FailedJobController;
 use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\JobManagerController;
 use App\Http\Controllers\PostalCodeController;
+use App\Http\Controllers\JobManagerController;
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\FirewallRuleController;
 use App\Http\Controllers\PageTemplateController;
@@ -89,8 +89,6 @@ Route::prefix('/')
         Route::resource('jobs', JobController::class);
         Route::resource('job-batches', JobBatchController::class);
         Route::resource('job-batch-managers', JobBatchManagerController::class);
-        Route::resource('job-managers', JobManagerController::class);
-        Route::resource('job-queue-workers', JobQueueWorkerController::class);
         Route::resource('languages', LanguageController::class);
         Route::get('media', [MediaController::class, 'index'])->name(
             'media.index'
@@ -134,4 +132,6 @@ Route::prefix('/')
         Route::resource('timezones', TimezoneController::class);
         Route::resource('users', UserController::class);
         Route::resource('wishlists', WishlistController::class);
+        Route::resource('job-managers', JobManagerController::class);
+        Route::resource('job-queue-workers', JobQueueWorkerController::class);
     });

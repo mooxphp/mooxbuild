@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('job_id');
             $table->string('name')->nullable();
             $table->string('queue')->nullable();
+            $table->string('connection')->nullable();
             $table->timestamp('available_at');
             $table->timestamp('started_at')->nullable();
             $table->timestamp('finished_at')->nullable();
