@@ -24,6 +24,8 @@ class ContentElementTest extends TestCase
 
         Sanctum::actingAs($user, [], 'web');
 
+        $this->seed(\Database\Seeders\PermissionsSeeder::class);
+
         $this->withoutExceptionHandling();
     }
 

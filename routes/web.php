@@ -9,9 +9,10 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\SyncController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SyncController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RouteController;
@@ -29,15 +30,16 @@ use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\JobBatchController;
 use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\RevisionController;
 use App\Http\Controllers\TimezoneController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\ContinentController;
 use App\Http\Controllers\FailedJobController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PostalCodeController;
 use App\Http\Controllers\JobManagerController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\FirewallRuleController;
 use App\Http\Controllers\PageTemplateController;
@@ -69,6 +71,9 @@ Route::middleware(['auth:sanctum', 'verified'])
 Route::prefix('/')
     ->middleware(['auth:sanctum', 'verified'])
     ->group(function () {
+        Route::resource('roles', RoleController::class);
+        Route::resource('permissions', PermissionController::class);
+
         Route::resource('activity-logs', ActivityLogController::class);
         Route::resource('addresses', AddressController::class);
         Route::resource('authors', AuthorController::class);
@@ -117,7 +122,6 @@ Route::prefix('/')
         Route::resource('orders', OrderController::class);
         Route::resource('pages', PageController::class);
         Route::resource('page-templates', PageTemplateController::class);
-        Route::resource('platforms', PlatformController::class);
         Route::resource('posts', PostController::class);
         Route::resource('postal-codes', PostalCodeController::class);
         Route::resource('products', ProductController::class);
@@ -125,13 +129,14 @@ Route::prefix('/')
         Route::resource('routes', RouteController::class);
         Route::resource('seos', SeoController::class);
         Route::resource('settings', SettingController::class);
-        Route::resource('syncs', SyncController::class);
         Route::resource('tags', TagController::class);
         Route::resource('teams', TeamController::class);
         Route::resource('themes', ThemeController::class);
         Route::resource('timezones', TimezoneController::class);
-        Route::resource('users', UserController::class);
         Route::resource('wishlists', WishlistController::class);
         Route::resource('job-managers', JobManagerController::class);
         Route::resource('job-queue-workers', JobQueueWorkerController::class);
+        Route::resource('users', UserController::class);
+        Route::resource('platforms', PlatformController::class);
+        Route::resource('syncs', SyncController::class);
     });

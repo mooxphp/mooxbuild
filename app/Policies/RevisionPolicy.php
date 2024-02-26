@@ -15,7 +15,7 @@ class RevisionPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list revisions');
     }
 
     /**
@@ -23,7 +23,7 @@ class RevisionPolicy
      */
     public function view(User $user, Revision $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view revisions');
     }
 
     /**
@@ -31,7 +31,7 @@ class RevisionPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create revisions');
     }
 
     /**
@@ -39,7 +39,7 @@ class RevisionPolicy
      */
     public function update(User $user, Revision $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update revisions');
     }
 
     /**
@@ -47,7 +47,7 @@ class RevisionPolicy
      */
     public function delete(User $user, Revision $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete revisions');
     }
 
     /**
@@ -55,7 +55,7 @@ class RevisionPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete revisions');
     }
 
     /**

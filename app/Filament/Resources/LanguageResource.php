@@ -136,6 +136,7 @@ class LanguageResource extends Resource
             LanguageResource\RelationManagers\PagesRelationManager::class,
             LanguageResource\RelationManagers\ProductsRelationManager::class,
             LanguageResource\RelationManagers\ItemsRelationManager::class,
+            LanguageResource\RelationManagers\UsersRelationManager::class,
             LanguageResource\RelationManagers\CountriesRelationManager::class,
         ];
     }

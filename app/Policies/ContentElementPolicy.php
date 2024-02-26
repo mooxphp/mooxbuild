@@ -15,7 +15,7 @@ class ContentElementPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list contentelements');
     }
 
     /**
@@ -23,7 +23,7 @@ class ContentElementPolicy
      */
     public function view(User $user, ContentElement $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view contentelements');
     }
 
     /**
@@ -31,7 +31,7 @@ class ContentElementPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create contentelements');
     }
 
     /**
@@ -39,7 +39,7 @@ class ContentElementPolicy
      */
     public function update(User $user, ContentElement $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update contentelements');
     }
 
     /**
@@ -47,7 +47,7 @@ class ContentElementPolicy
      */
     public function delete(User $user, ContentElement $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete contentelements');
     }
 
     /**
@@ -55,7 +55,7 @@ class ContentElementPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete contentelements');
     }
 
     /**

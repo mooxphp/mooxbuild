@@ -53,13 +53,37 @@
                                     @lang('crud.users.inputs.name')
                                 </th>
                                 <th class="px-4 py-3 text-left">
+                                    @lang('crud.users.inputs.slug')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.users.inputs.gender')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.users.inputs.title')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.users.inputs.first_name')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.users.inputs.last_name')
+                                </th>
+                                <th class="px-4 py-3 text-left">
                                     @lang('crud.users.inputs.email')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.users.inputs.website')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.users.inputs.description')
                                 </th>
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.users.inputs.profile_photo_path')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.users.inputs.bypass_token')
+                                    @lang('crud.users.inputs.wp_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.users.inputs.language_id')
                                 </th>
                                 <th></th>
                             </tr>
@@ -71,13 +95,38 @@
                                     {{ $user->name ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
+                                    {{ $user->slug ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $user->gender ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $user->title ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $user->first_name ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $user->last_name ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
                                     {{ $user->email ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $user->website ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $user->description ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $user->profile_photo_path ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ $user->bypass_token ?? '-' }}
+                                    {{ $user->wp_id ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ optional($user->language)->title ?? '-'
+                                    }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -144,7 +193,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="5">
+                                <td colspan="13">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -152,7 +201,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="5">
+                                <td colspan="13">
                                     <div class="mt-10 px-4">
                                         {!! $users->render() !!}
                                     </div>

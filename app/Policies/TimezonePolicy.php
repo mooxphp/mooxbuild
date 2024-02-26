@@ -15,7 +15,7 @@ class TimezonePolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list timezones');
     }
 
     /**
@@ -23,7 +23,7 @@ class TimezonePolicy
      */
     public function view(User $user, Timezone $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view timezones');
     }
 
     /**
@@ -31,7 +31,7 @@ class TimezonePolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create timezones');
     }
 
     /**
@@ -39,7 +39,7 @@ class TimezonePolicy
      */
     public function update(User $user, Timezone $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update timezones');
     }
 
     /**
@@ -47,7 +47,7 @@ class TimezonePolicy
      */
     public function delete(User $user, Timezone $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete timezones');
     }
 
     /**
@@ -55,7 +55,7 @@ class TimezonePolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete timezones');
     }
 
     /**

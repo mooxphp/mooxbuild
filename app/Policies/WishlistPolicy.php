@@ -15,7 +15,7 @@ class WishlistPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list wishlists');
     }
 
     /**
@@ -23,7 +23,7 @@ class WishlistPolicy
      */
     public function view(User $user, Wishlist $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view wishlists');
     }
 
     /**
@@ -31,7 +31,7 @@ class WishlistPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create wishlists');
     }
 
     /**
@@ -39,7 +39,7 @@ class WishlistPolicy
      */
     public function update(User $user, Wishlist $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update wishlists');
     }
 
     /**
@@ -47,7 +47,7 @@ class WishlistPolicy
      */
     public function delete(User $user, Wishlist $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete wishlists');
     }
 
     /**
@@ -55,7 +55,7 @@ class WishlistPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete wishlists');
     }
 
     /**

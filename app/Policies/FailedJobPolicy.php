@@ -15,7 +15,7 @@ class FailedJobPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list failedjobs');
     }
 
     /**
@@ -23,7 +23,7 @@ class FailedJobPolicy
      */
     public function view(User $user, FailedJob $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view failedjobs');
     }
 
     /**
@@ -31,7 +31,7 @@ class FailedJobPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create failedjobs');
     }
 
     /**
@@ -39,7 +39,7 @@ class FailedJobPolicy
      */
     public function update(User $user, FailedJob $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update failedjobs');
     }
 
     /**
@@ -47,7 +47,7 @@ class FailedJobPolicy
      */
     public function delete(User $user, FailedJob $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete failedjobs');
     }
 
     /**
@@ -55,7 +55,7 @@ class FailedJobPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete failedjobs');
     }
 
     /**

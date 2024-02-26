@@ -2,14 +2,6 @@
 
 <div class="flex flex-wrap">
     <x-inputs.group class="w-full">
-        <x-inputs.checkbox
-            name="master"
-            label="Master"
-            :checked="old('master', ($editing ? $platform->master : 0))"
-        ></x-inputs.checkbox>
-    </x-inputs.group>
-
-    <x-inputs.group class="w-full">
         <x-inputs.text
             name="title"
             label="Title"
@@ -33,12 +25,29 @@
 
     <x-inputs.group class="w-full">
         <x-inputs.text
-            name="bind_to_domain"
-            label="Bind To Domain"
-            :value="old('bind_to_domain', ($editing ? $platform->bind_to_domain : ''))"
+            name="domain"
+            label="Domain"
+            :value="old('domain', ($editing ? $platform->domain : ''))"
             maxlength="255"
-            placeholder="Bind To Domain"
+            placeholder="Domain"
+            required
         ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.checkbox
+            name="selectable"
+            label="Selectable"
+            :checked="old('selectable', ($editing ? $platform->selectable : 0))"
+        ></x-inputs.checkbox>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.checkbox
+            name="master"
+            label="Master"
+            :checked="old('master', ($editing ? $platform->master : 0))"
+        ></x-inputs.checkbox>
     </x-inputs.group>
 
     <x-inputs.group class="w-full">

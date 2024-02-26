@@ -32,15 +32,6 @@ class PlatformResource extends Resource
         return $form->schema([
             Card::make()->schema([
                 Grid::make(['default' => 0])->schema([
-                    Toggle::make('master')
-                        ->rules(['boolean'])
-                        ->nullable()
-                        ->columnSpan([
-                            'default' => 12,
-                            'md' => 12,
-                            'lg' => 12,
-                        ]),
-
                     TextInput::make('title')
                         ->rules(['max:255', 'string'])
                         ->required()
@@ -61,10 +52,28 @@ class PlatformResource extends Resource
                             'lg' => 12,
                         ]),
 
-                    TextInput::make('bind_to_domain')
+                    TextInput::make('domain')
                         ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Domain')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    Toggle::make('selectable')
+                        ->rules(['boolean'])
                         ->nullable()
-                        ->placeholder('Bind To Domain')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    Toggle::make('master')
+                        ->rules(['boolean'])
+                        ->nullable()
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,
@@ -91,9 +100,6 @@ class PlatformResource extends Resource
         return $table
             ->poll('60s')
             ->columns([
-                Tables\Columns\IconColumn::make('master')
-                    ->toggleable()
-                    ->boolean(),
                 Tables\Columns\TextColumn::make('title')
                     ->toggleable()
                     ->searchable(true, null, true)
@@ -102,10 +108,16 @@ class PlatformResource extends Resource
                     ->toggleable()
                     ->searchable(true, null, true)
                     ->limit(50),
-                Tables\Columns\TextColumn::make('bind_to_domain')
+                Tables\Columns\TextColumn::make('domain')
                     ->toggleable()
                     ->searchable(true, null, true)
                     ->limit(50),
+                Tables\Columns\IconColumn::make('selectable')
+                    ->toggleable()
+                    ->boolean(),
+                Tables\Columns\IconColumn::make('master')
+                    ->toggleable()
+                    ->boolean(),
                 Tables\Columns\ImageColumn::make('thumbnail')
                     ->toggleable()
                     ->circular(),
@@ -120,6 +132,7 @@ class PlatformResource extends Resource
         return [
             PlatformResource\RelationManagers\SyncsRelationManager::class,
             PlatformResource\RelationManagers\SyncsRelationManager::class,
+            PlatformResource\RelationManagers\UsersRelationManager::class,
         ];
     }
 

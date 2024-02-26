@@ -59,6 +59,11 @@ class Language extends Model
         return $this->hasMany(Item::class);
     }
 
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
     public function countries()
     {
         return $this->belongsToMany(Country::class);

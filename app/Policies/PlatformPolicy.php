@@ -15,7 +15,7 @@ class PlatformPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list platforms');
     }
 
     /**
@@ -23,7 +23,7 @@ class PlatformPolicy
      */
     public function view(User $user, Platform $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view platforms');
     }
 
     /**
@@ -31,7 +31,7 @@ class PlatformPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create platforms');
     }
 
     /**
@@ -39,7 +39,7 @@ class PlatformPolicy
      */
     public function update(User $user, Platform $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update platforms');
     }
 
     /**
@@ -47,7 +47,7 @@ class PlatformPolicy
      */
     public function delete(User $user, Platform $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete platforms');
     }
 
     /**
@@ -55,7 +55,7 @@ class PlatformPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete platforms');
     }
 
     /**

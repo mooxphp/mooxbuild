@@ -15,7 +15,7 @@ class AddressPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list addresses');
     }
 
     /**
@@ -23,7 +23,7 @@ class AddressPolicy
      */
     public function view(User $user, Address $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view addresses');
     }
 
     /**
@@ -31,7 +31,7 @@ class AddressPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create addresses');
     }
 
     /**
@@ -39,7 +39,7 @@ class AddressPolicy
      */
     public function update(User $user, Address $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update addresses');
     }
 
     /**
@@ -47,7 +47,7 @@ class AddressPolicy
      */
     public function delete(User $user, Address $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete addresses');
     }
 
     /**
@@ -55,7 +55,7 @@ class AddressPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete addresses');
     }
 
     /**

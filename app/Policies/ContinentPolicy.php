@@ -15,7 +15,7 @@ class ContinentPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list continents');
     }
 
     /**
@@ -23,7 +23,7 @@ class ContinentPolicy
      */
     public function view(User $user, Continent $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view continents');
     }
 
     /**
@@ -31,7 +31,7 @@ class ContinentPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create continents');
     }
 
     /**
@@ -39,7 +39,7 @@ class ContinentPolicy
      */
     public function update(User $user, Continent $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update continents');
     }
 
     /**
@@ -47,7 +47,7 @@ class ContinentPolicy
      */
     public function delete(User $user, Continent $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete continents');
     }
 
     /**
@@ -55,7 +55,7 @@ class ContinentPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete continents');
     }
 
     /**

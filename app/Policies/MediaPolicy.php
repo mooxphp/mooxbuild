@@ -15,7 +15,7 @@ class MediaPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list media');
     }
 
     /**
@@ -23,7 +23,7 @@ class MediaPolicy
      */
     public function view(User $user, Media $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view media');
     }
 
     /**
@@ -31,7 +31,7 @@ class MediaPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create media');
     }
 
     /**
@@ -39,7 +39,7 @@ class MediaPolicy
      */
     public function update(User $user, Media $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update media');
     }
 
     /**
@@ -47,7 +47,7 @@ class MediaPolicy
      */
     public function delete(User $user, Media $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete media');
     }
 
     /**
@@ -55,7 +55,7 @@ class MediaPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete media');
     }
 
     /**

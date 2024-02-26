@@ -5,19 +5,23 @@ namespace App\Models;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Scopes\Searchable;
 use App\Models\Traits\FilamentTrait;
+use Spatie\Permission\Traits\HasRoles;
 use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
 use Laravel\Fortify\TwoFactorAuthenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements FilamentUser
 {
+    use HasRoles;
     use Notifiable;
     use HasFactory;
     use Searchable;
+    use SoftDeletes;
     use HasApiTokens;
     use FilamentTrait;
     use HasProfilePhoto;
@@ -25,10 +29,18 @@ class User extends Authenticatable implements FilamentUser
 
     protected $fillable = [
         'name',
+        'slug',
+        'gender',
+        'title',
+        'first_name',
+        'last_name',
         'email',
+        'website',
+        'description',
         'password',
         'profile_photo_path',
-        'bypass_token',
+        'wp_id',
+        'language_id',
     ];
 
     protected $searchableFields = ['*'];
@@ -55,6 +67,16 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasOne(Customer::class);
     }
 
+    public function language()
+    {
+        return $this->belongsTo(Language::class);
+    }
+
+    public function platforms()
+    {
+        return $this->belongsToMany(Platform::class);
+    }
+
     public function syncs()
     {
         return $this->morphMany(Sync::class, 'syncable');
@@ -62,6 +84,6 @@ class User extends Authenticatable implements FilamentUser
 
     public function isSuperAdmin(): bool
     {
-        return in_array($this->email, config('auth.super_admins'));
+        return $this->hasRole('super-admin');
     }
 }

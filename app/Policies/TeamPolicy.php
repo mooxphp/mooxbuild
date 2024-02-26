@@ -15,7 +15,7 @@ class TeamPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list teams');
     }
 
     /**
@@ -23,7 +23,7 @@ class TeamPolicy
      */
     public function view(User $user, Team $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view teams');
     }
 
     /**
@@ -31,7 +31,7 @@ class TeamPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create teams');
     }
 
     /**
@@ -39,7 +39,7 @@ class TeamPolicy
      */
     public function update(User $user, Team $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update teams');
     }
 
     /**
@@ -47,7 +47,7 @@ class TeamPolicy
      */
     public function delete(User $user, Team $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete teams');
     }
 
     /**
@@ -55,7 +55,7 @@ class TeamPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete teams');
     }
 
     /**

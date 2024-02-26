@@ -143,11 +143,6 @@
                         Page Templates
                         </x-dropdown-link>
                         @endcan
-                        @can('view-any', App\Models\Platform::class)
-                        <x-dropdown-link href="{{ route('platforms.index') }}">
-                        Platforms
-                        </x-dropdown-link>
-                        @endcan
                         @can('view-any', App\Models\Post::class)
                         <x-dropdown-link href="{{ route('posts.index') }}">
                         Posts
@@ -183,11 +178,6 @@
                         Settings
                         </x-dropdown-link>
                         @endcan
-                        @can('view-any', App\Models\Sync::class)
-                        <x-dropdown-link href="{{ route('syncs.index') }}">
-                        Syncs
-                        </x-dropdown-link>
-                        @endcan
                         @can('view-any', App\Models\Tag::class)
                         <x-dropdown-link href="{{ route('tags.index') }}">
                         Tags
@@ -208,11 +198,6 @@
                         Timezones
                         </x-dropdown-link>
                         @endcan
-                        @can('view-any', App\Models\User::class)
-                        <x-dropdown-link href="{{ route('users.index') }}">
-                        Users
-                        </x-dropdown-link>
-                        @endcan
                         @can('view-any', App\Models\Wishlist::class)
                         <x-dropdown-link href="{{ route('wishlists.index') }}">
                         Wishlists
@@ -228,8 +213,37 @@
                         Job Queue Workers
                         </x-dropdown-link>
                         @endcan
+                        @can('view-any', App\Models\User::class)
+                        <x-dropdown-link href="{{ route('users.index') }}">
+                        Users
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Platform::class)
+                        <x-dropdown-link href="{{ route('platforms.index') }}">
+                        Platforms
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Sync::class)
+                        <x-dropdown-link href="{{ route('syncs.index') }}">
+                        Syncs
+                        </x-dropdown-link>
+                        @endcan
                 </x-nav-dropdown>
 
+                    @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) || 
+                        Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
+                    <x-nav-dropdown title="Access Management" align="right" width="48">
+                        
+                        @can('view-any', Spatie\Permission\Models\Role::class)
+                        <x-dropdown-link href="{{ route('roles.index') }}">Roles</x-dropdown-link>
+                        @endcan
+                    
+                        @can('view-any', Spatie\Permission\Models\Permission::class)
+                        <x-dropdown-link href="{{ route('permissions.index') }}">Permissions</x-dropdown-link>
+                        @endcan
+                        
+                    </x-nav-dropdown>
+                    @endif
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -481,11 +495,6 @@
                 Page Templates
                 </x-responsive-nav-link>
                 @endcan
-                @can('view-any', App\Models\Platform::class)
-                <x-responsive-nav-link href="{{ route('platforms.index') }}">
-                Platforms
-                </x-responsive-nav-link>
-                @endcan
                 @can('view-any', App\Models\Post::class)
                 <x-responsive-nav-link href="{{ route('posts.index') }}">
                 Posts
@@ -521,11 +530,6 @@
                 Settings
                 </x-responsive-nav-link>
                 @endcan
-                @can('view-any', App\Models\Sync::class)
-                <x-responsive-nav-link href="{{ route('syncs.index') }}">
-                Syncs
-                </x-responsive-nav-link>
-                @endcan
                 @can('view-any', App\Models\Tag::class)
                 <x-responsive-nav-link href="{{ route('tags.index') }}">
                 Tags
@@ -546,11 +550,6 @@
                 Timezones
                 </x-responsive-nav-link>
                 @endcan
-                @can('view-any', App\Models\User::class)
-                <x-responsive-nav-link href="{{ route('users.index') }}">
-                Users
-                </x-responsive-nav-link>
-                @endcan
                 @can('view-any', App\Models\Wishlist::class)
                 <x-responsive-nav-link href="{{ route('wishlists.index') }}">
                 Wishlists
@@ -566,7 +565,34 @@
                 Job Queue Workers
                 </x-responsive-nav-link>
                 @endcan
+                @can('view-any', App\Models\User::class)
+                <x-responsive-nav-link href="{{ route('users.index') }}">
+                Users
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Platform::class)
+                <x-responsive-nav-link href="{{ route('platforms.index') }}">
+                Platforms
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Sync::class)
+                <x-responsive-nav-link href="{{ route('syncs.index') }}">
+                Syncs
+                </x-responsive-nav-link>
+                @endcan
 
+                @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) || 
+                    Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
+                    
+                    @can('view-any', Spatie\Permission\Models\Role::class)
+                    <x-responsive-nav-link href="{{ route('roles.index') }}">Roles</x-responsive-nav-link>
+                    @endcan
+                
+                    @can('view-any', Spatie\Permission\Models\Permission::class)
+                    <x-responsive-nav-link href="{{ route('permissions.index') }}">Permissions</x-responsive-nav-link>
+                    @endcan
+                    
+                @endif
         </div>
 
         <!-- Responsive Settings Options -->

@@ -15,7 +15,7 @@ class FirewallRulePolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list firewallrules');
     }
 
     /**
@@ -23,7 +23,7 @@ class FirewallRulePolicy
      */
     public function view(User $user, FirewallRule $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view firewallrules');
     }
 
     /**
@@ -31,7 +31,7 @@ class FirewallRulePolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create firewallrules');
     }
 
     /**
@@ -39,7 +39,7 @@ class FirewallRulePolicy
      */
     public function update(User $user, FirewallRule $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update firewallrules');
     }
 
     /**
@@ -47,7 +47,7 @@ class FirewallRulePolicy
      */
     public function delete(User $user, FirewallRule $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete firewallrules');
     }
 
     /**
@@ -55,7 +55,7 @@ class FirewallRulePolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete firewallrules');
     }
 
     /**

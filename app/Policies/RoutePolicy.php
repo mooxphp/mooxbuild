@@ -15,7 +15,7 @@ class RoutePolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list routes');
     }
 
     /**
@@ -23,7 +23,7 @@ class RoutePolicy
      */
     public function view(User $user, Route $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view routes');
     }
 
     /**
@@ -31,7 +31,7 @@ class RoutePolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create routes');
     }
 
     /**
@@ -39,7 +39,7 @@ class RoutePolicy
      */
     public function update(User $user, Route $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update routes');
     }
 
     /**
@@ -47,7 +47,7 @@ class RoutePolicy
      */
     public function delete(User $user, Route $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete routes');
     }
 
     /**
@@ -55,7 +55,7 @@ class RoutePolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete routes');
     }
 
     /**

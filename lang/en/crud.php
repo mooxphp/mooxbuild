@@ -465,22 +465,6 @@ return [
         ],
     ],
 
-    'platforms' => [
-        'name' => 'Platforms',
-        'index_title' => 'Platforms List',
-        'new_title' => 'New Platform',
-        'create_title' => 'Create Platform',
-        'edit_title' => 'Edit Platform',
-        'show_title' => 'Show Platform',
-        'inputs' => [
-            'master' => 'Master',
-            'title' => 'Title',
-            'slug' => 'Slug',
-            'bind_to_domain' => 'Bind To Domain',
-            'thumbnail' => 'Thumbnail',
-        ],
-    ],
-
     'posts' => [
         'name' => 'Posts',
         'index_title' => 'Posts List',
@@ -636,22 +620,6 @@ return [
         'inputs' => [],
     ],
 
-    'syncs' => [
-        'name' => 'Syncs',
-        'index_title' => 'Syncs List',
-        'new_title' => 'New Sync',
-        'create_title' => 'Create Sync',
-        'edit_title' => 'Edit Sync',
-        'show_title' => 'Show Sync',
-        'inputs' => [
-            'syncable_id' => 'Syncable Id',
-            'syncable_type' => 'Syncable Type',
-            'source_platform_id' => 'Source Platform',
-            'target_platform_id' => 'Target Platform',
-            'last_sync' => 'Last Sync',
-        ],
-    ],
-
     'tags' => [
         'name' => 'Tags',
         'index_title' => 'Tags List',
@@ -722,22 +690,6 @@ return [
         ],
     ],
 
-    'users' => [
-        'name' => 'Users',
-        'index_title' => 'Users List',
-        'new_title' => 'New User',
-        'create_title' => 'Create User',
-        'edit_title' => 'Edit User',
-        'show_title' => 'Show User',
-        'inputs' => [
-            'name' => 'Name',
-            'email' => 'Email',
-            'password' => 'Password',
-            'profile_photo_path' => 'Profile Photo Path',
-            'bypass_token' => 'Bypass Token',
-        ],
-    ],
-
     'wishlists' => [
         'name' => 'Wishlists',
         'index_title' => 'Wishlists List',
@@ -788,6 +740,85 @@ return [
             'status' => 'Status',
             'started_at' => 'Started At',
             'stopped_at' => 'Stopped At',
+        ],
+    ],
+
+    'users' => [
+        'name' => 'Users',
+        'index_title' => 'Users List',
+        'new_title' => 'New User',
+        'create_title' => 'Create User',
+        'edit_title' => 'Edit User',
+        'show_title' => 'Show User',
+        'inputs' => [
+            'name' => 'Name',
+            'slug' => 'Slug',
+            'gender' => 'Gender',
+            'title' => 'Title',
+            'first_name' => 'First Name',
+            'last_name' => 'Last Name',
+            'email' => 'Email',
+            'website' => 'Website',
+            'description' => 'Description',
+            'password' => 'Password',
+            'profile_photo_path' => 'Profile Photo Path',
+            'wp_id' => 'Wp Id',
+            'language_id' => 'Language',
+        ],
+    ],
+
+    'platforms' => [
+        'name' => 'Platforms',
+        'index_title' => 'Platforms List',
+        'new_title' => 'New Platform',
+        'create_title' => 'Create Platform',
+        'edit_title' => 'Edit Platform',
+        'show_title' => 'Show Platform',
+        'inputs' => [
+            'title' => 'Title',
+            'slug' => 'Slug',
+            'domain' => 'Domain',
+            'selectable' => 'Selectable',
+            'master' => 'Master',
+            'thumbnail' => 'Thumbnail',
+        ],
+    ],
+
+    'syncs' => [
+        'name' => 'Syncs',
+        'index_title' => 'Syncs List',
+        'new_title' => 'New Sync',
+        'create_title' => 'Create Sync',
+        'edit_title' => 'Edit Sync',
+        'show_title' => 'Show Sync',
+        'inputs' => [
+            'syncable_id' => 'Syncable Id',
+            'syncable_type' => 'Syncable Type',
+            'source_platform_id' => 'Source Platform',
+            'target_platform_id' => 'Target Platform',
+            'last_sync' => 'Last Sync',
+        ],
+    ],
+
+    'roles' => [
+        'name' => 'Roles',
+        'index_title' => 'Roles List',
+        'create_title' => 'Create Role',
+        'edit_title' => 'Edit Role',
+        'show_title' => 'Show Role',
+        'inputs' => [
+            'name' => 'Name',
+        ],
+    ],
+
+    'permissions' => [
+        'name' => 'Permissions',
+        'index_title' => 'Permissions List',
+        'create_title' => 'Create Permission',
+        'edit_title' => 'Edit Permission',
+        'show_title' => 'Show Permission',
+        'inputs' => [
+            'name' => 'Name',
         ],
     ],
 ];

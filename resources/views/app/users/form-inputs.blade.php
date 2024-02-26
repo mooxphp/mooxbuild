@@ -13,6 +13,58 @@
     </x-inputs.group>
 
     <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="slug"
+            label="Slug"
+            :value="old('slug', ($editing ? $user->slug : ''))"
+            maxlength="255"
+            placeholder="Slug"
+            required
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.select name="gender" label="Gender">
+            @php $selected = old('gender', ($editing ? $user->gender : '')) @endphp
+            <option value="male" {{ $selected == 'male' ? 'selected' : '' }} >Male</option>
+            <option value="female" {{ $selected == 'female' ? 'selected' : '' }} >Female</option>
+            <option value="other" {{ $selected == 'other' ? 'selected' : '' }} >Other</option>
+        </x-inputs.select>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="title"
+            label="Title"
+            :value="old('title', ($editing ? $user->title : ''))"
+            maxlength="255"
+            placeholder="Title"
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="first_name"
+            label="First Name"
+            :value="old('first_name', ($editing ? $user->first_name : ''))"
+            maxlength="255"
+            placeholder="First Name"
+            required
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="last_name"
+            label="Last Name"
+            :value="old('last_name', ($editing ? $user->last_name : ''))"
+            maxlength="255"
+            placeholder="Last Name"
+            required
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
         <x-inputs.email
             name="email"
             label="Email"
@@ -21,6 +73,26 @@
             placeholder="Email"
             required
         ></x-inputs.email>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="website"
+            label="Website"
+            :value="old('website', ($editing ? $user->website : ''))"
+            maxlength="255"
+            placeholder="Website"
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.textarea
+            name="description"
+            label="Description"
+            maxlength="255"
+            >{{ old('description', ($editing ? $user->description : ''))
+            }}</x-inputs.textarea
+        >
     </x-inputs.group>
 
     <x-inputs.group class="w-full">
@@ -45,11 +117,42 @@
 
     <x-inputs.group class="w-full">
         <x-inputs.text
-            name="bypass_token"
-            label="Bypass Token"
-            :value="old('bypass_token', ($editing ? $user->bypass_token : ''))"
+            name="wp_id"
+            label="Wp Id"
+            :value="old('wp_id', ($editing ? $user->wp_id : ''))"
             maxlength="255"
-            placeholder="Bypass Token"
+            placeholder="Wp Id"
         ></x-inputs.text>
     </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.select name="language_id" label="Language" required>
+            @php $selected = old('language_id', ($editing ? $user->language_id : '')) @endphp
+            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Language</option>
+            @foreach($languages as $value => $label)
+            <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
+            @endforeach
+        </x-inputs.select>
+    </x-inputs.group>
+
+    <div class="px-4 my-4">
+        <h4 class="font-bold text-lg text-gray-700">
+            Assign @lang('crud.roles.name')
+        </h4>
+
+        <div class="py-2">
+            @foreach ($roles as $role)
+            <div>
+                <x-inputs.checkbox
+                    id="role{{ $role->id }}"
+                    name="roles[]"
+                    label="{{ ucfirst($role->name) }}"
+                    value="{{ $role->id }}"
+                    :checked="isset($user) ? $user->hasRole($role) : false"
+                    :add-hidden-value="false"
+                ></x-inputs.checkbox>
+            </div>
+            @endforeach
+        </div>
+    </div>
 </div>

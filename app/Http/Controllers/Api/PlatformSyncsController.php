@@ -17,7 +17,7 @@ class PlatformSyncsController extends Controller
         $search = $request->get('search', '');
 
         $syncs = $platform
-            ->syncs2()
+            ->targets()
             ->search($search)
             ->latest()
             ->paginate();
@@ -35,7 +35,7 @@ class PlatformSyncsController extends Controller
             'last_sync' => ['required', 'date'],
         ]);
 
-        $sync = $platform->syncs2()->create($validated);
+        $sync = $platform->targets()->create($validated);
 
         return new SyncResource($sync);
     }

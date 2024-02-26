@@ -15,7 +15,7 @@ class TagPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list tags');
     }
 
     /**
@@ -23,7 +23,7 @@ class TagPolicy
      */
     public function view(User $user, Tag $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view tags');
     }
 
     /**
@@ -31,7 +31,7 @@ class TagPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create tags');
     }
 
     /**
@@ -39,7 +39,7 @@ class TagPolicy
      */
     public function update(User $user, Tag $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update tags');
     }
 
     /**
@@ -47,7 +47,7 @@ class TagPolicy
      */
     public function delete(User $user, Tag $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete tags');
     }
 
     /**
@@ -55,7 +55,7 @@ class TagPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete tags');
     }
 
     /**

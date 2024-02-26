@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Language;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\UserStoreRequest;
@@ -36,7 +38,11 @@ class UserController extends Controller
     {
         $this->authorize('create', User::class);
 
-        return view('app.users.create');
+        $languages = Language::pluck('title', 'id');
+
+        $roles = Role::get();
+
+        return view('app.users.create', compact('languages', 'roles'));
     }
 
     /**
@@ -51,6 +57,8 @@ class UserController extends Controller
         $validated['password'] = Hash::make($validated['password']);
 
         $user = User::create($validated);
+
+        $user->syncRoles($request->roles);
 
         return redirect()
             ->route('users.edit', $user)
@@ -74,7 +82,11 @@ class UserController extends Controller
     {
         $this->authorize('update', $user);
 
-        return view('app.users.edit', compact('user'));
+        $languages = Language::pluck('title', 'id');
+
+        $roles = Role::get();
+
+        return view('app.users.edit', compact('user', 'languages', 'roles'));
     }
 
     /**
@@ -95,6 +107,8 @@ class UserController extends Controller
         }
 
         $user->update($validated);
+
+        $user->syncRoles($request->roles);
 
         return redirect()
             ->route('users.edit', $user)

@@ -15,7 +15,7 @@ class ItemPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list items');
     }
 
     /**
@@ -23,7 +23,7 @@ class ItemPolicy
      */
     public function view(User $user, Item $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view items');
     }
 
     /**
@@ -31,7 +31,7 @@ class ItemPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create items');
     }
 
     /**
@@ -39,7 +39,7 @@ class ItemPolicy
      */
     public function update(User $user, Item $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update items');
     }
 
     /**
@@ -47,7 +47,7 @@ class ItemPolicy
      */
     public function delete(User $user, Item $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete items');
     }
 
     /**
@@ -55,7 +55,7 @@ class ItemPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete items');
     }
 
     /**

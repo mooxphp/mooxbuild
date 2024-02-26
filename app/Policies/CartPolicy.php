@@ -15,7 +15,7 @@ class CartPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list carts');
     }
 
     /**
@@ -23,7 +23,7 @@ class CartPolicy
      */
     public function view(User $user, Cart $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view carts');
     }
 
     /**
@@ -31,7 +31,7 @@ class CartPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create carts');
     }
 
     /**
@@ -39,7 +39,7 @@ class CartPolicy
      */
     public function update(User $user, Cart $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update carts');
     }
 
     /**
@@ -47,7 +47,7 @@ class CartPolicy
      */
     public function delete(User $user, Cart $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete carts');
     }
 
     /**
@@ -55,7 +55,7 @@ class CartPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete carts');
     }
 
     /**

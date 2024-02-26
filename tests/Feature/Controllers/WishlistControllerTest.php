@@ -21,6 +21,8 @@ class WishlistControllerTest extends TestCase
             User::factory()->create(['email' => 'admin@admin.com'])
         );
 
+        $this->seed(\Database\Seeders\PermissionsSeeder::class);
+
         $this->withoutExceptionHandling();
     }
 

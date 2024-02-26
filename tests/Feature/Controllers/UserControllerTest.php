@@ -4,6 +4,8 @@ namespace Tests\Feature\Controllers;
 
 use App\Models\User;
 
+use App\Models\Language;
+
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -19,6 +21,8 @@ class UserControllerTest extends TestCase
         $this->actingAs(
             User::factory()->create(['email' => 'admin@admin.com'])
         );
+
+        $this->seed(\Database\Seeders\PermissionsSeeder::class);
 
         $this->withoutExceptionHandling();
     }
@@ -112,11 +116,21 @@ class UserControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
+        $language = Language::factory()->create();
+
         $data = [
             'name' => $this->faker->name(),
+            'slug' => $this->faker->slug(),
+            'gender' => \Arr::random(['male', 'female', 'other']),
+            'title' => $this->faker->sentence(10),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
             'email' => $this->faker->unique->email(),
+            'website' => $this->faker->text(255),
+            'description' => $this->faker->sentence(15),
             'profile_photo_path' => $this->faker->text(255),
-            'bypass_token' => $this->faker->text(255),
+            'wp_id' => $this->faker->randomNumber(),
+            'language_id' => $language->id,
         ];
 
         $data['password'] = \Str::random('8');
@@ -147,6 +161,6 @@ class UserControllerTest extends TestCase
 
         $response->assertRedirect(route('users.index'));
 
-        $this->assertModelMissing($user);
+        $this->assertSoftDeleted($user);
     }
 }

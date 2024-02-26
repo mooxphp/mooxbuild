@@ -15,7 +15,7 @@ class JobBatchManagerPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list jobbatchmanagers');
     }
 
     /**
@@ -23,7 +23,7 @@ class JobBatchManagerPolicy
      */
     public function view(User $user, JobBatchManager $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view jobbatchmanagers');
     }
 
     /**
@@ -31,7 +31,7 @@ class JobBatchManagerPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create jobbatchmanagers');
     }
 
     /**
@@ -39,7 +39,7 @@ class JobBatchManagerPolicy
      */
     public function update(User $user, JobBatchManager $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update jobbatchmanagers');
     }
 
     /**
@@ -47,7 +47,7 @@ class JobBatchManagerPolicy
      */
     public function delete(User $user, JobBatchManager $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete jobbatchmanagers');
     }
 
     /**
@@ -55,7 +55,7 @@ class JobBatchManagerPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete jobbatchmanagers');
     }
 
     /**

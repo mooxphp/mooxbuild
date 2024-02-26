@@ -15,7 +15,7 @@ class JobQueueWorkerPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list jobqueueworkers');
     }
 
     /**
@@ -23,7 +23,7 @@ class JobQueueWorkerPolicy
      */
     public function view(User $user, JobQueueWorker $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view jobqueueworkers');
     }
 
     /**
@@ -31,7 +31,7 @@ class JobQueueWorkerPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create jobqueueworkers');
     }
 
     /**
@@ -39,7 +39,7 @@ class JobQueueWorkerPolicy
      */
     public function update(User $user, JobQueueWorker $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update jobqueueworkers');
     }
 
     /**
@@ -47,7 +47,7 @@ class JobQueueWorkerPolicy
      */
     public function delete(User $user, JobQueueWorker $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete jobqueueworkers');
     }
 
     /**
@@ -55,7 +55,7 @@ class JobQueueWorkerPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete jobqueueworkers');
     }
 
     /**

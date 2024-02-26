@@ -23,9 +23,51 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
+                            @lang('crud.users.inputs.slug')
+                        </h5>
+                        <span>{{ $user->slug ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.users.inputs.gender')
+                        </h5>
+                        <span>{{ $user->gender ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.users.inputs.title')
+                        </h5>
+                        <span>{{ $user->title ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.users.inputs.first_name')
+                        </h5>
+                        <span>{{ $user->first_name ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.users.inputs.last_name')
+                        </h5>
+                        <span>{{ $user->last_name ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
                             @lang('crud.users.inputs.email')
                         </h5>
                         <span>{{ $user->email ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.users.inputs.website')
+                        </h5>
+                        <span>{{ $user->website ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.users.inputs.description')
+                        </h5>
+                        <span>{{ $user->description ?? '-' }}</span>
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
@@ -35,9 +77,42 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.users.inputs.bypass_token')
+                            @lang('crud.users.inputs.wp_id')
                         </h5>
-                        <span>{{ $user->bypass_token ?? '-' }}</span>
+                        <span>{{ $user->wp_id ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.users.inputs.language_id')
+                        </h5>
+                        <span
+                            >{{ optional($user->language)->title ?? '-' }}</span
+                        >
+                    </div>
+                </div>
+
+                <div class="mt-4 px-4">
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.roles.name')
+                        </h5>
+                        <div>
+                            @forelse ($user->roles as $role)
+                            <div
+                                class="
+                                    inline-block
+                                    p-1
+                                    text-center text-sm
+                                    rounded
+                                    bg-blue-400
+                                    text-white
+                                "
+                            >
+                                {{ $role->name }}
+                            </div>
+                            <br />
+                            @empty - @endforelse
+                        </div>
                     </div>
                 </div>
 

@@ -15,7 +15,7 @@ class JobManagerPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list jobmanagers');
     }
 
     /**
@@ -23,7 +23,7 @@ class JobManagerPolicy
      */
     public function view(User $user, JobManager $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view jobmanagers');
     }
 
     /**
@@ -31,7 +31,7 @@ class JobManagerPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create jobmanagers');
     }
 
     /**
@@ -39,7 +39,7 @@ class JobManagerPolicy
      */
     public function update(User $user, JobManager $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update jobmanagers');
     }
 
     /**
@@ -47,7 +47,7 @@ class JobManagerPolicy
      */
     public function delete(User $user, JobManager $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete jobmanagers');
     }
 
     /**
@@ -55,7 +55,7 @@ class JobManagerPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete jobmanagers');
     }
 
     /**

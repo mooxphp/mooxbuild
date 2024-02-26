@@ -12,10 +12,11 @@ return new class extends Migration {
     {
         Schema::create('platforms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->boolean('master')->nullable();
             $table->string('title');
             $table->string('slug');
-            $table->string('bind_to_domain')->nullable();
+            $table->string('domain');
+            $table->boolean('selectable')->nullable();
+            $table->boolean('master')->nullable();
             $table->string('thumbnail')->nullable();
 
             $table->timestamps();

@@ -12,26 +12,33 @@ class Platform extends Model
     use Searchable;
 
     protected $fillable = [
-        'master',
         'title',
         'slug',
-        'bind_to_domain',
+        'domain',
+        'selectable',
+        'master',
         'thumbnail',
     ];
 
     protected $searchableFields = ['*'];
 
     protected $casts = [
+        'selectable' => 'boolean',
         'master' => 'boolean',
     ];
 
-    public function syncs()
+    public function sources()
     {
         return $this->hasMany(Sync::class, 'source_platform_id');
     }
 
-    public function syncs2()
+    public function targets()
     {
         return $this->hasMany(Sync::class, 'target_platform_id');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

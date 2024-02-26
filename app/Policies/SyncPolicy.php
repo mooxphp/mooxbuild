@@ -15,7 +15,7 @@ class SyncPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list syncs');
     }
 
     /**
@@ -23,7 +23,7 @@ class SyncPolicy
      */
     public function view(User $user, Sync $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view syncs');
     }
 
     /**
@@ -31,7 +31,7 @@ class SyncPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create syncs');
     }
 
     /**
@@ -39,7 +39,7 @@ class SyncPolicy
      */
     public function update(User $user, Sync $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update syncs');
     }
 
     /**
@@ -47,7 +47,7 @@ class SyncPolicy
      */
     public function delete(User $user, Sync $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete syncs');
     }
 
     /**
@@ -55,7 +55,7 @@ class SyncPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete syncs');
     }
 
     /**

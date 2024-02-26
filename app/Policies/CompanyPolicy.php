@@ -15,7 +15,7 @@ class CompanyPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list companies');
     }
 
     /**
@@ -23,7 +23,7 @@ class CompanyPolicy
      */
     public function view(User $user, Company $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view companies');
     }
 
     /**
@@ -31,7 +31,7 @@ class CompanyPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create companies');
     }
 
     /**
@@ -39,7 +39,7 @@ class CompanyPolicy
      */
     public function update(User $user, Company $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update companies');
     }
 
     /**
@@ -47,7 +47,7 @@ class CompanyPolicy
      */
     public function delete(User $user, Company $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete companies');
     }
 
     /**
@@ -55,7 +55,7 @@ class CompanyPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete companies');
     }
 
     /**

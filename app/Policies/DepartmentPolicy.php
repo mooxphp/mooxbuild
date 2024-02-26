@@ -15,7 +15,7 @@ class DepartmentPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list departments');
     }
 
     /**
@@ -23,7 +23,7 @@ class DepartmentPolicy
      */
     public function view(User $user, Department $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view departments');
     }
 
     /**
@@ -31,7 +31,7 @@ class DepartmentPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create departments');
     }
 
     /**
@@ -39,7 +39,7 @@ class DepartmentPolicy
      */
     public function update(User $user, Department $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update departments');
     }
 
     /**
@@ -47,7 +47,7 @@ class DepartmentPolicy
      */
     public function delete(User $user, Department $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete departments');
     }
 
     /**
@@ -55,7 +55,7 @@ class DepartmentPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete departments');
     }
 
     /**

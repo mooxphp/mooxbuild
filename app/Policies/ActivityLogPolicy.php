@@ -15,7 +15,7 @@ class ActivityLogPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list activitylogs');
     }
 
     /**
@@ -23,7 +23,7 @@ class ActivityLogPolicy
      */
     public function view(User $user, ActivityLog $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view activitylogs');
     }
 
     /**
@@ -31,7 +31,7 @@ class ActivityLogPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create activitylogs');
     }
 
     /**
@@ -39,7 +39,7 @@ class ActivityLogPolicy
      */
     public function update(User $user, ActivityLog $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update activitylogs');
     }
 
     /**
@@ -47,7 +47,7 @@ class ActivityLogPolicy
      */
     public function delete(User $user, ActivityLog $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete activitylogs');
     }
 
     /**
@@ -55,7 +55,7 @@ class ActivityLogPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete activitylogs');
     }
 
     /**

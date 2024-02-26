@@ -15,7 +15,7 @@ class PageTemplatePolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list pagetemplates');
     }
 
     /**
@@ -23,7 +23,7 @@ class PageTemplatePolicy
      */
     public function view(User $user, PageTemplate $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view pagetemplates');
     }
 
     /**
@@ -31,7 +31,7 @@ class PageTemplatePolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create pagetemplates');
     }
 
     /**
@@ -39,7 +39,7 @@ class PageTemplatePolicy
      */
     public function update(User $user, PageTemplate $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update pagetemplates');
     }
 
     /**
@@ -47,7 +47,7 @@ class PageTemplatePolicy
      */
     public function delete(User $user, PageTemplate $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete pagetemplates');
     }
 
     /**
@@ -55,7 +55,7 @@ class PageTemplatePolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete pagetemplates');
     }
 
     /**

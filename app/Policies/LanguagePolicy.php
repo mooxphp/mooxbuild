@@ -15,7 +15,7 @@ class LanguagePolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list languages');
     }
 
     /**
@@ -23,7 +23,7 @@ class LanguagePolicy
      */
     public function view(User $user, Language $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view languages');
     }
 
     /**
@@ -31,7 +31,7 @@ class LanguagePolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create languages');
     }
 
     /**
@@ -39,7 +39,7 @@ class LanguagePolicy
      */
     public function update(User $user, Language $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update languages');
     }
 
     /**
@@ -47,7 +47,7 @@ class LanguagePolicy
      */
     public function delete(User $user, Language $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete languages');
     }
 
     /**
@@ -55,7 +55,7 @@ class LanguagePolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete languages');
     }
 
     /**

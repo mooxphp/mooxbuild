@@ -50,16 +50,19 @@
                         <thead class="text-gray-700">
                             <tr>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.platforms.inputs.master')
-                                </th>
-                                <th class="px-4 py-3 text-left">
                                     @lang('crud.platforms.inputs.title')
                                 </th>
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.platforms.inputs.slug')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.platforms.inputs.bind_to_domain')
+                                    @lang('crud.platforms.inputs.domain')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.platforms.inputs.selectable')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.platforms.inputs.master')
                                 </th>
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.platforms.inputs.thumbnail')
@@ -71,16 +74,19 @@
                             @forelse($platforms as $platform)
                             <tr class="hover:bg-gray-50">
                                 <td class="px-4 py-3 text-left">
-                                    {{ $platform->master ?? '-' }}
-                                </td>
-                                <td class="px-4 py-3 text-left">
                                     {{ $platform->title ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $platform->slug ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ $platform->bind_to_domain ?? '-' }}
+                                    {{ $platform->domain ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $platform->selectable ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $platform->master ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     <x-partials.thumbnail
@@ -152,7 +158,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="6">
+                                <td colspan="7">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -160,7 +166,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="6">
+                                <td colspan="7">
                                     <div class="mt-10 px-4">
                                         {!! $platforms->render() !!}
                                     </div>

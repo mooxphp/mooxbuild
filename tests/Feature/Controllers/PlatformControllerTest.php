@@ -21,6 +21,8 @@ class PlatformControllerTest extends TestCase
             User::factory()->create(['email' => 'admin@admin.com'])
         );
 
+        $this->seed(\Database\Seeders\PermissionsSeeder::class);
+
         $this->withoutExceptionHandling();
     }
 
@@ -107,10 +109,11 @@ class PlatformControllerTest extends TestCase
         $platform = Platform::factory()->create();
 
         $data = [
-            'master' => $this->faker->boolean(),
             'title' => $this->faker->sentence(10),
             'slug' => $this->faker->slug(),
-            'bind_to_domain' => $this->faker->text(255),
+            'domain' => $this->faker->text(255),
+            'selectable' => $this->faker->boolean(),
+            'master' => $this->faker->boolean(),
         ];
 
         $response = $this->put(route('platforms.update', $platform), $data);

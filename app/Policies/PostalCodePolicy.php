@@ -15,7 +15,7 @@ class PostalCodePolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list postalcodes');
     }
 
     /**
@@ -23,7 +23,7 @@ class PostalCodePolicy
      */
     public function view(User $user, PostalCode $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view postalcodes');
     }
 
     /**
@@ -31,7 +31,7 @@ class PostalCodePolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create postalcodes');
     }
 
     /**
@@ -39,7 +39,7 @@ class PostalCodePolicy
      */
     public function update(User $user, PostalCode $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update postalcodes');
     }
 
     /**
@@ -47,7 +47,7 @@ class PostalCodePolicy
      */
     public function delete(User $user, PostalCode $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete postalcodes');
     }
 
     /**
@@ -55,7 +55,7 @@ class PostalCodePolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete postalcodes');
     }
 
     /**

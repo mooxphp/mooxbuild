@@ -15,7 +15,7 @@ class ThemePolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list themes');
     }
 
     /**
@@ -23,7 +23,7 @@ class ThemePolicy
      */
     public function view(User $user, Theme $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view themes');
     }
 
     /**
@@ -31,7 +31,7 @@ class ThemePolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create themes');
     }
 
     /**
@@ -39,7 +39,7 @@ class ThemePolicy
      */
     public function update(User $user, Theme $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update themes');
     }
 
     /**
@@ -47,7 +47,7 @@ class ThemePolicy
      */
     public function delete(User $user, Theme $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete themes');
     }
 
     /**
@@ -55,7 +55,7 @@ class ThemePolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete themes');
     }
 
     /**

@@ -24,13 +24,21 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'slug' => $this->faker->slug(),
+            'gender' => \Arr::random(['male', 'female', 'other']),
+            'title' => $this->faker->sentence(10),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
             'email' => $this->faker->unique->email(),
+            'website' => $this->faker->text(255),
+            'description' => $this->faker->sentence(15),
             'email_verified_at' => now(),
             'password' => \Hash::make('password'),
             'remember_token' => Str::random(10),
             'avatar_url' => $this->faker->text(2048),
             'profile_photo_path' => $this->faker->text(255),
-            'bypass_token' => $this->faker->text(255),
+            'wp_id' => $this->faker->randomNumber(),
+            'language_id' => \App\Models\Language::factory(),
         ];
     }
 

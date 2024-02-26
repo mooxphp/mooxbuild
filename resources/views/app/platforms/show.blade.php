@@ -17,12 +17,6 @@
                 <div class="mt-4 px-4">
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.platforms.inputs.master')
-                        </h5>
-                        <span>{{ $platform->master ?? '-' }}</span>
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="font-medium text-gray-700">
                             @lang('crud.platforms.inputs.title')
                         </h5>
                         <span>{{ $platform->title ?? '-' }}</span>
@@ -35,9 +29,21 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.platforms.inputs.bind_to_domain')
+                            @lang('crud.platforms.inputs.domain')
                         </h5>
-                        <span>{{ $platform->bind_to_domain ?? '-' }}</span>
+                        <span>{{ $platform->domain ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.platforms.inputs.selectable')
+                        </h5>
+                        <span>{{ $platform->selectable ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.platforms.inputs.master')
+                        </h5>
+                        <span>{{ $platform->master ?? '-' }}</span>
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">

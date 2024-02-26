@@ -15,7 +15,7 @@ class PagePolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list pages');
     }
 
     /**
@@ -23,7 +23,7 @@ class PagePolicy
      */
     public function view(User $user, Page $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view pages');
     }
 
     /**
@@ -31,7 +31,7 @@ class PagePolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create pages');
     }
 
     /**
@@ -39,7 +39,7 @@ class PagePolicy
      */
     public function update(User $user, Page $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update pages');
     }
 
     /**
@@ -47,7 +47,7 @@ class PagePolicy
      */
     public function delete(User $user, Page $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete pages');
     }
 
     /**
@@ -55,7 +55,7 @@ class PagePolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete pages');
     }
 
     /**

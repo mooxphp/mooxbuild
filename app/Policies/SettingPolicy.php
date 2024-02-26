@@ -15,7 +15,7 @@ class SettingPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list settings');
     }
 
     /**
@@ -23,7 +23,7 @@ class SettingPolicy
      */
     public function view(User $user, Setting $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view settings');
     }
 
     /**
@@ -31,7 +31,7 @@ class SettingPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create settings');
     }
 
     /**
@@ -39,7 +39,7 @@ class SettingPolicy
      */
     public function update(User $user, Setting $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update settings');
     }
 
     /**
@@ -47,7 +47,7 @@ class SettingPolicy
      */
     public function delete(User $user, Setting $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete settings');
     }
 
     /**
@@ -55,7 +55,7 @@ class SettingPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete settings');
     }
 
     /**

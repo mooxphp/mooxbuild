@@ -9,10 +9,11 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ItemController;
 use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\PostController;
-use App\Http\Controllers\Api\SyncController;
 use App\Http\Controllers\Api\TeamController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\SyncController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\MediaController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\RouteController;
@@ -30,10 +31,10 @@ use App\Http\Controllers\Api\CurrencyController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\JobBatchController;
 use App\Http\Controllers\Api\LanguageController;
-use App\Http\Controllers\Api\PlatformController;
 use App\Http\Controllers\Api\RevisionController;
 use App\Http\Controllers\Api\TimezoneController;
 use App\Http\Controllers\Api\WishlistController;
+use App\Http\Controllers\Api\PlatformController;
 use App\Http\Controllers\Api\ContinentController;
 use App\Http\Controllers\Api\FailedJobController;
 use App\Http\Controllers\Api\ItemItemsController;
@@ -42,6 +43,7 @@ use App\Http\Controllers\Api\PostPostsController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\PostalCodeController;
 use App\Http\Controllers\Api\JobManagerController;
+use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\ActivityLogController;
 use App\Http\Controllers\Api\AuthorPostsController;
 use App\Http\Controllers\Api\AuthorPagesController;
@@ -57,7 +59,10 @@ use App\Http\Controllers\Api\CustomerCartsController;
 use App\Http\Controllers\Api\LanguagePostsController;
 use App\Http\Controllers\Api\LanguagePagesController;
 use App\Http\Controllers\Api\LanguageItemsController;
+use App\Http\Controllers\Api\LanguageUsersController;
+use App\Http\Controllers\Api\UserPlatformsController;
 use App\Http\Controllers\Api\PlatformSyncsController;
+use App\Http\Controllers\Api\PlatformUsersController;
 use App\Http\Controllers\Api\AuthorProductsController;
 use App\Http\Controllers\Api\AuthorCommentsController;
 use App\Http\Controllers\Api\ContentElementController;
@@ -100,6 +105,9 @@ Route::middleware('auth:sanctum')
 Route::name('api.')
     ->middleware('auth:sanctum')
     ->group(function () {
+        Route::apiResource('roles', RoleController::class);
+        Route::apiResource('permissions', PermissionController::class);
+
         Route::apiResource('activity-logs', ActivityLogController::class);
 
         Route::apiResource('addresses', AddressController::class);
@@ -381,6 +389,16 @@ Route::name('api.')
             'store',
         ])->name('languages.items.store');
 
+        // Language Users
+        Route::get('/languages/{language}/users', [
+            LanguageUsersController::class,
+            'index',
+        ])->name('languages.users.index');
+        Route::post('/languages/{language}/users', [
+            LanguageUsersController::class,
+            'store',
+        ])->name('languages.users.store');
+
         // Language Countries
         Route::get('/languages/{language}/countries', [
             LanguageCountriesController::class,
@@ -423,28 +441,6 @@ Route::name('api.')
 
         Route::apiResource('page-templates', PageTemplateController::class);
 
-        Route::apiResource('platforms', PlatformController::class);
-
-        // Platform Syncs
-        Route::get('/platforms/{platform}/syncs', [
-            PlatformSyncsController::class,
-            'index',
-        ])->name('platforms.syncs.index');
-        Route::post('/platforms/{platform}/syncs', [
-            PlatformSyncsController::class,
-            'store',
-        ])->name('platforms.syncs.store');
-
-        // Platform Syncs2
-        Route::get('/platforms/{platform}/syncs', [
-            PlatformSyncsController::class,
-            'index',
-        ])->name('platforms.syncs.index');
-        Route::post('/platforms/{platform}/syncs', [
-            PlatformSyncsController::class,
-            'store',
-        ])->name('platforms.syncs.store');
-
         Route::apiResource('posts', PostController::class);
 
         // Post Has Translations
@@ -479,8 +475,6 @@ Route::name('api.')
 
         Route::apiResource('settings', SettingController::class);
 
-        Route::apiResource('syncs', SyncController::class);
-
         Route::apiResource('tags', TagController::class);
 
         Route::apiResource('teams', TeamController::class);
@@ -513,18 +507,6 @@ Route::name('api.')
             'destroy',
         ])->name('timezones.countries.destroy');
 
-        Route::apiResource('users', UserController::class);
-
-        // User Authors
-        Route::get('/users/{user}/authors', [
-            UserAuthorsController::class,
-            'index',
-        ])->name('users.authors.index');
-        Route::post('/users/{user}/authors', [
-            UserAuthorsController::class,
-            'store',
-        ])->name('users.authors.store');
-
         Route::apiResource('wishlists', WishlistController::class);
 
         Route::apiResource('job-managers', JobManagerController::class);
@@ -543,4 +525,68 @@ Route::name('api.')
             JobQueueWorkerJobManagersController::class,
             'store',
         ])->name('job-queue-workers.job-managers.store');
+
+        Route::apiResource('users', UserController::class);
+
+        // User Authors
+        Route::get('/users/{user}/authors', [
+            UserAuthorsController::class,
+            'index',
+        ])->name('users.authors.index');
+        Route::post('/users/{user}/authors', [
+            UserAuthorsController::class,
+            'store',
+        ])->name('users.authors.store');
+
+        // User Platforms
+        Route::get('/users/{user}/platforms', [
+            UserPlatformsController::class,
+            'index',
+        ])->name('users.platforms.index');
+        Route::post('/users/{user}/platforms/{platform}', [
+            UserPlatformsController::class,
+            'store',
+        ])->name('users.platforms.store');
+        Route::delete('/users/{user}/platforms/{platform}', [
+            UserPlatformsController::class,
+            'destroy',
+        ])->name('users.platforms.destroy');
+
+        Route::apiResource('platforms', PlatformController::class);
+
+        // Platform Sources
+        Route::get('/platforms/{platform}/syncs', [
+            PlatformSyncsController::class,
+            'index',
+        ])->name('platforms.syncs.index');
+        Route::post('/platforms/{platform}/syncs', [
+            PlatformSyncsController::class,
+            'store',
+        ])->name('platforms.syncs.store');
+
+        // Platform Targets
+        Route::get('/platforms/{platform}/syncs', [
+            PlatformSyncsController::class,
+            'index',
+        ])->name('platforms.syncs.index');
+        Route::post('/platforms/{platform}/syncs', [
+            PlatformSyncsController::class,
+            'store',
+        ])->name('platforms.syncs.store');
+
+        // Platform Users
+        Route::get('/platforms/{platform}/users', [
+            PlatformUsersController::class,
+            'index',
+        ])->name('platforms.users.index');
+        Route::post('/platforms/{platform}/users/{user}', [
+            PlatformUsersController::class,
+            'store',
+        ])->name('platforms.users.store');
+        Route::delete('/platforms/{platform}/users/{user}', [
+            PlatformUsersController::class,
+            'destroy',
+        ])->name('platforms.users.destroy');
+
+        Route::apiResource('syncs', SyncController::class);
     });

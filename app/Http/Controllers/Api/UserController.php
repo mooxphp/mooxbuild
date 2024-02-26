@@ -37,6 +37,8 @@ class UserController extends Controller
 
         $user = User::create($validated);
 
+        $user->syncRoles($request->roles);
+
         return new UserResource($user);
     }
 
@@ -60,6 +62,8 @@ class UserController extends Controller
         }
 
         $user->update($validated);
+
+        $user->syncRoles($request->roles);
 
         return new UserResource($user);
     }

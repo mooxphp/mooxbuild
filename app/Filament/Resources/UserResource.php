@@ -11,10 +11,13 @@ use Filament\Resources\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Actions\EditAction;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\RichEditor;
+use Filament\Tables\Filters\SelectFilter;
 use App\Filament\Filters\DateRangeFilter;
 use Filament\Tables\Actions\DeleteBulkAction;
 use App\Filament\Resources\UserResource\Pages;
@@ -42,6 +45,62 @@ class UserResource extends Resource
                             'lg' => 12,
                         ]),
 
+                    TextInput::make('slug')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Slug')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    Select::make('gender')
+                        ->rules(['in:male,female,other'])
+                        ->required()
+                        ->searchable()
+                        ->options([
+                            'male' => 'Male',
+                            'female' => 'Female',
+                            'other' => 'Other',
+                        ])
+                        ->placeholder('Gender')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('title')
+                        ->rules(['max:255', 'string'])
+                        ->nullable()
+                        ->placeholder('Title')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('first_name')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('First Name')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('last_name')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Last Name')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
                     TextInput::make('email')
                         ->rules(['email'])
                         ->required()
@@ -52,6 +111,26 @@ class UserResource extends Resource
                         )
                         ->email()
                         ->placeholder('Email')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('website')
+                        ->rules(['max:255', 'string'])
+                        ->nullable()
+                        ->placeholder('Website')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    RichEditor::make('description')
+                        ->rules(['max:255', 'string'])
+                        ->nullable()
+                        ->placeholder('Description')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,
@@ -83,10 +162,22 @@ class UserResource extends Resource
                             'lg' => 12,
                         ]),
 
-                    TextInput::make('bypass_token')
-                        ->rules(['max:255', 'string'])
+                    TextInput::make('wp_id')
+                        ->rules(['max:255'])
                         ->nullable()
-                        ->placeholder('Bypass Token')
+                        ->placeholder('Wp Id')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    Select::make('language_id')
+                        ->rules(['exists:languages,id'])
+                        ->required()
+                        ->relationship('language', 'title')
+                        ->searchable()
+                        ->placeholder('Language')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,
@@ -106,20 +197,63 @@ class UserResource extends Resource
                     ->toggleable()
                     ->searchable(true, null, true)
                     ->limit(50),
+                Tables\Columns\TextColumn::make('slug')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('gender')
+                    ->toggleable()
+                    ->searchable()
+                    ->enum([
+                        'male' => 'Male',
+                        'female' => 'Female',
+                        'other' => 'Other',
+                    ]),
+                Tables\Columns\TextColumn::make('title')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('first_name')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('last_name')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
                 Tables\Columns\TextColumn::make('email')
                     ->toggleable()
                     ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('website')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('description')
+                    ->toggleable()
+                    ->searchable()
                     ->limit(50),
                 Tables\Columns\TextColumn::make('profile_photo_path')
                     ->toggleable()
                     ->searchable(true, null, true)
                     ->limit(50),
-                Tables\Columns\TextColumn::make('bypass_token')
+                Tables\Columns\TextColumn::make('wp_id')
                     ->toggleable()
                     ->searchable(true, null, true)
                     ->limit(50),
+                Tables\Columns\TextColumn::make('language.title')
+                    ->toggleable()
+                    ->limit(50),
             ])
-            ->filters([DateRangeFilter::make('created_at')])
+            ->filters([
+                DateRangeFilter::make('created_at'),
+
+                SelectFilter::make('language_id')
+                    ->relationship('language', 'title')
+                    ->indicator('Language')
+                    ->multiple()
+                    ->label('Language'),
+            ])
             ->actions([ViewAction::make(), EditAction::make()])
             ->bulkActions([DeleteBulkAction::make()]);
     }
@@ -128,6 +262,7 @@ class UserResource extends Resource
     {
         return [
             UserResource\RelationManagers\AuthorsRelationManager::class,
+            UserResource\RelationManagers\PlatformsRelationManager::class,
             UserResource\RelationManagers\SyncsRelationManager::class,
         ];
     }

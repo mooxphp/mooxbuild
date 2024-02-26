@@ -15,7 +15,7 @@ class SeoPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list seos');
     }
 
     /**
@@ -23,7 +23,7 @@ class SeoPolicy
      */
     public function view(User $user, Seo $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view seos');
     }
 
     /**
@@ -31,7 +31,7 @@ class SeoPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create seos');
     }
 
     /**
@@ -39,7 +39,7 @@ class SeoPolicy
      */
     public function update(User $user, Seo $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update seos');
     }
 
     /**
@@ -47,7 +47,7 @@ class SeoPolicy
      */
     public function delete(User $user, Seo $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete seos');
     }
 
     /**
@@ -55,7 +55,7 @@ class SeoPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete seos');
     }
 
     /**

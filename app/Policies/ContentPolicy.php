@@ -15,7 +15,7 @@ class ContentPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('list contents');
     }
 
     /**
@@ -23,7 +23,7 @@ class ContentPolicy
      */
     public function view(User $user, Content $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('view contents');
     }
 
     /**
@@ -31,7 +31,7 @@ class ContentPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('create contents');
     }
 
     /**
@@ -39,7 +39,7 @@ class ContentPolicy
      */
     public function update(User $user, Content $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('update contents');
     }
 
     /**
@@ -47,7 +47,7 @@ class ContentPolicy
      */
     public function delete(User $user, Content $model): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete contents');
     }
 
     /**
@@ -55,7 +55,7 @@ class ContentPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return true;
+        return $user->hasPermissionTo('delete contents');
     }
 
     /**

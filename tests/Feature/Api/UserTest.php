@@ -4,6 +4,8 @@ namespace Tests\Feature\Api;
 
 use App\Models\User;
 
+use App\Models\Language;
+
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -20,6 +22,8 @@ class UserTest extends TestCase
         $user = User::factory()->create(['email' => 'admin@admin.com']);
 
         Sanctum::actingAs($user, [], 'web');
+
+        $this->seed(\Database\Seeders\PermissionsSeeder::class);
 
         $this->withoutExceptionHandling();
     }
@@ -68,11 +72,21 @@ class UserTest extends TestCase
     {
         $user = User::factory()->create();
 
+        $language = Language::factory()->create();
+
         $data = [
             'name' => $this->faker->name(),
+            'slug' => $this->faker->slug(),
+            'gender' => \Arr::random(['male', 'female', 'other']),
+            'title' => $this->faker->sentence(10),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
             'email' => $this->faker->unique->email(),
+            'website' => $this->faker->text(255),
+            'description' => $this->faker->sentence(15),
             'profile_photo_path' => $this->faker->text(255),
-            'bypass_token' => $this->faker->text(255),
+            'wp_id' => $this->faker->randomNumber(),
+            'language_id' => $language->id,
         ];
 
         $data['password'] = \Str::random('8');
@@ -101,7 +115,7 @@ class UserTest extends TestCase
 
         $response = $this->deleteJson(route('api.users.destroy', $user));
 
-        $this->assertModelMissing($user);
+        $this->assertSoftDeleted($user);
 
         $response->assertNoContent();
     }
