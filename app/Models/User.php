@@ -72,14 +72,19 @@ class User extends Authenticatable implements FilamentUser
         return $this->belongsTo(Language::class);
     }
 
-    public function platforms()
+    public function sessions()
     {
-        return $this->belongsToMany(Platform::class);
+        return $this->hasMany(Session::class);
     }
 
     public function syncs()
     {
         return $this->morphMany(Sync::class, 'syncable');
+    }
+
+    public function platforms()
+    {
+        return $this->morphMany(Platform::class, 'platformable');
     }
 
     public function isSuperAdmin(): bool

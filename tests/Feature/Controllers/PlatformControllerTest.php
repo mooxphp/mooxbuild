@@ -112,7 +112,9 @@ class PlatformControllerTest extends TestCase
             'title' => $this->faker->sentence(10),
             'slug' => $this->faker->slug(),
             'domain' => $this->faker->text(255),
-            'selectable' => $this->faker->boolean(),
+            'selection' => $this->faker->boolean(),
+            'order' => $this->faker->numberBetween(0, 127),
+            'locked' => $this->faker->boolean(),
             'master' => $this->faker->boolean(),
         ];
 

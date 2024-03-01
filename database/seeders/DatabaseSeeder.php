@@ -54,6 +54,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RevisionSeeder::class);
         $this->call(RouteSeeder::class);
         $this->call(SeoSeeder::class);
+        $this->call(SessionSeeder::class);
         $this->call(SettingSeeder::class);
         $this->call(SyncSeeder::class);
         $this->call(TagSeeder::class);
@@ -62,5 +63,16 @@ class DatabaseSeeder extends Seeder
         $this->call(TimezoneSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(WishlistSeeder::class);
+        $this->call(WpCommentSeeder::class);
+        $this->call(WpCommentMetaSeeder::class);
+        $this->call(WpOptionSeeder::class);
+        $this->call(WpPostSeeder::class);
+        $this->call(WpPostMetaSeeder::class);
+        $this->call(WpTermSeeder::class);
+        $this->call(WpTermMetaSeeder::class);
+        $this->call(WpTermRelationshipSeeder::class);
+        $this->call(WpTermTaxonomySeeder::class);
+        $this->call(WpUserSeeder::class);
+        $this->call(WpUserMetaSeeder::class);
     }
 }

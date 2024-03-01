@@ -54,7 +54,24 @@ class PlatformsRelationManager extends RelationManager
                         'lg' => 12,
                     ]),
 
-                Toggle::make('selectable')
+                Toggle::make('selection')
+                    ->rules(['boolean'])
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
+
+                TextInput::make('order')
+                    ->rules(['max:255'])
+                    ->placeholder('Order')
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
+
+                Toggle::make('locked')
                     ->rules(['boolean'])
                     ->columnSpan([
                         'default' => 12,
@@ -79,6 +96,24 @@ class PlatformsRelationManager extends RelationManager
                         'md' => 12,
                         'lg' => 12,
                     ]),
+
+                TextInput::make('platformable_id')
+                    ->rules(['max:255'])
+                    ->placeholder('Platformable Id')
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
+
+                TextInput::make('platformable_type')
+                    ->rules(['max:255', 'string'])
+                    ->placeholder('Platformable Type')
+                    ->columnSpan([
+                        'default' => 12,
+                        'md' => 12,
+                        'lg' => 12,
+                    ]),
             ]),
         ]);
     }
@@ -90,9 +125,13 @@ class PlatformsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('title')->limit(50),
                 Tables\Columns\TextColumn::make('slug')->limit(50),
                 Tables\Columns\TextColumn::make('domain')->limit(50),
-                Tables\Columns\IconColumn::make('selectable'),
+                Tables\Columns\IconColumn::make('selection'),
+                Tables\Columns\TextColumn::make('order')->limit(50),
+                Tables\Columns\IconColumn::make('locked'),
                 Tables\Columns\IconColumn::make('master'),
                 Tables\Columns\ImageColumn::make('thumbnail')->rounded(),
+                Tables\Columns\TextColumn::make('platformable_id')->limit(50),
+                Tables\Columns\TextColumn::make('platformable_type')->limit(50),
             ])
             ->filters([
                 Tables\Filters\Filter::make('created_at')

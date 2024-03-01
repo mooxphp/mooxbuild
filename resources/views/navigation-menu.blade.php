@@ -118,6 +118,16 @@
                         Job Batch Managers
                         </x-dropdown-link>
                         @endcan
+                        @can('view-any', App\Models\JobManager::class)
+                        <x-dropdown-link href="{{ route('job-managers.index') }}">
+                        Job Managers
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\JobQueueWorker::class)
+                        <x-dropdown-link href="{{ route('job-queue-workers.index') }}">
+                        Job Queue Workers
+                        </x-dropdown-link>
+                        @endcan
                         @can('view-any', App\Models\Language::class)
                         <x-dropdown-link href="{{ route('languages.index') }}">
                         Languages
@@ -141,6 +151,11 @@
                         @can('view-any', App\Models\PageTemplate::class)
                         <x-dropdown-link href="{{ route('page-templates.index') }}">
                         Page Templates
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Platform::class)
+                        <x-dropdown-link href="{{ route('platforms.index') }}">
+                        Platforms
                         </x-dropdown-link>
                         @endcan
                         @can('view-any', App\Models\Post::class)
@@ -173,9 +188,19 @@
                         Seos
                         </x-dropdown-link>
                         @endcan
+                        @can('view-any', App\Models\Session::class)
+                        <x-dropdown-link href="{{ route('sessions.index') }}">
+                        Sessions
+                        </x-dropdown-link>
+                        @endcan
                         @can('view-any', App\Models\Setting::class)
                         <x-dropdown-link href="{{ route('settings.index') }}">
                         Settings
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\Sync::class)
+                        <x-dropdown-link href="{{ route('syncs.index') }}">
+                        Syncs
                         </x-dropdown-link>
                         @endcan
                         @can('view-any', App\Models\Tag::class)
@@ -198,34 +223,69 @@
                         Timezones
                         </x-dropdown-link>
                         @endcan
-                        @can('view-any', App\Models\Wishlist::class)
-                        <x-dropdown-link href="{{ route('wishlists.index') }}">
-                        Wishlists
-                        </x-dropdown-link>
-                        @endcan
-                        @can('view-any', App\Models\JobManager::class)
-                        <x-dropdown-link href="{{ route('job-managers.index') }}">
-                        Job Managers
-                        </x-dropdown-link>
-                        @endcan
-                        @can('view-any', App\Models\JobQueueWorker::class)
-                        <x-dropdown-link href="{{ route('job-queue-workers.index') }}">
-                        Job Queue Workers
-                        </x-dropdown-link>
-                        @endcan
                         @can('view-any', App\Models\User::class)
                         <x-dropdown-link href="{{ route('users.index') }}">
                         Users
                         </x-dropdown-link>
                         @endcan
-                        @can('view-any', App\Models\Platform::class)
-                        <x-dropdown-link href="{{ route('platforms.index') }}">
-                        Platforms
+                        @can('view-any', App\Models\Wishlist::class)
+                        <x-dropdown-link href="{{ route('wishlists.index') }}">
+                        Wishlists
                         </x-dropdown-link>
                         @endcan
-                        @can('view-any', App\Models\Sync::class)
-                        <x-dropdown-link href="{{ route('syncs.index') }}">
-                        Syncs
+                        @can('view-any', App\Models\WpComment::class)
+                        <x-dropdown-link href="{{ route('wp-comments.index') }}">
+                        Wp Comments
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\WpCommentMeta::class)
+                        <x-dropdown-link href="{{ route('wp-comment-metas.index') }}">
+                        Wp Comment Metas
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\WpOption::class)
+                        <x-dropdown-link href="{{ route('wp-options.index') }}">
+                        Wp Options
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\WpPost::class)
+                        <x-dropdown-link href="{{ route('wp-posts.index') }}">
+                        Wp Posts
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\WpPostMeta::class)
+                        <x-dropdown-link href="{{ route('wp-post-metas.index') }}">
+                        Wp Post Metas
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\WpTerm::class)
+                        <x-dropdown-link href="{{ route('wp-terms.index') }}">
+                        Wp Terms
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\WpTermMeta::class)
+                        <x-dropdown-link href="{{ route('wp-term-metas.index') }}">
+                        Wp Term Metas
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\WpTermRelationship::class)
+                        <x-dropdown-link href="{{ route('wp-term-relationships.index') }}">
+                        Wp Term Relationships
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\WpTermTaxonomy::class)
+                        <x-dropdown-link href="{{ route('wp-term-taxonomies.index') }}">
+                        Wp Term Taxonomies
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\WpUser::class)
+                        <x-dropdown-link href="{{ route('wp-users.index') }}">
+                        Wp Users
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\WpUserMeta::class)
+                        <x-dropdown-link href="{{ route('wp-user-metas.index') }}">
+                        Wp User Metas
                         </x-dropdown-link>
                         @endcan
                 </x-nav-dropdown>
@@ -470,6 +530,16 @@
                 Job Batch Managers
                 </x-responsive-nav-link>
                 @endcan
+                @can('view-any', App\Models\JobManager::class)
+                <x-responsive-nav-link href="{{ route('job-managers.index') }}">
+                Job Managers
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\JobQueueWorker::class)
+                <x-responsive-nav-link href="{{ route('job-queue-workers.index') }}">
+                Job Queue Workers
+                </x-responsive-nav-link>
+                @endcan
                 @can('view-any', App\Models\Language::class)
                 <x-responsive-nav-link href="{{ route('languages.index') }}">
                 Languages
@@ -493,6 +563,11 @@
                 @can('view-any', App\Models\PageTemplate::class)
                 <x-responsive-nav-link href="{{ route('page-templates.index') }}">
                 Page Templates
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Platform::class)
+                <x-responsive-nav-link href="{{ route('platforms.index') }}">
+                Platforms
                 </x-responsive-nav-link>
                 @endcan
                 @can('view-any', App\Models\Post::class)
@@ -525,9 +600,19 @@
                 Seos
                 </x-responsive-nav-link>
                 @endcan
+                @can('view-any', App\Models\Session::class)
+                <x-responsive-nav-link href="{{ route('sessions.index') }}">
+                Sessions
+                </x-responsive-nav-link>
+                @endcan
                 @can('view-any', App\Models\Setting::class)
                 <x-responsive-nav-link href="{{ route('settings.index') }}">
                 Settings
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Sync::class)
+                <x-responsive-nav-link href="{{ route('syncs.index') }}">
+                Syncs
                 </x-responsive-nav-link>
                 @endcan
                 @can('view-any', App\Models\Tag::class)
@@ -550,34 +635,69 @@
                 Timezones
                 </x-responsive-nav-link>
                 @endcan
-                @can('view-any', App\Models\Wishlist::class)
-                <x-responsive-nav-link href="{{ route('wishlists.index') }}">
-                Wishlists
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\JobManager::class)
-                <x-responsive-nav-link href="{{ route('job-managers.index') }}">
-                Job Managers
-                </x-responsive-nav-link>
-                @endcan
-                @can('view-any', App\Models\JobQueueWorker::class)
-                <x-responsive-nav-link href="{{ route('job-queue-workers.index') }}">
-                Job Queue Workers
-                </x-responsive-nav-link>
-                @endcan
                 @can('view-any', App\Models\User::class)
                 <x-responsive-nav-link href="{{ route('users.index') }}">
                 Users
                 </x-responsive-nav-link>
                 @endcan
-                @can('view-any', App\Models\Platform::class)
-                <x-responsive-nav-link href="{{ route('platforms.index') }}">
-                Platforms
+                @can('view-any', App\Models\Wishlist::class)
+                <x-responsive-nav-link href="{{ route('wishlists.index') }}">
+                Wishlists
                 </x-responsive-nav-link>
                 @endcan
-                @can('view-any', App\Models\Sync::class)
-                <x-responsive-nav-link href="{{ route('syncs.index') }}">
-                Syncs
+                @can('view-any', App\Models\WpComment::class)
+                <x-responsive-nav-link href="{{ route('wp-comments.index') }}">
+                Wp Comments
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\WpCommentMeta::class)
+                <x-responsive-nav-link href="{{ route('wp-comment-metas.index') }}">
+                Wp Comment Metas
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\WpOption::class)
+                <x-responsive-nav-link href="{{ route('wp-options.index') }}">
+                Wp Options
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\WpPost::class)
+                <x-responsive-nav-link href="{{ route('wp-posts.index') }}">
+                Wp Posts
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\WpPostMeta::class)
+                <x-responsive-nav-link href="{{ route('wp-post-metas.index') }}">
+                Wp Post Metas
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\WpTerm::class)
+                <x-responsive-nav-link href="{{ route('wp-terms.index') }}">
+                Wp Terms
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\WpTermMeta::class)
+                <x-responsive-nav-link href="{{ route('wp-term-metas.index') }}">
+                Wp Term Metas
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\WpTermRelationship::class)
+                <x-responsive-nav-link href="{{ route('wp-term-relationships.index') }}">
+                Wp Term Relationships
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\WpTermTaxonomy::class)
+                <x-responsive-nav-link href="{{ route('wp-term-taxonomies.index') }}">
+                Wp Term Taxonomies
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\WpUser::class)
+                <x-responsive-nav-link href="{{ route('wp-users.index') }}">
+                Wp Users
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\WpUserMeta::class)
+                <x-responsive-nav-link href="{{ route('wp-user-metas.index') }}">
+                Wp User Metas
                 </x-responsive-nav-link>
                 @endcan
 

@@ -36,9 +36,27 @@
 
     <x-inputs.group class="w-full">
         <x-inputs.checkbox
-            name="selectable"
-            label="Selectable"
-            :checked="old('selectable', ($editing ? $platform->selectable : 0))"
+            name="selection"
+            label="Selection"
+            :checked="old('selection', ($editing ? $platform->selection : 0))"
+        ></x-inputs.checkbox>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="order"
+            label="Order"
+            :value="old('order', ($editing ? $platform->order : ''))"
+            maxlength="255"
+            placeholder="Order"
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.checkbox
+            name="locked"
+            label="Locked"
+            :checked="old('locked', ($editing ? $platform->locked : 0))"
         ></x-inputs.checkbox>
     </x-inputs.group>
 
@@ -89,5 +107,27 @@
             @error('thumbnail') @include('components.inputs.partials.error')
             @enderror
         </div>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="platformable_id"
+            label="Platformable Id"
+            :value="old('platformable_id', ($editing ? $platform->platformable_id : ''))"
+            maxlength="255"
+            placeholder="Platformable Id"
+            required
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="platformable_type"
+            label="Platformable Type"
+            :value="old('platformable_type', ($editing ? $platform->platformable_type : ''))"
+            maxlength="255"
+            placeholder="Platformable Type"
+            required
+        ></x-inputs.text>
     </x-inputs.group>
 </div>

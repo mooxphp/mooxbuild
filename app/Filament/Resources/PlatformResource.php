@@ -62,7 +62,26 @@ class PlatformResource extends Resource
                             'lg' => 12,
                         ]),
 
-                    Toggle::make('selectable')
+                    Toggle::make('selection')
+                        ->rules(['boolean'])
+                        ->nullable()
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('order')
+                        ->rules(['max:255'])
+                        ->nullable()
+                        ->placeholder('Order')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    Toggle::make('locked')
                         ->rules(['boolean'])
                         ->nullable()
                         ->columnSpan([
@@ -90,6 +109,26 @@ class PlatformResource extends Resource
                             'md' => 12,
                             'lg' => 12,
                         ]),
+
+                    TextInput::make('platformable_id')
+                        ->rules(['max:255'])
+                        ->required()
+                        ->placeholder('Platformable Id')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
+
+                    TextInput::make('platformable_type')
+                        ->rules(['max:255', 'string'])
+                        ->required()
+                        ->placeholder('Platformable Type')
+                        ->columnSpan([
+                            'default' => 12,
+                            'md' => 12,
+                            'lg' => 12,
+                        ]),
                 ]),
             ]),
         ]);
@@ -112,7 +151,14 @@ class PlatformResource extends Resource
                     ->toggleable()
                     ->searchable(true, null, true)
                     ->limit(50),
-                Tables\Columns\IconColumn::make('selectable')
+                Tables\Columns\IconColumn::make('selection')
+                    ->toggleable()
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('order')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\IconColumn::make('locked')
                     ->toggleable()
                     ->boolean(),
                 Tables\Columns\IconColumn::make('master')
@@ -121,6 +167,14 @@ class PlatformResource extends Resource
                 Tables\Columns\ImageColumn::make('thumbnail')
                     ->toggleable()
                     ->circular(),
+                Tables\Columns\TextColumn::make('platformable_id')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('platformable_type')
+                    ->toggleable()
+                    ->searchable(true, null, true)
+                    ->limit(50),
             ])
             ->filters([DateRangeFilter::make('created_at')])
             ->actions([ViewAction::make(), EditAction::make()])
@@ -132,7 +186,6 @@ class PlatformResource extends Resource
         return [
             PlatformResource\RelationManagers\SyncsRelationManager::class,
             PlatformResource\RelationManagers\SyncsRelationManager::class,
-            PlatformResource\RelationManagers\UsersRelationManager::class,
         ];
     }
 

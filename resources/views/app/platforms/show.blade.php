@@ -35,9 +35,21 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.platforms.inputs.selectable')
+                            @lang('crud.platforms.inputs.selection')
                         </h5>
-                        <span>{{ $platform->selectable ?? '-' }}</span>
+                        <span>{{ $platform->selection ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.platforms.inputs.order')
+                        </h5>
+                        <span>{{ $platform->order ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.platforms.inputs.locked')
+                        </h5>
+                        <span>{{ $platform->locked ?? '-' }}</span>
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
@@ -53,6 +65,18 @@
                             src="{{ $platform->thumbnail ? \Storage::url($platform->thumbnail) : '' }}"
                             size="150"
                         />
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.platforms.inputs.platformable_id')
+                        </h5>
+                        <span>{{ $platform->platformable_id ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.platforms.inputs.platformable_type')
+                        </h5>
+                        <span>{{ $platform->platformable_type ?? '-' }}</span>
                     </div>
                 </div>
 

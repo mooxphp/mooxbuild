@@ -26,8 +26,16 @@ class PlatformFactory extends Factory
             'title' => $this->faker->sentence(10),
             'slug' => $this->faker->slug(),
             'domain' => $this->faker->text(255),
-            'selectable' => $this->faker->boolean(),
+            'selection' => $this->faker->boolean(),
+            'order' => $this->faker->numberBetween(0, 127),
+            'locked' => $this->faker->boolean(),
             'master' => $this->faker->boolean(),
+            'platformable_type' => $this->faker->randomElement([
+                \App\Models\User::class,
+            ]),
+            'platformable_id' => function (array $item) {
+                return app($item['platformable_type'])->factory();
+            },
         ];
     }
 }

@@ -23,9 +23,13 @@ class PlatformUpdateRequest extends FormRequest
             'title' => ['required', 'max:255', 'string'],
             'slug' => ['required', 'max:255', 'string'],
             'domain' => ['required', 'max:255', 'string'],
-            'selectable' => ['nullable', 'boolean'],
+            'selection' => ['nullable', 'boolean'],
+            'order' => ['nullable', 'max:255'],
+            'locked' => ['nullable', 'boolean'],
             'master' => ['nullable', 'boolean'],
             'thumbnail' => ['nullable', 'file'],
+            'platformable_id' => ['required', 'max:255'],
+            'platformable_type' => ['required', 'max:255', 'string'],
         ];
     }
 }

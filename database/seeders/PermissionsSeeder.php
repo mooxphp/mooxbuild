@@ -219,6 +219,12 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'update seos']);
         Permission::create(['name' => 'delete seos']);
 
+        Permission::create(['name' => 'list sessions']);
+        Permission::create(['name' => 'view sessions']);
+        Permission::create(['name' => 'create sessions']);
+        Permission::create(['name' => 'update sessions']);
+        Permission::create(['name' => 'delete sessions']);
+
         Permission::create(['name' => 'list settings']);
         Permission::create(['name' => 'view settings']);
         Permission::create(['name' => 'create settings']);
@@ -260,6 +266,72 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'create wishlists']);
         Permission::create(['name' => 'update wishlists']);
         Permission::create(['name' => 'delete wishlists']);
+
+        Permission::create(['name' => 'list wpcomments']);
+        Permission::create(['name' => 'view wpcomments']);
+        Permission::create(['name' => 'create wpcomments']);
+        Permission::create(['name' => 'update wpcomments']);
+        Permission::create(['name' => 'delete wpcomments']);
+
+        Permission::create(['name' => 'list wpcommentmetas']);
+        Permission::create(['name' => 'view wpcommentmetas']);
+        Permission::create(['name' => 'create wpcommentmetas']);
+        Permission::create(['name' => 'update wpcommentmetas']);
+        Permission::create(['name' => 'delete wpcommentmetas']);
+
+        Permission::create(['name' => 'list wpoptions']);
+        Permission::create(['name' => 'view wpoptions']);
+        Permission::create(['name' => 'create wpoptions']);
+        Permission::create(['name' => 'update wpoptions']);
+        Permission::create(['name' => 'delete wpoptions']);
+
+        Permission::create(['name' => 'list wpposts']);
+        Permission::create(['name' => 'view wpposts']);
+        Permission::create(['name' => 'create wpposts']);
+        Permission::create(['name' => 'update wpposts']);
+        Permission::create(['name' => 'delete wpposts']);
+
+        Permission::create(['name' => 'list wppostmetas']);
+        Permission::create(['name' => 'view wppostmetas']);
+        Permission::create(['name' => 'create wppostmetas']);
+        Permission::create(['name' => 'update wppostmetas']);
+        Permission::create(['name' => 'delete wppostmetas']);
+
+        Permission::create(['name' => 'list wpterms']);
+        Permission::create(['name' => 'view wpterms']);
+        Permission::create(['name' => 'create wpterms']);
+        Permission::create(['name' => 'update wpterms']);
+        Permission::create(['name' => 'delete wpterms']);
+
+        Permission::create(['name' => 'list wptermmetas']);
+        Permission::create(['name' => 'view wptermmetas']);
+        Permission::create(['name' => 'create wptermmetas']);
+        Permission::create(['name' => 'update wptermmetas']);
+        Permission::create(['name' => 'delete wptermmetas']);
+
+        Permission::create(['name' => 'list wptermrelationships']);
+        Permission::create(['name' => 'view wptermrelationships']);
+        Permission::create(['name' => 'create wptermrelationships']);
+        Permission::create(['name' => 'update wptermrelationships']);
+        Permission::create(['name' => 'delete wptermrelationships']);
+
+        Permission::create(['name' => 'list wptermtaxonomies']);
+        Permission::create(['name' => 'view wptermtaxonomies']);
+        Permission::create(['name' => 'create wptermtaxonomies']);
+        Permission::create(['name' => 'update wptermtaxonomies']);
+        Permission::create(['name' => 'delete wptermtaxonomies']);
+
+        Permission::create(['name' => 'list wpusers']);
+        Permission::create(['name' => 'view wpusers']);
+        Permission::create(['name' => 'create wpusers']);
+        Permission::create(['name' => 'update wpusers']);
+        Permission::create(['name' => 'delete wpusers']);
+
+        Permission::create(['name' => 'list wpusermetas']);
+        Permission::create(['name' => 'view wpusermetas']);
+        Permission::create(['name' => 'create wpusermetas']);
+        Permission::create(['name' => 'update wpusermetas']);
+        Permission::create(['name' => 'delete wpusermetas']);
 
         // Create user role and assign existing permissions
         $currentPermissions = Permission::all();

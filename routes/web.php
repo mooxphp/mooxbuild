@@ -9,43 +9,55 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SyncController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\SyncController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\WpPostController;
+use App\Http\Controllers\WpTermController;
+use App\Http\Controllers\WpUserController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\JobBatchController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\PlatformController;
 use App\Http\Controllers\RevisionController;
 use App\Http\Controllers\TimezoneController;
 use App\Http\Controllers\WishlistController;
-use App\Http\Controllers\PlatformController;
+use App\Http\Controllers\WpOptionController;
 use App\Http\Controllers\ContinentController;
 use App\Http\Controllers\FailedJobController;
+use App\Http\Controllers\WpCommentController;
 use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\PostalCodeController;
 use App\Http\Controllers\JobManagerController;
+use App\Http\Controllers\PostalCodeController;
+use App\Http\Controllers\WpPostMetaController;
+use App\Http\Controllers\WpTermMetaController;
+use App\Http\Controllers\WpUserMetaController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\FirewallRuleController;
 use App\Http\Controllers\PageTemplateController;
+use App\Http\Controllers\WpCommentMetaController;
 use App\Http\Controllers\ContentElementController;
 use App\Http\Controllers\JobQueueWorkerController;
+use App\Http\Controllers\WpTermTaxonomyController;
 use App\Http\Controllers\JobBatchManagerController;
+use App\Http\Controllers\WpTermRelationshipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,6 +106,8 @@ Route::prefix('/')
         Route::resource('jobs', JobController::class);
         Route::resource('job-batches', JobBatchController::class);
         Route::resource('job-batch-managers', JobBatchManagerController::class);
+        Route::resource('job-managers', JobManagerController::class);
+        Route::resource('job-queue-workers', JobQueueWorkerController::class);
         Route::resource('languages', LanguageController::class);
         Route::get('media', [MediaController::class, 'index'])->name(
             'media.index'
@@ -122,21 +136,34 @@ Route::prefix('/')
         Route::resource('orders', OrderController::class);
         Route::resource('pages', PageController::class);
         Route::resource('page-templates', PageTemplateController::class);
+        Route::resource('platforms', PlatformController::class);
         Route::resource('posts', PostController::class);
         Route::resource('postal-codes', PostalCodeController::class);
         Route::resource('products', ProductController::class);
         Route::resource('revisions', RevisionController::class);
         Route::resource('routes', RouteController::class);
         Route::resource('seos', SeoController::class);
+        Route::resource('sessions', SessionController::class);
         Route::resource('settings', SettingController::class);
+        Route::resource('syncs', SyncController::class);
         Route::resource('tags', TagController::class);
         Route::resource('teams', TeamController::class);
         Route::resource('themes', ThemeController::class);
         Route::resource('timezones', TimezoneController::class);
-        Route::resource('wishlists', WishlistController::class);
-        Route::resource('job-managers', JobManagerController::class);
-        Route::resource('job-queue-workers', JobQueueWorkerController::class);
         Route::resource('users', UserController::class);
-        Route::resource('platforms', PlatformController::class);
-        Route::resource('syncs', SyncController::class);
+        Route::resource('wishlists', WishlistController::class);
+        Route::resource('wp-comments', WpCommentController::class);
+        Route::resource('wp-comment-metas', WpCommentMetaController::class);
+        Route::resource('wp-options', WpOptionController::class);
+        Route::resource('wp-posts', WpPostController::class);
+        Route::resource('wp-post-metas', WpPostMetaController::class);
+        Route::resource('wp-terms', WpTermController::class);
+        Route::resource('wp-term-metas', WpTermMetaController::class);
+        Route::resource(
+            'wp-term-relationships',
+            WpTermRelationshipController::class
+        );
+        Route::resource('wp-term-taxonomies', WpTermTaxonomyController::class);
+        Route::resource('wp-users', WpUserController::class);
+        Route::resource('wp-user-metas', WpUserMetaController::class);
     });

@@ -15,15 +15,20 @@ class Platform extends Model
         'title',
         'slug',
         'domain',
-        'selectable',
+        'selection',
+        'order',
+        'locked',
         'master',
         'thumbnail',
+        'platformable_id',
+        'platformable_type',
     ];
 
     protected $searchableFields = ['*'];
 
     protected $casts = [
-        'selectable' => 'boolean',
+        'selection' => 'boolean',
+        'locked' => 'boolean',
         'master' => 'boolean',
     ];
 
@@ -37,8 +42,8 @@ class Platform extends Model
         return $this->hasMany(Sync::class, 'target_platform_id');
     }
 
-    public function users()
+    public function platformable()
     {
-        return $this->belongsToMany(User::class);
+        return $this->morphTo();
     }
 }

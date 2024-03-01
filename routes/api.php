@@ -9,9 +9,9 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ItemController;
 use App\Http\Controllers\Api\PageController;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\SyncController;
 use App\Http\Controllers\Api\TeamController;
 use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\Api\SyncController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\MediaController;
@@ -19,30 +19,39 @@ use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\RouteController;
 use App\Http\Controllers\Api\ThemeController;
 use App\Http\Controllers\Api\AuthorController;
+use App\Http\Controllers\Api\WpPostController;
+use App\Http\Controllers\Api\WpTermController;
+use App\Http\Controllers\Api\WpUserController;
 use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\ContentController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\SessionController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CurrencyController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\JobBatchController;
 use App\Http\Controllers\Api\LanguageController;
+use App\Http\Controllers\Api\PlatformController;
 use App\Http\Controllers\Api\RevisionController;
 use App\Http\Controllers\Api\TimezoneController;
 use App\Http\Controllers\Api\WishlistController;
-use App\Http\Controllers\Api\PlatformController;
+use App\Http\Controllers\Api\WpOptionController;
 use App\Http\Controllers\Api\ContinentController;
 use App\Http\Controllers\Api\FailedJobController;
 use App\Http\Controllers\Api\ItemItemsController;
 use App\Http\Controllers\Api\PagePagesController;
 use App\Http\Controllers\Api\PostPostsController;
+use App\Http\Controllers\Api\WpCommentController;
 use App\Http\Controllers\Api\DepartmentController;
-use App\Http\Controllers\Api\PostalCodeController;
 use App\Http\Controllers\Api\JobManagerController;
+use App\Http\Controllers\Api\PostalCodeController;
+use App\Http\Controllers\Api\WpPostMetaController;
+use App\Http\Controllers\Api\WpTermMetaController;
+use App\Http\Controllers\Api\WpUserMetaController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\ActivityLogController;
 use App\Http\Controllers\Api\AuthorPostsController;
@@ -52,6 +61,7 @@ use App\Http\Controllers\Api\UserAuthorsController;
 use App\Http\Controllers\Api\FirewallRuleController;
 use App\Http\Controllers\Api\LanguageTagsController;
 use App\Http\Controllers\Api\PageTemplateController;
+use App\Http\Controllers\Api\UserSessionsController;
 use App\Http\Controllers\Api\CategoryPostsController;
 use App\Http\Controllers\Api\CategoryItemsController;
 use App\Http\Controllers\Api\CategoryPagesController;
@@ -60,13 +70,13 @@ use App\Http\Controllers\Api\LanguagePostsController;
 use App\Http\Controllers\Api\LanguagePagesController;
 use App\Http\Controllers\Api\LanguageItemsController;
 use App\Http\Controllers\Api\LanguageUsersController;
-use App\Http\Controllers\Api\UserPlatformsController;
 use App\Http\Controllers\Api\PlatformSyncsController;
-use App\Http\Controllers\Api\PlatformUsersController;
+use App\Http\Controllers\Api\WpCommentMetaController;
 use App\Http\Controllers\Api\AuthorProductsController;
 use App\Http\Controllers\Api\AuthorCommentsController;
 use App\Http\Controllers\Api\ContentElementController;
 use App\Http\Controllers\Api\JobQueueWorkerController;
+use App\Http\Controllers\Api\WpTermTaxonomyController;
 use App\Http\Controllers\Api\JobBatchManagerController;
 use App\Http\Controllers\Api\ProductProductsController;
 use App\Http\Controllers\Api\CategoryProductsController;
@@ -80,6 +90,7 @@ use App\Http\Controllers\Api\PagePageTemplatesController;
 use App\Http\Controllers\Api\TimezoneCountriesController;
 use App\Http\Controllers\Api\ContinentCountriesController;
 use App\Http\Controllers\Api\LanguageCategoriesController;
+use App\Http\Controllers\Api\WpTermRelationshipController;
 use App\Http\Controllers\Api\ThemeContentElementsController;
 use App\Http\Controllers\Api\JobQueueWorkerJobManagersController;
 
@@ -327,6 +338,23 @@ Route::name('api.')
             JobBatchManagerController::class
         );
 
+        Route::apiResource('job-managers', JobManagerController::class);
+
+        Route::apiResource(
+            'job-queue-workers',
+            JobQueueWorkerController::class
+        );
+
+        // JobQueueWorker Job Managers
+        Route::get('/job-queue-workers/{jobQueueWorker}/job-managers', [
+            JobQueueWorkerJobManagersController::class,
+            'index',
+        ])->name('job-queue-workers.job-managers.index');
+        Route::post('/job-queue-workers/{jobQueueWorker}/job-managers', [
+            JobQueueWorkerJobManagersController::class,
+            'store',
+        ])->name('job-queue-workers.job-managers.store');
+
         Route::apiResource('languages', LanguageController::class);
 
         // Language Tags
@@ -441,6 +469,28 @@ Route::name('api.')
 
         Route::apiResource('page-templates', PageTemplateController::class);
 
+        Route::apiResource('platforms', PlatformController::class);
+
+        // Platform Sources
+        Route::get('/platforms/{platform}/syncs', [
+            PlatformSyncsController::class,
+            'index',
+        ])->name('platforms.syncs.index');
+        Route::post('/platforms/{platform}/syncs', [
+            PlatformSyncsController::class,
+            'store',
+        ])->name('platforms.syncs.store');
+
+        // Platform Targets
+        Route::get('/platforms/{platform}/syncs', [
+            PlatformSyncsController::class,
+            'index',
+        ])->name('platforms.syncs.index');
+        Route::post('/platforms/{platform}/syncs', [
+            PlatformSyncsController::class,
+            'store',
+        ])->name('platforms.syncs.store');
+
         Route::apiResource('posts', PostController::class);
 
         // Post Has Translations
@@ -473,7 +523,11 @@ Route::name('api.')
 
         Route::apiResource('seos', SeoController::class);
 
+        Route::apiResource('sessions', SessionController::class);
+
         Route::apiResource('settings', SettingController::class);
+
+        Route::apiResource('syncs', SyncController::class);
 
         Route::apiResource('tags', TagController::class);
 
@@ -507,25 +561,6 @@ Route::name('api.')
             'destroy',
         ])->name('timezones.countries.destroy');
 
-        Route::apiResource('wishlists', WishlistController::class);
-
-        Route::apiResource('job-managers', JobManagerController::class);
-
-        Route::apiResource(
-            'job-queue-workers',
-            JobQueueWorkerController::class
-        );
-
-        // JobQueueWorker Job Managers
-        Route::get('/job-queue-workers/{jobQueueWorker}/job-managers', [
-            JobQueueWorkerJobManagersController::class,
-            'index',
-        ])->name('job-queue-workers.job-managers.index');
-        Route::post('/job-queue-workers/{jobQueueWorker}/job-managers', [
-            JobQueueWorkerJobManagersController::class,
-            'store',
-        ])->name('job-queue-workers.job-managers.store');
-
         Route::apiResource('users', UserController::class);
 
         // User Authors
@@ -538,55 +573,43 @@ Route::name('api.')
             'store',
         ])->name('users.authors.store');
 
-        // User Platforms
-        Route::get('/users/{user}/platforms', [
-            UserPlatformsController::class,
+        // User Sessions
+        Route::get('/users/{user}/sessions', [
+            UserSessionsController::class,
             'index',
-        ])->name('users.platforms.index');
-        Route::post('/users/{user}/platforms/{platform}', [
-            UserPlatformsController::class,
+        ])->name('users.sessions.index');
+        Route::post('/users/{user}/sessions', [
+            UserSessionsController::class,
             'store',
-        ])->name('users.platforms.store');
-        Route::delete('/users/{user}/platforms/{platform}', [
-            UserPlatformsController::class,
-            'destroy',
-        ])->name('users.platforms.destroy');
+        ])->name('users.sessions.store');
 
-        Route::apiResource('platforms', PlatformController::class);
+        Route::apiResource('wishlists', WishlistController::class);
 
-        // Platform Sources
-        Route::get('/platforms/{platform}/syncs', [
-            PlatformSyncsController::class,
-            'index',
-        ])->name('platforms.syncs.index');
-        Route::post('/platforms/{platform}/syncs', [
-            PlatformSyncsController::class,
-            'store',
-        ])->name('platforms.syncs.store');
+        Route::apiResource('wp-comments', WpCommentController::class);
 
-        // Platform Targets
-        Route::get('/platforms/{platform}/syncs', [
-            PlatformSyncsController::class,
-            'index',
-        ])->name('platforms.syncs.index');
-        Route::post('/platforms/{platform}/syncs', [
-            PlatformSyncsController::class,
-            'store',
-        ])->name('platforms.syncs.store');
+        Route::apiResource('wp-comment-metas', WpCommentMetaController::class);
 
-        // Platform Users
-        Route::get('/platforms/{platform}/users', [
-            PlatformUsersController::class,
-            'index',
-        ])->name('platforms.users.index');
-        Route::post('/platforms/{platform}/users/{user}', [
-            PlatformUsersController::class,
-            'store',
-        ])->name('platforms.users.store');
-        Route::delete('/platforms/{platform}/users/{user}', [
-            PlatformUsersController::class,
-            'destroy',
-        ])->name('platforms.users.destroy');
+        Route::apiResource('wp-options', WpOptionController::class);
 
-        Route::apiResource('syncs', SyncController::class);
+        Route::apiResource('wp-posts', WpPostController::class);
+
+        Route::apiResource('wp-post-metas', WpPostMetaController::class);
+
+        Route::apiResource('wp-terms', WpTermController::class);
+
+        Route::apiResource('wp-term-metas', WpTermMetaController::class);
+
+        Route::apiResource(
+            'wp-term-relationships',
+            WpTermRelationshipController::class
+        );
+
+        Route::apiResource(
+            'wp-term-taxonomies',
+            WpTermTaxonomyController::class
+        );
+
+        Route::apiResource('wp-users', WpUserController::class);
+
+        Route::apiResource('wp-user-metas', WpUserMetaController::class);
     });

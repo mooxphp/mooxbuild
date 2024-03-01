@@ -262,8 +262,9 @@ class UserResource extends Resource
     {
         return [
             UserResource\RelationManagers\AuthorsRelationManager::class,
-            UserResource\RelationManagers\PlatformsRelationManager::class,
+            UserResource\RelationManagers\SessionsRelationManager::class,
             UserResource\RelationManagers\SyncsRelationManager::class,
+            UserResource\RelationManagers\PlatformsRelationManager::class,
         ];
     }
 

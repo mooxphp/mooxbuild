@@ -59,13 +59,25 @@
                                     @lang('crud.platforms.inputs.domain')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.platforms.inputs.selectable')
+                                    @lang('crud.platforms.inputs.selection')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.platforms.inputs.order')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.platforms.inputs.locked')
                                 </th>
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.platforms.inputs.master')
                                 </th>
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.platforms.inputs.thumbnail')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.platforms.inputs.platformable_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.platforms.inputs.platformable_type')
                                 </th>
                                 <th></th>
                             </tr>
@@ -83,7 +95,13 @@
                                     {{ $platform->domain ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ $platform->selectable ?? '-' }}
+                                    {{ $platform->selection ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $platform->order ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $platform->locked ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $platform->master ?? '-' }}
@@ -92,6 +110,12 @@
                                     <x-partials.thumbnail
                                         src="{{ $platform->thumbnail ? \Storage::url($platform->thumbnail) : '' }}"
                                     />
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $platform->platformable_id ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $platform->platformable_type ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -158,7 +182,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="7">
+                                <td colspan="11">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -166,7 +190,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="7">
+                                <td colspan="11">
                                     <div class="mt-10 px-4">
                                         {!! $platforms->render() !!}
                                     </div>

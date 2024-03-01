@@ -15,9 +15,16 @@ return new class extends Migration {
             $table->string('title');
             $table->string('slug');
             $table->string('domain');
-            $table->boolean('selectable')->nullable();
+            $table->boolean('selection')->nullable();
+            $table->tinyInteger('order')->nullable();
+            $table->boolean('locked')->nullable();
             $table->boolean('master')->nullable();
             $table->string('thumbnail')->nullable();
+            $table->unsignedBigInteger('platformable_id');
+            $table->string('platformable_type');
+
+            $table->index('platformable_id');
+            $table->index('platformable_type');
 
             $table->timestamps();
         });
