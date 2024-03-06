@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -13,8 +14,8 @@ return new class extends Migration {
         Schema::create('wp_posts', function (Blueprint $table) {
             $table->bigIncrements('ID');
             $table->unsignedBigInteger('post_author')->default(0);
-            $table->dateTime('post_date')->default('0000-00-00 00:00:00');
-            $table->dateTime('post_date_gmt')->default('0000-00-00 00:00:00');
+            $table->dateTime('post_date');
+            $table->dateTime('post_date_gmt');
             $table->longText('post_content');
             $table->text('post_title');
             $table->text('post_excerpt');
@@ -25,10 +26,8 @@ return new class extends Migration {
             $table->string('post_name', 200);
             $table->text('to_ping');
             $table->text('pinged');
-            $table->dateTime('post_modified')->default('0000-00-00 00:00:00');
-            $table
-                ->dateTime('post_modified_gmt')
-                ->default('0000-00-00 00:00:00');
+            $table->dateTime('post_modified');
+            $table->dateTime('post_modified_gmt');
             $table->longText('post_content_filtered');
             $table->unsignedBigInteger('post_parent')->default(0);
             $table->string('guid');

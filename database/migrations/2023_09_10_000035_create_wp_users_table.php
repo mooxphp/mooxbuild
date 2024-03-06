@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -17,7 +18,7 @@ return new class extends Migration {
             $table->string('user_nicename', 50);
             $table->string('user_email', 100);
             $table->string('user_url', 100);
-            $table->dateTime('user_registered')->default('0000-00-00 00:00:00');
+            $table->dateTime('user_registered');
             $table->string('user_activation_key');
             $table->integer('user_status')->default(0);
             $table->string('display_name');
