@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Models\Scopes\Searchable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class ActivityLog extends Model
 {
@@ -39,15 +39,5 @@ class ActivityLog extends Model
     public function causer()
     {
         return $this->morphOne(ActivityLog::class, 'causer');
-    }
-
-    public function subject()
-    {
-        return $this->morphTo();
-    }
-
-    public function causer()
-    {
-        return $this->morphTo();
     }
 }
