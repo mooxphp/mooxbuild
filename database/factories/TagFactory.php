@@ -40,7 +40,6 @@ class TagFactory extends Factory
                     'translation_id' => null,
                 ])->id;
             },
-            'language_id' => \App\Models\Language::factory(),
         ];
     }
 }

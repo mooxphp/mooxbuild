@@ -37,7 +37,6 @@ class UserUpdateRequest extends FormRequest
             'password' => ['nullable'],
             'profile_photo_path' => ['nullable', 'max:255', 'string'],
             'wp_id' => ['nullable', 'max:255'],
-            'language_id' => ['required', 'exists:languages,id'],
             'roles' => 'array',
         ];
     }

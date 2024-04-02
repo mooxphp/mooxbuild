@@ -60,7 +60,7 @@
         <x-inputs.datetime
             name="comment_date"
             label="Comment Date"
-            value="{{ old('comment_date', ($editing ? optional($wpComment->comment_date)->format('Y-m-d\TH:i:s') : '0000-00-00 00:00:00')) }}"
+            value="{{ old('comment_date', ($editing ? optional($wpComment->comment_date)->format('Y-m-d\TH:i:s') : '')) }}"
             max="255"
             required
         ></x-inputs.datetime>
@@ -70,7 +70,7 @@
         <x-inputs.datetime
             name="comment_date_gmt"
             label="Comment Date Gmt"
-            value="{{ old('comment_date_gmt', ($editing ? optional($wpComment->comment_date_gmt)->format('Y-m-d\TH:i:s') : '0000-00-00 00:00:00')) }}"
+            value="{{ old('comment_date_gmt', ($editing ? optional($wpComment->comment_date_gmt)->format('Y-m-d\TH:i:s') : '')) }}"
             max="255"
             required
         ></x-inputs.datetime>

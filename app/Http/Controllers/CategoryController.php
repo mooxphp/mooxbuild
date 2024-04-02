@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Language;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -37,13 +36,9 @@ class CategoryController extends Controller
     {
         $this->authorize('create', Category::class);
 
-        $languages = Language::pluck('title', 'id');
         $categories = Category::pluck('title', 'id');
 
-        return view(
-            'app.categories.create',
-            compact('languages', 'categories')
-        );
+        return view('app.categories.create', compact('categories'));
     }
 
     /**
@@ -90,13 +85,9 @@ class CategoryController extends Controller
     {
         $this->authorize('update', $category);
 
-        $languages = Language::pluck('title', 'id');
         $categories = Category::pluck('title', 'id');
 
-        return view(
-            'app.categories.edit',
-            compact('category', 'languages', 'categories')
-        );
+        return view('app.categories.edit', compact('category', 'categories'));
     }
 
     /**

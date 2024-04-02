@@ -159,17 +159,6 @@ class ProductsRelationManager extends RelationManager
                         'lg' => 12,
                     ]),
 
-                Select::make('language_id')
-                    ->rules(['exists:languages,id'])
-                    ->relationship('language', 'title')
-                    ->searchable()
-                    ->placeholder('Language')
-                    ->columnSpan([
-                        'default' => 12,
-                        'md' => 12,
-                        'lg' => 12,
-                    ]),
-
                 Select::make('translation_id')
                     ->rules(['exists:products,id'])
                     ->relationship('translation', 'title')
@@ -238,7 +227,6 @@ class ProductsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('edited_by_user_name')->limit(
                     50
                 ),
-                Tables\Columns\TextColumn::make('language.title')->limit(50),
                 Tables\Columns\TextColumn::make('translation.title')->limit(50),
                 Tables\Columns\TextColumn::make('published_at')->date(),
                 Tables\Columns\TextColumn::make('price'),
@@ -283,10 +271,6 @@ class ProductsRelationManager extends RelationManager
                 SelectFilter::make('author_id')
                     ->multiple()
                     ->relationship('author', 'title'),
-
-                SelectFilter::make('language_id')
-                    ->multiple()
-                    ->relationship('language', 'title'),
 
                 SelectFilter::make('translation_id')
                     ->multiple()

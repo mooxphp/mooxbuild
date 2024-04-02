@@ -7,7 +7,6 @@ use App\Models\Page;
 
 use App\Models\Author;
 use App\Models\Category;
-use App\Models\Language;
 
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
@@ -71,7 +70,6 @@ class PageTest extends TestCase
         $author = Author::factory()->create();
         $category = Category::factory()->create();
         $page = Page::factory()->create();
-        $language = Language::factory()->create();
 
         $data = [
             'uid' => $this->faker->randomNumber(),
@@ -88,7 +86,6 @@ class PageTest extends TestCase
             'author_id' => $author->id,
             'main_category_id' => $category->id,
             'translation_id' => $page->id,
-            'language_id' => $language->id,
         ];
 
         $response = $this->putJson(route('api.pages.update', $page), $data);

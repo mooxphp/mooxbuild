@@ -82,9 +82,6 @@
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.users.inputs.wp_id')
                                 </th>
-                                <th class="px-4 py-3 text-left">
-                                    @lang('crud.users.inputs.language_id')
-                                </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -123,10 +120,6 @@
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $user->wp_id ?? '-' }}
-                                </td>
-                                <td class="px-4 py-3 text-left">
-                                    {{ optional($user->language)->title ?? '-'
-                                    }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -193,7 +186,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="13">
+                                <td colspan="12">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -201,7 +194,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="13">
+                                <td colspan="12">
                                     <div class="mt-10 px-4">
                                         {!! $users->render() !!}
                                     </div>

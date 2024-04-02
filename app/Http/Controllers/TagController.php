@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
-use App\Models\Language;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -37,10 +36,9 @@ class TagController extends Controller
     {
         $this->authorize('create', Tag::class);
 
-        $languages = Language::pluck('title', 'id');
         $tags = Tag::pluck('title', 'id');
 
-        return view('app.tags.create', compact('languages', 'tags'));
+        return view('app.tags.create', compact('tags'));
     }
 
     /**
@@ -87,10 +85,9 @@ class TagController extends Controller
     {
         $this->authorize('update', $tag);
 
-        $languages = Language::pluck('title', 'id');
         $tags = Tag::pluck('title', 'id');
 
-        return view('app.tags.edit', compact('tag', 'languages', 'tags'));
+        return view('app.tags.edit', compact('tag', 'tags'));
     }
 
     /**

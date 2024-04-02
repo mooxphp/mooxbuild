@@ -37,7 +37,6 @@ class PostFactory extends Factory
             'published_at' => $this->faker->dateTime(),
             'author_id' => \App\Models\Author::factory(),
             'main_category_id' => \App\Models\Category::factory(),
-            'language_id' => \App\Models\Language::factory(),
             'translation_id' => function () {
                 return \App\Models\Post::factory()->create([
                     'translation_id' => null,

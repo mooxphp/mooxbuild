@@ -7,7 +7,6 @@ use App\Models\Product;
 
 use App\Models\Author;
 use App\Models\Category;
-use App\Models\Language;
 
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
@@ -70,7 +69,6 @@ class ProductTest extends TestCase
 
         $category = Category::factory()->create();
         $author = Author::factory()->create();
-        $language = Language::factory()->create();
         $product = Product::factory()->create();
 
         $data = [
@@ -90,7 +88,6 @@ class ProductTest extends TestCase
             'stock' => $this->faker->numberBetween(0, 127),
             'main_category_id' => $category->id,
             'author_id' => $author->id,
-            'language_id' => $language->id,
             'translation_id' => $product->id,
         ];
 

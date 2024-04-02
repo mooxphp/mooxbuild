@@ -27,7 +27,6 @@ class Tag extends Model
         'created_by_user_name',
         'edited_by_user_id',
         'edited_by_user_name',
-        'language_id',
         'translation_id',
         'published_at',
     ];
@@ -47,11 +46,6 @@ class Tag extends Model
     public function translation()
     {
         return $this->belongsTo(Tag::class, 'translation_id');
-    }
-
-    public function language()
-    {
-        return $this->belongsTo(Language::class);
     }
 
     public function seo()

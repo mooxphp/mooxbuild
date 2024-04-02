@@ -17,7 +17,6 @@ use Filament\Tables\Actions\EditAction;
 use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\RichEditor;
-use Filament\Tables\Filters\SelectFilter;
 use App\Filament\Filters\DateRangeFilter;
 use Filament\Tables\Actions\DeleteBulkAction;
 use App\Filament\Resources\UserResource\Pages;
@@ -171,18 +170,6 @@ class UserResource extends Resource
                             'md' => 12,
                             'lg' => 12,
                         ]),
-
-                    Select::make('language_id')
-                        ->rules(['exists:languages,id'])
-                        ->required()
-                        ->relationship('language', 'title')
-                        ->searchable()
-                        ->placeholder('Language')
-                        ->columnSpan([
-                            'default' => 12,
-                            'md' => 12,
-                            'lg' => 12,
-                        ]),
                 ]),
             ]),
         ]);
@@ -241,19 +228,8 @@ class UserResource extends Resource
                     ->toggleable()
                     ->searchable(true, null, true)
                     ->limit(50),
-                Tables\Columns\TextColumn::make('language.title')
-                    ->toggleable()
-                    ->limit(50),
             ])
-            ->filters([
-                DateRangeFilter::make('created_at'),
-
-                SelectFilter::make('language_id')
-                    ->relationship('language', 'title')
-                    ->indicator('Language')
-                    ->multiple()
-                    ->label('Language'),
-            ])
+            ->filters([DateRangeFilter::make('created_at')])
             ->actions([ViewAction::make(), EditAction::make()])
             ->bulkActions([DeleteBulkAction::make()]);
     }

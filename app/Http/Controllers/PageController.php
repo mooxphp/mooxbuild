@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Page;
 use App\Models\Author;
 use App\Models\Category;
-use App\Models\Language;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -41,12 +40,11 @@ class PageController extends Controller
 
         $categories = Category::pluck('title', 'id');
         $authors = Author::pluck('title', 'id');
-        $languages = Language::pluck('title', 'id');
         $pages = Page::pluck('title', 'id');
 
         return view(
             'app.pages.create',
-            compact('categories', 'authors', 'languages', 'pages')
+            compact('categories', 'authors', 'pages')
         );
     }
 
@@ -96,12 +94,11 @@ class PageController extends Controller
 
         $categories = Category::pluck('title', 'id');
         $authors = Author::pluck('title', 'id');
-        $languages = Language::pluck('title', 'id');
         $pages = Page::pluck('title', 'id');
 
         return view(
             'app.pages.edit',
-            compact('page', 'categories', 'authors', 'languages', 'pages')
+            compact('page', 'categories', 'authors', 'pages')
         );
     }
 

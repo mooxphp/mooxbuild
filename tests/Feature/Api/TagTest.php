@@ -5,8 +5,6 @@ namespace Tests\Feature\Api;
 use App\Models\Tag;
 use App\Models\User;
 
-use App\Models\Language;
-
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -67,7 +65,6 @@ class TagTest extends TestCase
         $tag = Tag::factory()->create();
 
         $tag = Tag::factory()->create();
-        $language = Language::factory()->create();
 
         $data = [
             'uid' => $this->faker->randomNumber(),
@@ -83,7 +80,6 @@ class TagTest extends TestCase
             'edited_by_user_name' => $this->faker->text(255),
             'published_at' => $this->faker->dateTime(),
             'translation_id' => $tag->id,
-            'language_id' => $language->id,
         ];
 
         $response = $this->putJson(route('api.tags.update', $tag), $data);

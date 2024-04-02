@@ -29,7 +29,6 @@ class Product extends Model
         'created_by_user_name',
         'edited_by_user_id',
         'edited_by_user_name',
-        'language_id',
         'translation_id',
         'published_at',
         'price',
@@ -51,11 +50,6 @@ class Product extends Model
     public function author()
     {
         return $this->belongsTo(Author::class);
-    }
-
-    public function language()
-    {
-        return $this->belongsTo(Language::class);
     }
 
     public function hasTranslations()

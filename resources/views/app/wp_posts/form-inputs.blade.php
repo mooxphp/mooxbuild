@@ -16,7 +16,7 @@
         <x-inputs.datetime
             name="post_date"
             label="Post Date"
-            value="{{ old('post_date', ($editing ? optional($wpPost->post_date)->format('Y-m-d\TH:i:s') : '0000-00-00 00:00:00')) }}"
+            value="{{ old('post_date', ($editing ? optional($wpPost->post_date)->format('Y-m-d\TH:i:s') : '')) }}"
             max="255"
             required
         ></x-inputs.datetime>
@@ -26,7 +26,7 @@
         <x-inputs.datetime
             name="post_date_gmt"
             label="Post Date Gmt"
-            value="{{ old('post_date_gmt', ($editing ? optional($wpPost->post_date_gmt)->format('Y-m-d\TH:i:s') : '0000-00-00 00:00:00')) }}"
+            value="{{ old('post_date_gmt', ($editing ? optional($wpPost->post_date_gmt)->format('Y-m-d\TH:i:s') : '')) }}"
             max="255"
             required
         ></x-inputs.datetime>
@@ -142,7 +142,7 @@
         <x-inputs.datetime
             name="post_modified"
             label="Post Modified"
-            value="{{ old('post_modified', ($editing ? optional($wpPost->post_modified)->format('Y-m-d\TH:i:s') : '0000-00-00 00:00:00')) }}"
+            value="{{ old('post_modified', ($editing ? optional($wpPost->post_modified)->format('Y-m-d\TH:i:s') : '')) }}"
             max="255"
             required
         ></x-inputs.datetime>
@@ -152,7 +152,7 @@
         <x-inputs.datetime
             name="post_modified_gmt"
             label="Post Modified Gmt"
-            value="{{ old('post_modified_gmt', ($editing ? optional($wpPost->post_modified_gmt)->format('Y-m-d\TH:i:s') : '0000-00-00 00:00:00')) }}"
+            value="{{ old('post_modified_gmt', ($editing ? optional($wpPost->post_modified_gmt)->format('Y-m-d\TH:i:s') : '')) }}"
             max="255"
             required
         ></x-inputs.datetime>

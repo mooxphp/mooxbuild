@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Models\Scopes\Searchable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ActivityLog extends Model
 {
@@ -30,14 +30,4 @@ class ActivityLog extends Model
     protected $casts = [
         'properties' => 'array',
     ];
-
-    public function subject()
-    {
-        return $this->morphOne(ActivityLog::class, 'subject');
-    }
-
-    public function causer()
-    {
-        return $this->morphOne(ActivityLog::class, 'causer');
-    }
 }

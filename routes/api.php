@@ -22,6 +22,7 @@ use App\Http\Controllers\Api\AuthorController;
 use App\Http\Controllers\Api\WpPostController;
 use App\Http\Controllers\Api\WpTermController;
 use App\Http\Controllers\Api\WpUserController;
+use App\Http\Controllers\Api\ExpiryController;
 use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\CompanyController;
@@ -59,19 +60,15 @@ use App\Http\Controllers\Api\AuthorPagesController;
 use App\Http\Controllers\Api\AuthorItemsController;
 use App\Http\Controllers\Api\UserAuthorsController;
 use App\Http\Controllers\Api\FirewallRuleController;
-use App\Http\Controllers\Api\LanguageTagsController;
 use App\Http\Controllers\Api\PageTemplateController;
 use App\Http\Controllers\Api\UserSessionsController;
 use App\Http\Controllers\Api\CategoryPostsController;
 use App\Http\Controllers\Api\CategoryItemsController;
 use App\Http\Controllers\Api\CategoryPagesController;
 use App\Http\Controllers\Api\CustomerCartsController;
-use App\Http\Controllers\Api\LanguagePostsController;
-use App\Http\Controllers\Api\LanguagePagesController;
-use App\Http\Controllers\Api\LanguageItemsController;
-use App\Http\Controllers\Api\LanguageUsersController;
 use App\Http\Controllers\Api\PlatformSyncsController;
 use App\Http\Controllers\Api\WpCommentMetaController;
+use App\Http\Controllers\Api\ExpiryMonitorController;
 use App\Http\Controllers\Api\AuthorProductsController;
 use App\Http\Controllers\Api\AuthorCommentsController;
 use App\Http\Controllers\Api\ContentElementController;
@@ -81,17 +78,15 @@ use App\Http\Controllers\Api\JobBatchManagerController;
 use App\Http\Controllers\Api\ProductProductsController;
 use App\Http\Controllers\Api\CategoryProductsController;
 use App\Http\Controllers\Api\CountryTimezonesController;
-use App\Http\Controllers\Api\CountryLanguagesController;
-use App\Http\Controllers\Api\LanguageProductsController;
 use App\Http\Controllers\Api\CountryCurrenciesController;
 use App\Http\Controllers\Api\CurrencyCountriesController;
-use App\Http\Controllers\Api\LanguageCountriesController;
 use App\Http\Controllers\Api\PagePageTemplatesController;
 use App\Http\Controllers\Api\TimezoneCountriesController;
 use App\Http\Controllers\Api\ContinentCountriesController;
-use App\Http\Controllers\Api\LanguageCategoriesController;
 use App\Http\Controllers\Api\WpTermRelationshipController;
+use App\Http\Controllers\Api\LanguageTranslationsController;
 use App\Http\Controllers\Api\ThemeContentElementsController;
+use App\Http\Controllers\Api\ExpiryMonitorExpiriesController;
 use App\Http\Controllers\Api\JobQueueWorkerJobManagersController;
 
 /*
@@ -269,20 +264,6 @@ Route::name('api.')
             'destroy',
         ])->name('countries.timezones.destroy');
 
-        // Country Languages
-        Route::get('/countries/{country}/languages', [
-            CountryLanguagesController::class,
-            'index',
-        ])->name('countries.languages.index');
-        Route::post('/countries/{country}/languages/{language}', [
-            CountryLanguagesController::class,
-            'store',
-        ])->name('countries.languages.store');
-        Route::delete('/countries/{country}/languages/{language}', [
-            CountryLanguagesController::class,
-            'destroy',
-        ])->name('countries.languages.destroy');
-
         Route::apiResource('currencies', CurrencyController::class);
 
         // Currency Countries
@@ -357,89 +338,25 @@ Route::name('api.')
 
         Route::apiResource('languages', LanguageController::class);
 
-        // Language Tags
-        Route::get('/languages/{language}/tags', [
-            LanguageTagsController::class,
+        // Language Translations
+        Route::get('/languages/{language}/translations', [
+            LanguageTranslationsController::class,
             'index',
-        ])->name('languages.tags.index');
-        Route::post('/languages/{language}/tags', [
-            LanguageTagsController::class,
+        ])->name('languages.translations.index');
+        Route::post('/languages/{language}/translations', [
+            LanguageTranslationsController::class,
             'store',
-        ])->name('languages.tags.store');
+        ])->name('languages.translations.store');
 
-        // Language Posts
-        Route::get('/languages/{language}/posts', [
-            LanguagePostsController::class,
+        // Language Translations2
+        Route::get('/languages/{language}/translations', [
+            LanguageTranslationsController::class,
             'index',
-        ])->name('languages.posts.index');
-        Route::post('/languages/{language}/posts', [
-            LanguagePostsController::class,
+        ])->name('languages.translations.index');
+        Route::post('/languages/{language}/translations', [
+            LanguageTranslationsController::class,
             'store',
-        ])->name('languages.posts.store');
-
-        // Language Categories
-        Route::get('/languages/{language}/categories', [
-            LanguageCategoriesController::class,
-            'index',
-        ])->name('languages.categories.index');
-        Route::post('/languages/{language}/categories', [
-            LanguageCategoriesController::class,
-            'store',
-        ])->name('languages.categories.store');
-
-        // Language Pages
-        Route::get('/languages/{language}/pages', [
-            LanguagePagesController::class,
-            'index',
-        ])->name('languages.pages.index');
-        Route::post('/languages/{language}/pages', [
-            LanguagePagesController::class,
-            'store',
-        ])->name('languages.pages.store');
-
-        // Language Products
-        Route::get('/languages/{language}/products', [
-            LanguageProductsController::class,
-            'index',
-        ])->name('languages.products.index');
-        Route::post('/languages/{language}/products', [
-            LanguageProductsController::class,
-            'store',
-        ])->name('languages.products.store');
-
-        // Language Items
-        Route::get('/languages/{language}/items', [
-            LanguageItemsController::class,
-            'index',
-        ])->name('languages.items.index');
-        Route::post('/languages/{language}/items', [
-            LanguageItemsController::class,
-            'store',
-        ])->name('languages.items.store');
-
-        // Language Users
-        Route::get('/languages/{language}/users', [
-            LanguageUsersController::class,
-            'index',
-        ])->name('languages.users.index');
-        Route::post('/languages/{language}/users', [
-            LanguageUsersController::class,
-            'store',
-        ])->name('languages.users.store');
-
-        // Language Countries
-        Route::get('/languages/{language}/countries', [
-            LanguageCountriesController::class,
-            'index',
-        ])->name('languages.countries.index');
-        Route::post('/languages/{language}/countries/{country}', [
-            LanguageCountriesController::class,
-            'store',
-        ])->name('languages.countries.store');
-        Route::delete('/languages/{language}/countries/{country}', [
-            LanguageCountriesController::class,
-            'destroy',
-        ])->name('languages.countries.destroy');
+        ])->name('languages.translations.store');
 
         Route::apiResource('media', MediaController::class);
 
@@ -612,4 +529,18 @@ Route::name('api.')
         Route::apiResource('wp-users', WpUserController::class);
 
         Route::apiResource('wp-user-metas', WpUserMetaController::class);
+
+        Route::apiResource('expiries', ExpiryController::class);
+
+        Route::apiResource('expiry-monitors', ExpiryMonitorController::class);
+
+        // ExpiryMonitor Expiries
+        Route::get('/expiry-monitors/{expiryMonitor}/expiries', [
+            ExpiryMonitorExpiriesController::class,
+            'index',
+        ])->name('expiry-monitors.expiries.index');
+        Route::post('/expiry-monitors/{expiryMonitor}/expiries', [
+            ExpiryMonitorExpiriesController::class,
+            'store',
+        ])->name('expiry-monitors.expiries.store');
     });

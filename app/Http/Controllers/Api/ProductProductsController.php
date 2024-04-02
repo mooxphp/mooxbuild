@@ -45,7 +45,6 @@ class ProductProductsController extends Controller
             'created_by_user_name' => ['required', 'max:255', 'string'],
             'edited_by_user_id' => ['required', 'max:255', 'string'],
             'edited_by_user_name' => ['required', 'max:255', 'string'],
-            'language_id' => ['nullable', 'exists:languages,id'],
             'published_at' => ['nullable', 'date'],
             'price' => ['required', 'numeric'],
             'stock' => ['required', 'max:255'],

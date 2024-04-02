@@ -40,7 +40,6 @@ class ItemFactory extends Factory
                 ])->id;
             },
             'main_category_id' => \App\Models\Category::factory(),
-            'language_id' => \App\Models\Language::factory(),
             'author_id' => \App\Models\Author::factory(),
         ];
     }

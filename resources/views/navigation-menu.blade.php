@@ -288,6 +288,16 @@
                         Wp User Metas
                         </x-dropdown-link>
                         @endcan
+                        @can('view-any', App\Models\Expiry::class)
+                        <x-dropdown-link href="{{ route('expiries.index') }}">
+                        Expiries
+                        </x-dropdown-link>
+                        @endcan
+                        @can('view-any', App\Models\ExpiryMonitor::class)
+                        <x-dropdown-link href="{{ route('expiry-monitors.index') }}">
+                        Expiry Monitors
+                        </x-dropdown-link>
+                        @endcan
                 </x-nav-dropdown>
 
                     @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) || 
@@ -698,6 +708,16 @@
                 @can('view-any', App\Models\WpUserMeta::class)
                 <x-responsive-nav-link href="{{ route('wp-user-metas.index') }}">
                 Wp User Metas
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\Expiry::class)
+                <x-responsive-nav-link href="{{ route('expiries.index') }}">
+                Expiries
+                </x-responsive-nav-link>
+                @endcan
+                @can('view-any', App\Models\ExpiryMonitor::class)
+                <x-responsive-nav-link href="{{ route('expiry-monitors.index') }}">
+                Expiry Monitors
                 </x-responsive-nav-link>
                 @endcan
 

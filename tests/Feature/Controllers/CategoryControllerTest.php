@@ -5,8 +5,6 @@ namespace Tests\Feature\Controllers;
 use App\Models\User;
 use App\Models\Category;
 
-use App\Models\Language;
-
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -128,7 +126,6 @@ class CategoryControllerTest extends TestCase
         $category = Category::factory()->create();
 
         $category = Category::factory()->create();
-        $language = Language::factory()->create();
 
         $data = [
             'uid' => $this->faker->randomNumber(),
@@ -143,7 +140,6 @@ class CategoryControllerTest extends TestCase
             'edited_by_user_name' => $this->faker->text(255),
             'published_at' => $this->faker->dateTime(),
             'translation_id' => $category->id,
-            'language_id' => $language->id,
         ];
 
         $data['data'] = json_encode($data['data']);

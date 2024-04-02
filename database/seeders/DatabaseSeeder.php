@@ -34,6 +34,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CurrencySeeder::class);
         $this->call(CustomerSeeder::class);
         $this->call(DepartmentSeeder::class);
+        $this->call(ExpirySeeder::class);
+        $this->call(ExpiryMonitorSeeder::class);
         $this->call(FailedJobSeeder::class);
         $this->call(FirewallRuleSeeder::class);
         $this->call(ItemSeeder::class);
@@ -61,6 +63,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TeamSeeder::class);
         $this->call(ThemeSeeder::class);
         $this->call(TimezoneSeeder::class);
+        $this->call(TranslationSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(WishlistSeeder::class);
         $this->call(WpCommentSeeder::class);

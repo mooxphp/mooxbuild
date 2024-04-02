@@ -39,7 +39,6 @@ class ProductFactory extends Factory
             'stock' => $this->faker->numberBetween(0, 127),
             'main_category_id' => \App\Models\Category::factory(),
             'author_id' => \App\Models\Author::factory(),
-            'language_id' => \App\Models\Language::factory(),
             'translation_id' => function () {
                 return \App\Models\Product::factory()->create([
                     'translation_id' => null,

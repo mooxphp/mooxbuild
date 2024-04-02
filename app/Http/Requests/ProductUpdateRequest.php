@@ -35,7 +35,6 @@ class ProductUpdateRequest extends FormRequest
             'created_by_user_name' => ['required', 'max:255', 'string'],
             'edited_by_user_id' => ['required', 'max:255', 'string'],
             'edited_by_user_name' => ['required', 'max:255', 'string'],
-            'language_id' => ['nullable', 'exists:languages,id'],
             'translation_id' => ['nullable', 'exists:products,id'],
             'published_at' => ['nullable', 'date'],
             'price' => ['required', 'numeric'],

@@ -185,16 +185,6 @@
     </x-inputs.group>
 
     <x-inputs.group class="w-full">
-        <x-inputs.select name="language_id" label="Language" required>
-            @php $selected = old('language_id', ($editing ? $category->language_id : '')) @endphp
-            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Language</option>
-            @foreach($languages as $value => $label)
-            <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
-            @endforeach
-        </x-inputs.select>
-    </x-inputs.group>
-
-    <x-inputs.group class="w-full">
         <x-inputs.select name="translation_id" label="Translation">
             @php $selected = old('translation_id', ($editing ? $category->translation_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Category</option>

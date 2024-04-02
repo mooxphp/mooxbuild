@@ -24,7 +24,6 @@ return new class extends Migration {
             $table->string('created_by_user_name');
             $table->string('edited_by_user_id');
             $table->string('edited_by_user_name');
-            $table->unsignedBigInteger('language_id');
             $table->unsignedBigInteger('translation_id')->nullable();
             $table->timestamp('published_at')->nullable();
 

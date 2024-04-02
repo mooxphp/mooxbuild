@@ -81,14 +81,6 @@
                         </h5>
                         <span>{{ $user->wp_id ?? '-' }}</span>
                     </div>
-                    <div class="mb-4">
-                        <h5 class="font-medium text-gray-700">
-                            @lang('crud.users.inputs.language_id')
-                        </h5>
-                        <span
-                            >{{ optional($user->language)->title ?? '-' }}</span
-                        >
-                    </div>
                 </div>
 
                 <div class="mt-4 px-4">

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Author;
 use App\Models\Category;
-use App\Models\Language;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -41,12 +40,11 @@ class PostController extends Controller
 
         $categories = Category::pluck('title', 'id');
         $authors = Author::pluck('title', 'id');
-        $languages = Language::pluck('title', 'id');
         $posts = Post::pluck('title', 'id');
 
         return view(
             'app.posts.create',
-            compact('categories', 'authors', 'languages', 'posts')
+            compact('categories', 'authors', 'posts')
         );
     }
 
@@ -96,12 +94,11 @@ class PostController extends Controller
 
         $categories = Category::pluck('title', 'id');
         $authors = Author::pluck('title', 'id');
-        $languages = Language::pluck('title', 'id');
         $posts = Post::pluck('title', 'id');
 
         return view(
             'app.posts.edit',
-            compact('post', 'categories', 'authors', 'languages', 'posts')
+            compact('post', 'categories', 'authors', 'posts')
         );
     }
 

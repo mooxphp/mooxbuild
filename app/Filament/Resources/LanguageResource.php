@@ -130,14 +130,8 @@ class LanguageResource extends Resource
     public static function getRelations(): array
     {
         return [
-            LanguageResource\RelationManagers\TagsRelationManager::class,
-            LanguageResource\RelationManagers\PostsRelationManager::class,
-            LanguageResource\RelationManagers\CategoriesRelationManager::class,
-            LanguageResource\RelationManagers\PagesRelationManager::class,
-            LanguageResource\RelationManagers\ProductsRelationManager::class,
-            LanguageResource\RelationManagers\ItemsRelationManager::class,
-            LanguageResource\RelationManagers\UsersRelationManager::class,
-            LanguageResource\RelationManagers\CountriesRelationManager::class,
+            LanguageResource\RelationManagers\TranslationsRelationManager::class,
+            LanguageResource\RelationManagers\TranslationsRelationManager::class,
         ];
     }
 

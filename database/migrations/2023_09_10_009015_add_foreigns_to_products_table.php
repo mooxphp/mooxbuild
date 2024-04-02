@@ -26,13 +26,6 @@ return new class extends Migration {
                 ->onDelete('CASCADE');
 
             $table
-                ->foreign('language_id')
-                ->references('id')
-                ->on('languages')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
-
-            $table
                 ->foreign('translation_id')
                 ->references('id')
                 ->on('products')
@@ -49,7 +42,6 @@ return new class extends Migration {
         Schema::table('products', function (Blueprint $table) {
             $table->dropForeign(['main_category_id']);
             $table->dropForeign(['author_id']);
-            $table->dropForeign(['language_id']);
             $table->dropForeign(['translation_id']);
         });
     }

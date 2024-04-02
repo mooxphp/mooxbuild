@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -29,6 +28,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->default(0);
 
             $table->index('comment_post_ID');
+            $table->index('comment_author');
             $table->index('comment_author_email');
             $table->index('comment_parent');
 

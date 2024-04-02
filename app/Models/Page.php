@@ -28,7 +28,6 @@ class Page extends Model
         'created_by_user_name',
         'edited_by_user_id',
         'edited_by_user_name',
-        'language_id',
         'translation_id',
         'published_at',
     ];
@@ -60,11 +59,6 @@ class Page extends Model
         return $this->hasMany(PageTemplate::class);
     }
 
-    public function language()
-    {
-        return $this->belongsTo(Language::class);
-    }
-
     public function hasTranslations()
     {
         return $this->hasMany(Page::class, 'translation_id');
@@ -93,5 +87,10 @@ class Page extends Model
     public function contents()
     {
         return $this->morphToMany(Content::class, 'contentable');
+    }
+
+    public function translations()
+    {
+        return $this->morphToMany(Translation::class, 'translatable');
     }
 }

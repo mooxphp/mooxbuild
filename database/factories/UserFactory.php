@@ -38,7 +38,6 @@ class UserFactory extends Factory
             'avatar_url' => $this->faker->text(2048),
             'profile_photo_path' => $this->faker->text(255),
             'wp_id' => $this->faker->randomNumber(),
-            'language_id' => \App\Models\Language::factory(),
         ];
     }
 

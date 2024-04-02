@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\Author;
 use App\Models\Category;
-use App\Models\Language;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -41,12 +40,11 @@ class ItemController extends Controller
 
         $categories = Category::pluck('title', 'id');
         $authors = Author::pluck('title', 'id');
-        $languages = Language::pluck('title', 'id');
         $items = Item::pluck('title', 'id');
 
         return view(
             'app.items.create',
-            compact('categories', 'authors', 'languages', 'items')
+            compact('categories', 'authors', 'items')
         );
     }
 
@@ -96,12 +94,11 @@ class ItemController extends Controller
 
         $categories = Category::pluck('title', 'id');
         $authors = Author::pluck('title', 'id');
-        $languages = Language::pluck('title', 'id');
         $items = Item::pluck('title', 'id');
 
         return view(
             'app.items.edit',
-            compact('item', 'categories', 'authors', 'languages', 'items')
+            compact('item', 'categories', 'authors', 'items')
         );
     }
 

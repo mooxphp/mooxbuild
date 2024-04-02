@@ -167,18 +167,6 @@ class TagResource extends Resource
                             'lg' => 12,
                         ]),
 
-                    Select::make('language_id')
-                        ->rules(['exists:languages,id'])
-                        ->nullable()
-                        ->relationship('language', 'title')
-                        ->searchable()
-                        ->placeholder('Language')
-                        ->columnSpan([
-                            'default' => 12,
-                            'md' => 12,
-                            'lg' => 12,
-                        ]),
-
                     Select::make('translation_id')
                         ->rules(['exists:tags,id'])
                         ->nullable()
@@ -255,9 +243,6 @@ class TagResource extends Resource
                     ->toggleable()
                     ->searchable(true, null, true)
                     ->limit(50),
-                Tables\Columns\TextColumn::make('language.title')
-                    ->toggleable()
-                    ->limit(50),
                 Tables\Columns\TextColumn::make('translation.title')
                     ->toggleable()
                     ->limit(50),
@@ -267,12 +252,6 @@ class TagResource extends Resource
             ])
             ->filters([
                 DateRangeFilter::make('created_at'),
-
-                SelectFilter::make('language_id')
-                    ->relationship('language', 'title')
-                    ->indicator('Language')
-                    ->multiple()
-                    ->label('Language'),
 
                 SelectFilter::make('translation_id')
                     ->relationship('translation', 'title')

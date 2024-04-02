@@ -31,7 +31,6 @@ return new class extends Migration {
             $table->string('avatar_url', 2048)->nullable();
             $table->string('profile_photo_path')->nullable();
             $table->bigInteger('wp_id')->nullable();
-            $table->unsignedBigInteger('language_id');
 
             $table->timestamps();
             $table->softDeletes();

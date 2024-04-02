@@ -60,7 +60,7 @@
         <x-inputs.datetime
             name="user_registered"
             label="User Registered"
-            value="{{ old('user_registered', ($editing ? optional($wpUser->user_registered)->format('Y-m-d\TH:i:s') : '0000-00-00 00:00:00')) }}"
+            value="{{ old('user_registered', ($editing ? optional($wpUser->user_registered)->format('Y-m-d\TH:i:s') : '')) }}"
             max="255"
             required
         ></x-inputs.datetime>

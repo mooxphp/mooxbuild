@@ -7,7 +7,6 @@ use App\Models\Post;
 
 use App\Models\Author;
 use App\Models\Category;
-use App\Models\Language;
 
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
@@ -70,7 +69,6 @@ class PostTest extends TestCase
 
         $author = Author::factory()->create();
         $category = Category::factory()->create();
-        $language = Language::factory()->create();
         $post = Post::factory()->create();
 
         $data = [
@@ -88,7 +86,6 @@ class PostTest extends TestCase
             'published_at' => $this->faker->dateTime(),
             'author_id' => $author->id,
             'main_category_id' => $category->id,
-            'language_id' => $language->id,
             'translation_id' => $post->id,
         ];
 

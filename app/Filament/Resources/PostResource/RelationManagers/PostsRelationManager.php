@@ -161,17 +161,6 @@ class PostsRelationManager extends RelationManager
                         'lg' => 12,
                     ]),
 
-                Select::make('language_id')
-                    ->rules(['exists:languages,id'])
-                    ->relationship('language', 'title')
-                    ->searchable()
-                    ->placeholder('Language')
-                    ->columnSpan([
-                        'default' => 12,
-                        'md' => 12,
-                        'lg' => 12,
-                    ]),
-
                 DatePicker::make('published_at')
                     ->rules(['date'])
                     ->placeholder('Published At')
@@ -209,7 +198,6 @@ class PostsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('edited_by_user_name')->limit(
                     50
                 ),
-                Tables\Columns\TextColumn::make('language.title')->limit(50),
                 Tables\Columns\TextColumn::make('translation.title')->limit(50),
                 Tables\Columns\TextColumn::make('published_at')->date(),
             ])
@@ -252,10 +240,6 @@ class PostsRelationManager extends RelationManager
                 SelectFilter::make('author_id')
                     ->multiple()
                     ->relationship('author', 'title'),
-
-                SelectFilter::make('language_id')
-                    ->multiple()
-                    ->relationship('language', 'title'),
 
                 SelectFilter::make('translation_id')
                     ->multiple()

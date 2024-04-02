@@ -87,9 +87,6 @@
                                     @lang('crud.categories.inputs.edited_by_user_name')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.categories.inputs.language_id')
-                                </th>
-                                <th class="px-4 py-3 text-left">
                                     @lang('crud.categories.inputs.translation_id')
                                 </th>
                                 <th class="px-4 py-3 text-left">
@@ -142,10 +139,6 @@
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $category->edited_by_user_name ?? '-' }}
-                                </td>
-                                <td class="px-4 py-3 text-left">
-                                    {{ optional($category->language)->title ??
-                                    '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ optional($category->translation)->title
@@ -219,7 +212,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="16">
+                                <td colspan="15">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -227,7 +220,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="16">
+                                <td colspan="15">
                                     <div class="mt-10 px-4">
                                         {!! $categories->render() !!}
                                     </div>

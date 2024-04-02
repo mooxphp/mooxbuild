@@ -51,9 +51,4 @@ class Country extends Model
     {
         return $this->belongsToMany(Timezone::class);
     }
-
-    public function languages()
-    {
-        return $this->belongsToMany(Language::class);
-    }
 }

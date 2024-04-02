@@ -4,8 +4,6 @@ namespace Tests\Feature\Controllers;
 
 use App\Models\User;
 
-use App\Models\Language;
-
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -116,8 +114,6 @@ class UserControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $language = Language::factory()->create();
-
         $data = [
             'name' => $this->faker->name(),
             'slug' => $this->faker->slug(),
@@ -130,7 +126,6 @@ class UserControllerTest extends TestCase
             'description' => $this->faker->sentence(15),
             'profile_photo_path' => $this->faker->text(255),
             'wp_id' => $this->faker->randomNumber(),
-            'language_id' => $language->id,
         ];
 
         $data['password'] = \Str::random('8');

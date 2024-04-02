@@ -99,6 +99,18 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'update departments']);
         Permission::create(['name' => 'delete departments']);
 
+        Permission::create(['name' => 'list expiries']);
+        Permission::create(['name' => 'view expiries']);
+        Permission::create(['name' => 'create expiries']);
+        Permission::create(['name' => 'update expiries']);
+        Permission::create(['name' => 'delete expiries']);
+
+        Permission::create(['name' => 'list expirymonitors']);
+        Permission::create(['name' => 'view expirymonitors']);
+        Permission::create(['name' => 'create expirymonitors']);
+        Permission::create(['name' => 'update expirymonitors']);
+        Permission::create(['name' => 'delete expirymonitors']);
+
         Permission::create(['name' => 'list failedjobs']);
         Permission::create(['name' => 'view failedjobs']);
         Permission::create(['name' => 'create failedjobs']);
@@ -260,6 +272,12 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'create timezones']);
         Permission::create(['name' => 'update timezones']);
         Permission::create(['name' => 'delete timezones']);
+
+        Permission::create(['name' => 'list translations']);
+        Permission::create(['name' => 'view translations']);
+        Permission::create(['name' => 'create translations']);
+        Permission::create(['name' => 'update translations']);
+        Permission::create(['name' => 'delete translations']);
 
         Permission::create(['name' => 'list wishlists']);
         Permission::create(['name' => 'view wishlists']);

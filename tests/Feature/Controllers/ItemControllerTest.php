@@ -7,7 +7,6 @@ use App\Models\Item;
 
 use App\Models\Author;
 use App\Models\Category;
-use App\Models\Language;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -131,7 +130,6 @@ class ItemControllerTest extends TestCase
 
         $item = Item::factory()->create();
         $category = Category::factory()->create();
-        $language = Language::factory()->create();
         $author = Author::factory()->create();
 
         $data = [
@@ -148,7 +146,6 @@ class ItemControllerTest extends TestCase
             'published_at' => $this->faker->dateTime(),
             'translation_id' => $item->id,
             'main_category_id' => $category->id,
-            'language_id' => $language->id,
             'author_id' => $author->id,
         ];
 

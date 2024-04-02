@@ -40,7 +40,6 @@ class User extends Authenticatable implements FilamentUser
         'password',
         'profile_photo_path',
         'wp_id',
-        'language_id',
     ];
 
     protected $searchableFields = ['*'];
@@ -65,11 +64,6 @@ class User extends Authenticatable implements FilamentUser
     public function customer()
     {
         return $this->hasOne(Customer::class);
-    }
-
-    public function language()
-    {
-        return $this->belongsTo(Language::class);
     }
 
     public function sessions()

@@ -34,7 +34,6 @@ class ItemUpdateRequest extends FormRequest
             'created_by_user_name' => ['required', 'max:255', 'string'],
             'edited_by_user_id' => ['required', 'max:255', 'string'],
             'edited_by_user_name' => ['required', 'max:255', 'string'],
-            'language_id' => ['nullable', 'exists:languages,id'],
             'translation_id' => ['nullable', 'exists:items,id'],
             'published_at' => ['nullable', 'date'],
         ];

@@ -101,14 +101,6 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.tags.inputs.language_id')
-                        </h5>
-                        <span
-                            >{{ optional($tag->language)->title ?? '-' }}</span
-                        >
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="font-medium text-gray-700">
                             @lang('crud.tags.inputs.translation_id')
                         </h5>
                         <span

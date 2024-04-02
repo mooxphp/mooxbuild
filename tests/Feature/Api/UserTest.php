@@ -4,8 +4,6 @@ namespace Tests\Feature\Api;
 
 use App\Models\User;
 
-use App\Models\Language;
-
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -72,8 +70,6 @@ class UserTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $language = Language::factory()->create();
-
         $data = [
             'name' => $this->faker->name(),
             'slug' => $this->faker->slug(),
@@ -86,7 +82,6 @@ class UserTest extends TestCase
             'description' => $this->faker->sentence(15),
             'profile_photo_path' => $this->faker->text(255),
             'wp_id' => $this->faker->randomNumber(),
-            'language_id' => $language->id,
         ];
 
         $data['password'] = \Str::random('8');

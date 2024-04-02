@@ -28,18 +28,6 @@ class ActivityLogFactory extends Factory
             'event' => $this->faker->text(255),
             'properties' => [],
             'batch_uuid' => $this->faker->uuid(),
-            'subject_type' => $this->faker->randomElement([
-                \App\Models\ActivityLog::class,
-            ]),
-            'subject_id' => function (array $item) {
-                return app($item['subject_type'])->factory();
-            },
-            'causer_type' => $this->faker->randomElement([
-                \App\Models\ActivityLog::class,
-            ]),
-            'causer_id' => function (array $item) {
-                return app($item['causer_type'])->factory();
-            },
         ];
     }
 }

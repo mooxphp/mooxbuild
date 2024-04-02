@@ -28,7 +28,6 @@ class Post extends Model
         'created_by_user_name',
         'edited_by_user_id',
         'edited_by_user_name',
-        'language_id',
         'translation_id',
         'published_at',
     ];
@@ -48,11 +47,6 @@ class Post extends Model
     public function mainCategory()
     {
         return $this->belongsTo(Category::class, 'main_category_id');
-    }
-
-    public function language()
-    {
-        return $this->belongsTo(Language::class);
     }
 
     public function hasTranslations()

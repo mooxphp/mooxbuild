@@ -29,43 +29,13 @@ class Language extends Model
         'published' => 'boolean',
     ];
 
-    public function tags()
+    public function translations()
     {
-        return $this->hasMany(Tag::class);
+        return $this->hasMany(Translation::class);
     }
 
-    public function posts()
+    public function translations2()
     {
-        return $this->hasMany(Post::class);
-    }
-
-    public function categories()
-    {
-        return $this->hasMany(Category::class);
-    }
-
-    public function pages()
-    {
-        return $this->hasMany(Page::class);
-    }
-
-    public function products()
-    {
-        return $this->hasMany(Product::class);
-    }
-
-    public function items()
-    {
-        return $this->hasMany(Item::class);
-    }
-
-    public function users()
-    {
-        return $this->hasMany(User::class);
-    }
-
-    public function countries()
-    {
-        return $this->belongsToMany(Country::class);
+        return $this->hasMany(Translation::class, 'fallback_language_id');
     }
 }

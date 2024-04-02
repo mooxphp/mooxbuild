@@ -47,7 +47,6 @@ class WpPostResource extends Resource
                         ->rules(['date'])
                         ->required()
                         ->placeholder('Post Date')
-                        ->default('0000-00-00 00:00:00')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,
@@ -58,7 +57,6 @@ class WpPostResource extends Resource
                         ->rules(['date'])
                         ->required()
                         ->placeholder('Post Date Gmt')
-                        ->default('0000-00-00 00:00:00')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,
@@ -172,7 +170,6 @@ class WpPostResource extends Resource
                         ->rules(['date'])
                         ->required()
                         ->placeholder('Post Modified')
-                        ->default('0000-00-00 00:00:00')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,
@@ -183,7 +180,6 @@ class WpPostResource extends Resource
                         ->rules(['date'])
                         ->required()
                         ->placeholder('Post Modified Gmt')
-                        ->default('0000-00-00 00:00:00')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,

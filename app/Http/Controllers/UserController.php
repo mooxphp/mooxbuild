@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Language;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -38,11 +37,9 @@ class UserController extends Controller
     {
         $this->authorize('create', User::class);
 
-        $languages = Language::pluck('title', 'id');
-
         $roles = Role::get();
 
-        return view('app.users.create', compact('languages', 'roles'));
+        return view('app.users.create', compact('roles'));
     }
 
     /**
@@ -82,11 +79,9 @@ class UserController extends Controller
     {
         $this->authorize('update', $user);
 
-        $languages = Language::pluck('title', 'id');
-
         $roles = Role::get();
 
-        return view('app.users.edit', compact('user', 'languages', 'roles'));
+        return view('app.users.edit', compact('user', 'roles'));
     }
 
     /**

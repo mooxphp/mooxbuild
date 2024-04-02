@@ -97,15 +97,6 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.categories.inputs.language_id')
-                        </h5>
-                        <span
-                            >{{ optional($category->language)->title ?? '-'
-                            }}</span
-                        >
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="font-medium text-gray-700">
                             @lang('crud.categories.inputs.translation_id')
                         </h5>
                         <span

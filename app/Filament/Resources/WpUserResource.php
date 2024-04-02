@@ -85,7 +85,6 @@ class WpUserResource extends Resource
                         ->rules(['date'])
                         ->required()
                         ->placeholder('User Registered')
-                        ->default('0000-00-00 00:00:00')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,

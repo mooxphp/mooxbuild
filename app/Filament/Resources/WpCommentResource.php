@@ -87,7 +87,6 @@ class WpCommentResource extends Resource
                         ->rules(['date'])
                         ->required()
                         ->placeholder('Comment Date')
-                        ->default('0000-00-00 00:00:00')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,
@@ -98,7 +97,6 @@ class WpCommentResource extends Resource
                         ->rules(['date'])
                         ->required()
                         ->placeholder('Comment Date Gmt')
-                        ->default('0000-00-00 00:00:00')
                         ->columnSpan([
                             'default' => 12,
                             'md' => 12,

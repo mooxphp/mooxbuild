@@ -257,7 +257,6 @@ class CountryResource extends Resource
         return [
             CountryResource\RelationManagers\CurrenciesRelationManager::class,
             CountryResource\RelationManagers\TimezonesRelationManager::class,
-            CountryResource\RelationManagers\LanguagesRelationManager::class,
         ];
     }
 

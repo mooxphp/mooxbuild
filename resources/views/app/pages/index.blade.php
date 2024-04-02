@@ -92,9 +92,6 @@
                                     @lang('crud.pages.inputs.edited_by_user_name')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.pages.inputs.language_id')
-                                </th>
-                                <th class="px-4 py-3 text-left">
                                     @lang('crud.pages.inputs.translation_id')
                                 </th>
                                 <th class="px-4 py-3 text-left">
@@ -154,10 +151,6 @@
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $page->edited_by_user_name ?? '-' }}
-                                </td>
-                                <td class="px-4 py-3 text-left">
-                                    {{ optional($page->language)->title ?? '-'
-                                    }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ optional($page->translation)->title ??
@@ -231,7 +224,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="18">
+                                <td colspan="17">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -239,7 +232,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="18">
+                                <td colspan="17">
                                     <div class="mt-10 px-4">
                                         {!! $pages->render() !!}
                                     </div>

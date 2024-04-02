@@ -5,8 +5,6 @@ namespace Tests\Feature\Controllers;
 use App\Models\Tag;
 use App\Models\User;
 
-use App\Models\Language;
-
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -128,7 +126,6 @@ class TagControllerTest extends TestCase
         $tag = Tag::factory()->create();
 
         $tag = Tag::factory()->create();
-        $language = Language::factory()->create();
 
         $data = [
             'uid' => $this->faker->randomNumber(),
@@ -144,7 +141,6 @@ class TagControllerTest extends TestCase
             'edited_by_user_name' => $this->faker->text(255),
             'published_at' => $this->faker->dateTime(),
             'translation_id' => $tag->id,
-            'language_id' => $language->id,
         ];
 
         $data['data'] = json_encode($data['data']);
